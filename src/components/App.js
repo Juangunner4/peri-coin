@@ -15,8 +15,9 @@ function App() {
     </div>
     <div>
         <footer>
+          <h3>Memecoin</h3>
           <p>
-            Copyright © {new Date().getFullYear()} Juan J Vazquez G. All
+            Copyright © {new Date().getFullYear()} $PERI. All
             rights reserved.
           </p>
         </footer>

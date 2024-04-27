@@ -31,10 +31,9 @@ function Header() {
             </HamburgerButton.Wrapper>
     
             <Navbar.Items ref={drawerRef} openDrawer={openDrawer} data-testid="navbar-items">
-              <Navbar.Item><li><a href="#about">About Me</a></li></Navbar.Item>
-              <Navbar.Item><li><a href="#event">Schedule an event</a></li></Navbar.Item>
-              <Navbar.Item><li><a href="#projects">Projects</a></li></Navbar.Item>
-              <Navbar.Item><li><a href="#contact">Contact Me</a></li></Navbar.Item>
+              <Navbar.Item><li><a href="#peri">$PERI</a></li></Navbar.Item>
+              <Navbar.Item><li><a href="#story">Story</a></li></Navbar.Item>
+              <Navbar.Item><li><a href="#meme">MEME</a></li></Navbar.Item>
             </Navbar.Items>
           </Navbar.Wrapper>
         </Styles.Wrapper>
