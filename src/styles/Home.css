@@ -22,7 +22,7 @@
 .banner {
     position: absolute;
     top: 0;
-    left: 100px; /* Align with the right edge of the border-left */
+    left: 50px; /* Align with the right edge of the border-left */
     right: 0; /* Ensure it doesn't overflow horizontally */
     z-index: 2;
 }
