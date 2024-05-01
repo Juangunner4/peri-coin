@@ -21,12 +21,12 @@ function App() {
             <img src={logo} alt="Memecoin Logo" style={{ width: '50px', height: '50px', marginRight: '20px' }} />
             <ul style={{ listStyleType: 'none', padding: 0, display: 'flex', gap: '20px' }}>
               <li><Link to="/">Home</Link></li>
-              <li><Link to="/about">About</Link></li>
-              <li><Link to="/buy">Buy</Link></li>
-              <li><Link to="/contact">Contact</Link></li>
+              {/* <li><Link to="/about">About</Link></li> */}
+              {/* <li><Link to="/buy">Buy</Link></li> */}
+              {/* <li><Link to="/contact">Contact</Link></li> */}
             </ul>
           </div>
-          <div>
+          {/* <div>
             <span onClick={toggleMenu} style={{ cursor: 'pointer', fontWeight: 'bold' }}>
               {activeMenu} ▼
             </span>
@@ -41,7 +41,7 @@ function App() {
             <img src="/path/to/twitter_logo.svg" alt="Twitter" />
             <img src="/path/to/telegram_logo.svg" alt="Telegram" />
           </div>
-        )}
+        )} */}
         </nav>
         <Routes>
           <Route path="/" element={<Home />} />

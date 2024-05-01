@@ -4,7 +4,7 @@ body, html {
   margin: 0;
   padding: 0;
   font-family: 'Arial', sans-serif;
-  background-color: #a4d96c; /* light grass green */
+  background-color: skyblue; /* light grass green */
 }
 
 /* Basic responsive layout */
@@ -16,7 +16,7 @@ body, html {
 }
 
 header {
-  background-color: #92c957; /* slightly darker green for contrast */
+  background-color: darkblueho; /* slightly darker green for contrast */
   color: white;
   padding: 10px 0;
   text-align: center;
@@ -31,7 +31,7 @@ nav {
   align-items: center;
   justify-content: space-between; /* Changed from 'start' to 'space-between' */
   padding: 10px 20px;
-  background-color: #e60000;
+  background-color: #dcdcdc;
   border-bottom: 1px solid black; /* Optional, adds a subtle border for visual separation */
 }
 
@@ -55,7 +55,7 @@ nav a {
 }
 
 nav a:hover {
-  color: #92c957; /* Light grassy green theme for hover */
+  color: #f4f4f4; /* Light grassy green theme for hover */
 }
 
 nav img {
