@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import banner from '../images/homeBanner.svg'; // Ensure the path is correct
-import logoCoin from '../images/logo.svg'; // Import the new logo image
+import banner from '../images/homeBanner.svg';
+import logoCoin from '../images/logo.svg';
 import '../styles/Home.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faXTwitter, faTelegramPlane } from '@fortawesome/free-brands-svg-icons';
@@ -9,16 +9,16 @@ import { faXTwitter, faTelegramPlane } from '@fortawesome/free-brands-svg-icons'
 function Home() {
   const navigate = useNavigate();
 
-  const [showCopied, setShowCopied] = useState(false); // State to manage notification visibility
+  const [showCopied, setShowCopied] = useState(false);
 
   const contractAddress = "EdopmgERFJbgJLVTwm9fuvt2Y5DmwjbjdZhVRrM3dpFd";
 
   const handleCopyAddress = async () => {
     try {
       await navigator.clipboard.writeText(contractAddress);
-      setShowCopied(true); // Show the notification
+      setShowCopied(true);
       setTimeout(() => {
-        setShowCopied(false); // Hide the notification after 3 seconds
+        setShowCopied(false);
       }, 3000);
     } catch (err) {
       console.error('Failed to copy!', err);

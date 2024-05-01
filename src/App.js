@@ -4,10 +4,10 @@ import Home from './components/Home';
 import About from './components/About';
 import Buy from './components/Buy';
 import Contact from './components/Contact';
-import logo from './images/logo.svg'; // Import the logo image
+import logo from './images/logo.svg';
 
 function App() {
-  const [activeMenu, setActiveMenu] = useState('Markets'); // Default to 'Markets'
+  const [activeMenu, setActiveMenu] = useState('Markets'); 
 
   const toggleMenu = () => {
     setActiveMenu(activeMenu === 'Markets' ? 'Socials' : 'Markets');

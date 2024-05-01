@@ -1,50 +1,46 @@
-/* Home.css */
-
 .homeContainer {
     position: relative;
     display: flex;
-    flex-direction: column; /* Keep the vertical layout */
+    flex-direction: column;
     min-height: 100vh;
     text-align: center;
-    padding-bottom: 50px; /* Retain padding for footer spacing */
-    overflow-x: hidden; /* Prevent horizontal scrolling */
-    background: url('../images/home.gif') no-repeat center center / cover; /* Adjust path as necessary */
-   
+    padding-bottom: 50px;
+    overflow-x: hidden;
+    background: url('../images/home.gif') no-repeat center center / cover;
+
 }
 
 .intro {
-    font-size: 20px; /* Adjust size as needed */
-    color: #f4f4f4; /* Dark green color */
-    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3); /* Subtle shadow for depth */
-    line-height: 1.6; /* Adequate line spacing for readability */
-    margin: 20px 0; /* Vertical spacing for clarity */
-    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; /* Attractive and readable font */
+    font-size: 20px;
+    color: #f4f4f4;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+    line-height: 1.6;
+    margin: 20px 0;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
     z-index: 2;
 }
 
 .intro:hover {
-    background-color: rgba(255, 255, 255, 0.2); /* Slightly more visible on hover */
-    transform: scale(1.01); /* Slightly enlarges the element */
+    background-color: rgba(255, 255, 255, 0.2);
+    transform: scale(1.01);
 }
 
-/* Highlight for special keywords */
 .intro .highlight {
-    font-weight: bold; /* Bold for emphasis */
-    color: #007BFF; /* Bright blue for pop effect */
-    font-style: italic; /* Italic for a stylish look */
+    font-weight: bold;
+    color: #007BFF;
+    font-style: italic;
 }
 
-/* Specific styling for the phrase 'Saquen el perico' */
 .intro .phrase {
-    color: gold; /* Gold color for standout appeal */
-    font-style: italic; /* Italicize to differentiate */
+    color: gold;
+    font-style: italic;
 }
 
 
 
 .border-left {
     position: absolute;
-    height: calc(100% - 70px); /* Adjust height if footer height changes */
+    height: calc(100% - 70px);
     width: 100px;
     background-color: #ae6b01;
     z-index: 1;
@@ -54,8 +50,8 @@
 .banner {
     position: absolute;
     top: 0;
-    left: 50px; /* Align with the right edge of the border-left */
-    right: 0; /* Ensure it doesn't overflow horizontally */
+    left: 50px;
+    right: 0;
     z-index: 2;
 }
 
@@ -93,30 +89,30 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin-left: 100px; /* Ensure it doesn't push content too wide */
+    margin-left: 100px;
     z-index: 3;
-    overflow-x: hidden; /* Additional safeguard against horizontal overflow */
+    overflow-x: hidden;
 }
 
 .contract-address {
     margin-left: 10px;
     cursor: pointer;
-    color: black; /* Set text color to black */
-    text-decoration: none; /* Remove underline if not desired */
-    box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2); /* Slight shadow for depth */
-    padding: 3px; /* Adds padding around the text for better visibility */
-    border-radius: 8px; /* Slightly more rounded corners */
-    border: 2px solid darkgreen; /* Dark green border */
-    background: rgba(255, 255, 255, 0.5); /* Very light, barely visible background */
-    transition: background-color 0.3s ease; /* Smooth transition for hover effect */
-    transition: background-color 0.3s ease, transform 0.3s ease, font-size 0.3s ease; /* Smooth transition for hover effect */
-    font-size: 18px; /* Increased font size for better visibility */
+    color: black;
+    text-decoration: none;
+    box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+    padding: 3px;
+    border-radius: 8px;
+    border: 2px solid darkgreen;
+    background: rgba(255, 255, 255, 0.5);
+    transition: background-color 0.3s ease;
+    transition: background-color 0.3s ease, transform 0.3s ease, font-size 0.3s ease;
+    font-size: 18px;
 }
 
 .contract-address:hover {
-    background-color: rgba(255, 255, 255, 0.2); /* Slightly more visible on hover */
-    transform: scale(1.1); /* Slightly enlarges the element */
-    font-size: 20px; /* Increase font size on hover */
+    background-color: rgba(255, 255, 255, 0.2);
+    transform: scale(1.1);
+    font-size: 20px;
 }
 
 footer {
@@ -139,161 +135,159 @@ footer {
     font-size: 1.5em;
     cursor: pointer;
     border-radius: 5px;
-    border: 2px solid darkgreen; /* Dark green border */
-    box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2); /* Slight shadow for depth */
-    transition: background-color 0.3s ease; /* Smooth transition for hover effect */
-    transition: background-color 0.3s ease, transform 0.3s ease, font-size 0.3s ease; /* Smooth transition for hover effect */
-    margin-right: 10px; /* Ensure spacing doesn't cause overflow */
+    border: 2px solid darkgreen;
+    box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.3s ease;
+    transition: background-color 0.3s ease, transform 0.3s ease, font-size 0.3s ease;
+    margin-right: 10px;
     margin-bottom: 10px;
     margin-top: 10px;
 }
 
 .cta-button:hover {
     background-color: #7ca843;
-    transform: scale(1.1); /* Slightly enlarges the element */
+    transform: scale(1.1);
 }
 
 .notification {
     position: fixed;
     bottom: 20px;
     right: 20px;
-    background-color: #4CAF50; /* Green background */
+    background-color: #4CAF50;
     color: white;
     padding: 12px 20px;
     border-radius: 5px;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.3);
-    z-index: 1000; /* Make sure it's visible above other content */
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+    z-index: 1000;
     animation: slideIn 0.5s;
-  }
-  
-  @keyframes slideIn {
+}
+
+@keyframes slideIn {
     from {
-      transform: translateX(100%);
+        transform: translateX(100%);
     }
+
     to {
-      transform: translateX(0);
+        transform: translateX(0);
     }
-  }
-  
-  .social-icon {
-    color: white; /* Set the icon color to white */
-    font-size: 30px; /* Increase the size of the icons */
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6); /* Add a darker shadow for more depth */
-    margin-right: 8px; /* Space between the icon and the text */
-  }
-  
-  a {
-    color: white; /* Ensures the text is also white */
-    text-decoration: none; /* Removes underline from links */
-    display: flex; /* Aligns icons and text nicely */
-    align-items: center; /* Centers items vertically */
-    padding: 5px 10px; /* Padding around the link for better clickability */
-  }
-  
-  a:hover {
-    opacity: 0.8; /* Adds interaction effect on hover */
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6); /* Enhances shadow on hover for text */
-  }
+}
 
-  /* Base styles are defined above this point, as you provided. */
+.social-icon {
+    color: white;
+    font-size: 30px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
+    margin-right: 8px;
+}
 
-/* Media Queries for Responsiveness */
+a {
+    color: white;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    padding: 5px 10px;
+}
+
+a:hover {
+    opacity: 0.8;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
+}
+
 @media (max-width: 768px) {
     .homeContainer {
         flex-direction: column;
-        padding-bottom: 20px; /* Reduced padding for smaller screens */
-        width: 100%; /* Ensure the container does not exceed the viewport width */
-        overflow-x: hidden; /* Hide any horizontal overflow */
+        padding-bottom: 20px;
+        width: 100%;
+        overflow-x: hidden;
     }
 
     .border-left {
-        position: relative; /* Change from absolute to reduce layout shift */
+        position: relative;
         height: auto;
-        width: 100%; /* Take full width on smaller screens */
-        background-color: #ae6b01; /* Ensure background fills the element */
-        border-right: none; /* Remove right border on mobile */
+        width: 100%;
+        background-color: #ae6b01;
+        border-right: none;
     }
 
-    .banner, .logoCoin, .content {
-        left: 0; /* Align content to the left edge */
-        margin-left: 0; /* Remove margin-left */
-        width: 100%; /* Full width for smaller screens */
-        position: relative; /* Adjust positioning if needed */
+    .banner,
+    .logoCoin,
+    .content {
+        left: 0;
+        margin-left: 0;
+        width: 100%;
+        position: relative;
     }
 
-    .banner img, .logoCoin img {
-        width: 100%; /* Ensure images resize correctly */
-        max-width: 100%; /* Prevent images from exceeding their containers */
+    .banner img,
+    .logoCoin img {
+        width: 100%;
+        max-width: 100%;
     }
 
     .logoCoin {
-        width: 100px; /* Smaller logo on mobile */
-        height: 100px; /* Maintain aspect ratio */
-        left: 50%; /* Center horizontally */
-        transform: translateX(-50%); /* Correctly center the logo */
+        width: 100px;
+        height: 100px;
+        left: 50%;
+        transform: translateX(-50%);
     }
 
     .content {
-        flex-direction: column; /* Stack content vertically */
-        align-items: center; /* Center align content */
-        padding: 5px; /* Reduced padding */
+        flex-direction: column;
+        align-items: center;
+        padding: 5px;
     }
 
     .intro {
-        font-size: 14px; /* Slightly larger font size for better readability */
-        padding: 0 10px; /* Add horizontal padding */
-        width: calc(100% - 60px); /* Subtract any horizontal padding or margin */
+        font-size: 14px;
+        padding: 0 10px;
+        width: calc(100% - 60px);
     }
 
-    
+
     .contract-address {
-        display: block; /* Change from inline-block to block for full control over the width */
-        width: calc(100% - 60px); /* Subtract any horizontal padding or margin */
-        box-sizing: border-box; /* Padding and borders included in width calculation */
-        font-size: 14px; /* Appropriately sized font for mobile */
-        padding: 8px 16px; /* Adequate padding for touch interaction */
-        margin: 10px auto; /* Centering it horizontally with automatic margins */
-        text-align: center; /* Center the text if needed */
-        white-space: nowrap; /* Prevent text from wrapping to ensure it stays in a single line */
-        overflow: hidden; /* Hide any overflow */
-        text-overflow: ellipsis; /* Use ellipsis for text that overflows */
+        display: block;
+        width: calc(100% - 60px);
+        box-sizing: border-box;
+        font-size: 14px;
+        padding: 8px 16px;
+        margin: 10px auto;
+        text-align: center;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
     }
 
-    .contract-address, .cta-button {
-        font-size: 14px; /* Consistent font size for buttons and address */
-        padding: 8px 16px; /* Consistent padding */
+    .contract-address,
+    .cta-button {
+        font-size: 14px;
+        padding: 8px 16px;
     }
 
     .social-icon {
-        font-size: 24px; /* Maintain icon size for visibility */
+        font-size: 24px;
     }
 
     footer {
-        position: relative; /* Ensure footer is not positioned absolutely */
-        width: 100%; /* Full width to fit screen */
-        padding: 15px; /* Adjust padding to ensure it fits within the view */
-        text-align: center; /* Centered text */
-        box-sizing: border-box; /* Include padding in width calculations */
+        position: relative;
+        width: 100%;
+        padding: 15px;
+        text-align: center;
+        box-sizing: border-box;
     }
 
     footer p {
-        margin: 10px auto; /* Center and provide margin to prevent edge clipping */
-        padding: 0 5px; /* Add padding to ensure text does not touch the edges */
-        font-size: 12px; /* Adjust font size for better readability on small screens */
-        line-height: 1.5; /* Improve line spacing for readability */
-        word-wrap: break-word; /* Ensures that long words will wrap and not cause overflow */
-        max-width: 100%; /* Prevents the element from extending beyond its container */
+        margin: 10px auto;
+        padding: 0 5px;
+        font-size: 12px;
+        line-height: 1.5;
+        word-wrap: break-word;
+        max-width: 100%;
     }
 
     .notification {
         bottom: 10px;
         right: 10px;
-        padding: 8px 16px; /* Adjust padding for notifications */
+        padding: 8px 16px;
     }
 }
 
-/* Consider adding other breakpoints if needed for larger devices */
-@media (min-width: 769px) and (max-width: 1024px) {
-    /* Adjustments for tablets and smaller desktops can go here */
-}
-
+@media (min-width: 769px) and (max-width: 1024px) {}
