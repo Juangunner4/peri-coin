@@ -9,7 +9,7 @@
     padding-bottom: 50px; /* Retain padding for footer spacing */
     overflow-x: hidden; /* Prevent horizontal scrolling */
     background: url('../images/home.gif') no-repeat center center / cover; /* Adjust path as necessary */
-    z-index: 0;
+   
 }
 
 .intro {
@@ -19,6 +19,7 @@
     line-height: 1.6; /* Adequate line spacing for readability */
     margin: 20px 0; /* Vertical spacing for clarity */
     font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; /* Attractive and readable font */
+    z-index: 2;
 }
 
 .intro:hover {
@@ -65,7 +66,7 @@
 
 .logoCoin {
     position: absolute;
-    top: 20px;
+    top: 1px;
     left: 53%;
     transform: translateX(-50%);
     width: 250px;
@@ -75,7 +76,7 @@
     border: 8px solid black;
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5);
     background: radial-gradient(circle, #ffd700, #d4af37, #ffd700, #c5a253);
-    z-index: 5;
+    z-index: 1;
 }
 
 .logoCoin img {
@@ -174,3 +175,125 @@ footer {
     }
   }
   
+  .social-icon {
+    color: white; /* Set the icon color to white */
+    font-size: 30px; /* Increase the size of the icons */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6); /* Add a darker shadow for more depth */
+    margin-right: 8px; /* Space between the icon and the text */
+  }
+  
+  a {
+    color: white; /* Ensures the text is also white */
+    text-decoration: none; /* Removes underline from links */
+    display: flex; /* Aligns icons and text nicely */
+    align-items: center; /* Centers items vertically */
+    padding: 5px 10px; /* Padding around the link for better clickability */
+  }
+  
+  a:hover {
+    opacity: 0.8; /* Adds interaction effect on hover */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6); /* Enhances shadow on hover for text */
+  }
+
+  /* Base styles are defined above this point, as you provided. */
+
+/* Media Queries for Responsiveness */
+@media (max-width: 768px) {
+    .homeContainer {
+        flex-direction: column;
+        padding-bottom: 20px; /* Reduced padding for smaller screens */
+        width: 100%; /* Ensure the container does not exceed the viewport width */
+        overflow-x: hidden; /* Hide any horizontal overflow */
+    }
+
+    .border-left {
+        position: relative; /* Change from absolute to reduce layout shift */
+        height: auto;
+        width: 100%; /* Take full width on smaller screens */
+        background-color: #ae6b01; /* Ensure background fills the element */
+        border-right: none; /* Remove right border on mobile */
+    }
+
+    .banner, .logoCoin, .content {
+        left: 0; /* Align content to the left edge */
+        margin-left: 0; /* Remove margin-left */
+        width: 100%; /* Full width for smaller screens */
+        position: relative; /* Adjust positioning if needed */
+    }
+
+    .banner img, .logoCoin img {
+        width: 100%; /* Ensure images resize correctly */
+        max-width: 100%; /* Prevent images from exceeding their containers */
+    }
+
+    .logoCoin {
+        width: 100px; /* Smaller logo on mobile */
+        height: 100px; /* Maintain aspect ratio */
+        left: 50%; /* Center horizontally */
+        transform: translateX(-50%); /* Correctly center the logo */
+    }
+
+    .content {
+        flex-direction: column; /* Stack content vertically */
+        align-items: center; /* Center align content */
+        padding: 5px; /* Reduced padding */
+    }
+
+    .intro {
+        font-size: 14px; /* Slightly larger font size for better readability */
+        padding: 0 10px; /* Add horizontal padding */
+        width: calc(100% - 60px); /* Subtract any horizontal padding or margin */
+    }
+
+    
+    .contract-address {
+        display: block; /* Change from inline-block to block for full control over the width */
+        width: calc(100% - 60px); /* Subtract any horizontal padding or margin */
+        box-sizing: border-box; /* Padding and borders included in width calculation */
+        font-size: 14px; /* Appropriately sized font for mobile */
+        padding: 8px 16px; /* Adequate padding for touch interaction */
+        margin: 10px auto; /* Centering it horizontally with automatic margins */
+        text-align: center; /* Center the text if needed */
+        white-space: nowrap; /* Prevent text from wrapping to ensure it stays in a single line */
+        overflow: hidden; /* Hide any overflow */
+        text-overflow: ellipsis; /* Use ellipsis for text that overflows */
+    }
+
+    .contract-address, .cta-button {
+        font-size: 14px; /* Consistent font size for buttons and address */
+        padding: 8px 16px; /* Consistent padding */
+    }
+
+    .social-icon {
+        font-size: 24px; /* Maintain icon size for visibility */
+    }
+
+    footer {
+        position: relative; /* Ensure footer is not positioned absolutely */
+        width: 100%; /* Full width to fit screen */
+        padding: 15px; /* Adjust padding to ensure it fits within the view */
+        text-align: center; /* Centered text */
+        box-sizing: border-box; /* Include padding in width calculations */
+    }
+
+    footer p {
+        margin: 10px auto; /* Center and provide margin to prevent edge clipping */
+        padding: 0 5px; /* Add padding to ensure text does not touch the edges */
+        font-size: 12px; /* Adjust font size for better readability on small screens */
+        line-height: 1.5; /* Improve line spacing for readability */
+        word-wrap: break-word; /* Ensures that long words will wrap and not cause overflow */
+        max-width: 100%; /* Prevents the element from extending beyond its container */
+    }
+
+    .notification {
+        bottom: 10px;
+        right: 10px;
+        padding: 8px 16px; /* Adjust padding for notifications */
+    }
+}
+
+/* Consider adding other breakpoints if needed for larger devices */
+@media (min-width: 769px) and (max-width: 1024px) {
+    /* Adjustments for tablets and smaller desktops can go here */
+}
+

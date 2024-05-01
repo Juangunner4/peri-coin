@@ -2,8 +2,9 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import banner from '../images/homeBanner.svg'; // Ensure the path is correct
 import logoCoin from '../images/logo.svg'; // Import the new logo image
-import homeGif from '../images/home.gif'
 import '../styles/Home.css';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faXTwitter, faTelegramPlane } from '@fortawesome/free-brands-svg-icons';
 
 function Home() {
   const navigate = useNavigate();
@@ -47,8 +48,12 @@ function Home() {
           Buy Memecoin
         </button>        <div className="socials">
           {/* <a href="https://dexscreener.com" target="_blank" rel="noopener noreferrer">Dexscreener</a> */}
-          <a href="https://twitter.com/Perionsol" target="_blank" rel="noopener noreferrer">Twitter</a>
-          <a href="https://t.me/+xTHM3MA4MjpkODVh" target="_blank" rel="noopener noreferrer">Telegram</a>
+          <a href="https://twitter.com/Perionsol" target="_blank" rel="noopener noreferrer">
+            <FontAwesomeIcon icon={faXTwitter} className="social-icon" />
+          </a>
+          <a href="https://t.me/+xTHM3MA4MjpkODVh" target="_blank" rel="noopener noreferrer">
+            <FontAwesomeIcon icon={faTelegramPlane} className="social-icon" />
+          </a>
         </div>
       </div>
       <footer>
