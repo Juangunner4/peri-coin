@@ -31,8 +31,8 @@ nav {
   align-items: center;
   justify-content: space-between; /* Changed from 'start' to 'space-between' */
   padding: 10px 20px;
-  background-color: #f4f4f4;
-  border-bottom: 1px solid #ccc; /* Optional, adds a subtle border for visual separation */
+  background-color: #e60000;
+  border-bottom: 1px solid black; /* Optional, adds a subtle border for visual separation */
 }
 
 nav ul {
@@ -50,7 +50,7 @@ nav ul li {
 
 nav a {
   text-decoration: none;
-  color: #333;
+  color: black;
   font-weight: bold;
 }
 

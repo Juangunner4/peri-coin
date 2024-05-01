@@ -68,11 +68,11 @@
 
 footer {
     width: 100%;
-    background-color: #f4f4f4;
+    background-color: #e60000;
     color: black;
     text-align: center;
     padding: 20px;
-    border-top: 1px solid #ccc;
+    border-top: 1px solid black;
     position: absolute;
     bottom: 0;
     z-index: 1;
