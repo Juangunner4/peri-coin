@@ -44,10 +44,10 @@ function Home() {
           <div className="notification">Contract Copied</div>
         )}
         <button onClick={() => window.location.href = 'https://www.pump.fun/EdopmgERFJbgJLVTwm9fuvt2Y5DmwjbjdZhVRrM3dpFd'} className="cta-button">
-          Buy Memecoin
+          Buy on Pump.fun
         </button>
         <div className="socials">
-          <a href="https://dexscreener.com" target="_blank" rel="noopener noreferrer">
+          <a href="https://dexscreener.com/solana/EdopmgERFJbgJLVTwm9fuvt2Y5DmwjbjdZhVRrM3dpFd" target="_blank" rel="noopener noreferrer">
             <img src={dexLogo} alt="Dexscreener Logo" className="dexlogo" />
           </a>
           <a href="https://twitter.com/Perionsol" target="_blank" rel="noopener noreferrer">
