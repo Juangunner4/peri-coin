@@ -2,15 +2,14 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import banner from '../images/homeBanner.svg';
 import logoCoin from '../images/logo.svg';
+import dexLogo from '../images/dexlogo.png';
 import '../styles/Home.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faXTwitter, faTelegramPlane } from '@fortawesome/free-brands-svg-icons';
 
 function Home() {
   const navigate = useNavigate();
-
   const [showCopied, setShowCopied] = useState(false);
-
   const contractAddress = "EdopmgERFJbgJLVTwm9fuvt2Y5DmwjbjdZhVRrM3dpFd";
 
   const handleCopyAddress = async () => {
@@ -46,13 +45,13 @@ function Home() {
         )}
         <button onClick={() => window.location.href = 'https://www.pump.fun/EdopmgERFJbgJLVTwm9fuvt2Y5DmwjbjdZhVRrM3dpFd'} className="cta-button">
           Buy Memecoin
-        </button>        <div className="socials">
-          {/* <a href="https://dexscreener.com" target="_blank" rel="noopener noreferrer">Dexscreener</a> */}
+        </button>
+        <div className="socials">
+          <a href="https://dexscreener.com" target="_blank" rel="noopener noreferrer">
+            <img src={dexLogo} alt="Dexscreener Logo" className="dexlogo" />
+          </a>
           <a href="https://twitter.com/Perionsol" target="_blank" rel="noopener noreferrer">
             <FontAwesomeIcon icon={faXTwitter} className="social-icon" />
-          </a>
-          <a href="https://t.me/PeriOnSol" target="_blank" rel="noopener noreferrer">
-            <FontAwesomeIcon icon={faTelegramPlane} className="social-icon" />
           </a>
         </div>
       </div>

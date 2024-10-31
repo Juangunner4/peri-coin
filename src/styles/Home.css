@@ -97,12 +97,12 @@
 .contract-address {
     margin-left: 10px;
     cursor: pointer;
-    color: black;
+    color: #d76200;
     text-decoration: none;
     box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
     padding: 3px;
     border-radius: 8px;
-    border: 2px solid darkgreen;
+    border: 2px solid #d76200;
     background: rgba(255, 255, 255, 0.5);
     transition: background-color 0.3s ease;
     transition: background-color 0.3s ease, transform 0.3s ease, font-size 0.3s ease;
@@ -117,7 +117,7 @@
 
 footer {
     width: 100%;
-    background-color: #dcdcdc;
+    background-color: #d76200;
     color: black;
     text-align: center;
     padding: 20px;
@@ -128,14 +128,14 @@ footer {
 }
 
 .cta-button {
-    background-color: #92c957;
+    background-color: #d76200;
     color: white;
     border: none;
     padding: 10px 20px;
     font-size: 1.5em;
     cursor: pointer;
     border-radius: 5px;
-    border: 2px solid darkgreen;
+    border: 2px solid #3a1a00;
     box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
     transition: background-color 0.3s ease;
     transition: background-color 0.3s ease, transform 0.3s ease, font-size 0.3s ease;
@@ -145,8 +145,15 @@ footer {
 }
 
 .cta-button:hover {
-    background-color: #7ca843;
+    background-color: #7dfceb;
     transform: scale(1.1);
+}
+
+.dexlogo {
+    width: 30px;
+    /* Set width for Dexscreener logo */
+    height: auto;
+    margin-right: 8px;
 }
 
 .notification {
@@ -173,7 +180,7 @@ footer {
 }
 
 .social-icon {
-    color: white;
+    color: #d76200;
     font-size: 30px;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
     margin-right: 8px;
