@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
 import logoCoin from '../images/logo.svg';
 import dexLogo from '../images/dexlogo.png';
 import '../styles/Home.css';
