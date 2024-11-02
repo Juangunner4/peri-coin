@@ -1,0 +1,30 @@
+name: Deploy to HostGator
+
+on:
+  push:
+    branches:
+      - main  # Trigger on push to the main branch
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Install dependencies and build project
+        run: |
+          npm install
+          npm run build
+
+      - name: Deploy via FTP
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.0
+        with:
+          server: ${{ secrets.FTP_HOST }}
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          local-dir: ./build/  # Ensure the path ends with a slash
+          server-dir: /public_html/  # Ensure the remote directory path ends with a slash
+          protocol: ftps  # Use 'ftp' as protocol (no 'method' input)
+          port: 21

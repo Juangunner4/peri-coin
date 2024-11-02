@@ -1,0 +1,91 @@
+/* NavBar.css */
+.navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 20px;
+    border-bottom: 1px solid #ccc;
+    background-color: #ae6d06;
+    position: relative;
+}
+
+.navbar-logo img {
+    width: 50px;
+    height: 50px;
+}
+
+.navbar-links {
+    display: flex;
+    gap: 20px;
+}
+
+.navbar-links ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    gap: 20px;
+}
+
+.navbar-links ul li a {
+    text-decoration: none;
+    color: black;
+}
+
+.burger-button {
+    display: none;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 30px;
+    height: 20px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    z-index: 10;
+}
+
+.burger-button .burger-bar {
+    width: 100%;
+    height: 3px;
+    background-color: black;
+    border-radius: 5px;
+}
+
+@media (max-width: 768px) {
+    .navbar {
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    .burger-button {
+        display: flex;
+    }
+
+    .navbar-links {
+        position: absolute;
+        top: 60px;
+        right: 0px;
+        background-color: #ae6d06;
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+        padding: 10px 0;
+        display: none;
+        z-index: 9;
+    }
+
+    .navbar-links.open {
+        display: flex;
+    }
+
+    .navbar-links ul {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .navbar-links ul li {
+        width: 100%;
+        text-align: center;
+    }
+}

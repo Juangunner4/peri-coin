@@ -1,0 +1,41 @@
+.meme-gallery {
+    background-color: #ADD8E6;
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  }
+  
+  .meme-gallery h2 {
+    color: #d76200;
+    text-align: center;
+    font-family: 'Comic Sans MS', cursive, sans-serif; /* Adds a playful font */
+    margin-bottom: 15px;
+  }
+  
+  .meme-images {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+  }
+  
+  .meme-images img {
+    width: 100%;
+    max-width: 200px;
+    border-radius: 8px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  .meme-images img:hover {
+    transform: scale(1.05) rotate(3deg);
+    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
+  }
+  
+  .meme-images img:active {
+    transform: scale(1) rotate(0);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
