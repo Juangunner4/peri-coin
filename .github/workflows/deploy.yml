@@ -25,6 +25,6 @@ jobs:
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
           local-dir: ./build/  # Ensure the path ends with a slash
-          server-dir: /public_hmtl/  
+          server-dir: /public_html/  
           protocol: ftps  # Use 'ftp' as protocol (no 'method' input)
           port: 21
