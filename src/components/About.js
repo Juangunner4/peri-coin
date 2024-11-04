@@ -2,6 +2,7 @@ import React from 'react';
 import teamMember from '../images/6342.png';
 import meme1 from '../images/meme1.jpg';
 import meme2 from '../images/meme2.png';
+import meme3 from '../images/meme3.png';
 import '../styles/Team.css';
 import '../styles/CEXListings.css';
 import '../styles/MemeGallery.css';
@@ -44,6 +45,7 @@ function About() {
                 <div className="meme-images">
                     <img src={meme1} alt="Meme 1" />
                     <img src={meme2} alt="Meme 2" />
+                    <img src={meme3} alt="Meme 2" />
                     {/* Add more meme images as needed */}
                 </div>
             </section>
