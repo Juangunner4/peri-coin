@@ -1,63 +1,67 @@
-.flappy-bird-container {
-  position: relative;
-  height: 80vh;
-  width: 60vw;
+/* Parent container for centering the game */
+.game-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* Full height of the viewport */
+    width: 100vw; /* Full width of the viewport */
+    position: relative;
 }
 
-.background {
-  height: 100%;
-  width: 100%;
-  background-color: skyblue;
-  background-size: cover;
-  position: relative;
+/* Modify .game-over-message to work within the container */
+.game-over-message {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 24px;
+    font-weight: bold;
+    color: white;
+    z-index: 10; /* Ensure game-over message is above other elements */
+    text-align: center;
+    background-color: #ff6347; /* Tomato */
+    padding: 20px;
+    border-radius: 8px;
 }
 
 .bird {
-  height: 100px;
-  width: 160px;
-  position: absolute;
-  top: 40vh;
-  left: 30vw;
-  z-index: 100;
-  background-size: cover;
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    z-index: 5;
+    user-select: none;
 }
 
-.pipe_sprite {
-  position: absolute;
-  top: 40vh;
-  left: 100vw;
-  height: 70vh;
-  width: 6vw;
-  background-color: green;
-  background-size: cover;
-  z-index: 90;
+.pipe {
+    position: absolute;
+    z-index: 5;
+    width: 100px;
+    height: 600px;
 }
 
-.message {
-  position: absolute;
-  z-index: 10;
-  height: 10vh;
-  font-size: 10vh;
-  font-weight: 100;
-  color: black;
-  top: 12vh;
-  left: 20vw;
-  text-align: center;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+.App {
+    position: relative;
+    width: 100%;
+    max-width: 375px; /* Maximum width for mobile responsiveness */
+    height: 667px; /* Standard mobile height (adjust as needed) */
+    overflow: hidden;
+    background-color: #ADD8E6; /* Change to your desired game background */
+    margin: 0 auto; /* Center the App within the container */
+    border: 2px solid #ccc; /* Optional border for visual distinction */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Optional shadow for a more distinct game frame */
 }
 
-.score {
-  position: absolute;
-  z-index: 10;
-  height: 10vh;
-  font-size: 10vh;
-  font-weight: 100;
-  color: goldenrod;
-  top: 0;
-  left: 0;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+.ground {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 50px; /* Adjust this value if you change the image height */
+    z-index: 1; /* Ground is behind pipes and game-over message */
+    overflow: hidden; /* Ensures no content goes outside of this box */
 }
 
-.score_val {
-  color: gold;
+.ground-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Ensures the image covers the entire ground area */
 }
