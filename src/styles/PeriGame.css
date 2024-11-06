@@ -1,115 +1,63 @@
-body {
-  display: flex;
+.flappy-bird-container {
+  position: relative;
+  height: 80vh;
+  width: 60vw;
 }
 
-.game-container {
-  width: 500px;
-  height: 730px;
-  position: absolute;
-  left: 80px;
-}
-
-.border-left {
-  width: 80px;
-  height: 790px;
-  position: absolute;
-  background-color: white;
-  z-index: +2;
-}
-
-.border-right {
-  width: 80px;
-  height: 790px;
-  position: absolute;
-  background-color: white;
-  z-index: +2;
-  left: 580px;
-}
-
-.border-top {
-  width: 660px;
-  height: 50px;
-  position: absolute;
-  background-color: white;
-  z-index: +2;
-  top: -50px;
-}
-
-.sky {
-  background-image: url('../resource/fb-game-background.png');
-  width: 500px;
-  height: 580px;
-  position: absolute;
-}
-
-.ground {
-  background-image: url('../resource/bottom-background.png');
-  width: 500px;
-  height: 150px;
-  position: absolute;
-  top: 580px;
-  z-index: +1;
+.background {
+  height: 100%;
+  width: 100%;
+  background-color: skyblue;
+  background-size: cover;
+  position: relative;
 }
 
 .bird {
-  background-image: url('../resource/flappy-bird.png');
+  height: 100px;
+  width: 160px;
   position: absolute;
-  width: 60px;
-  height: 45px;
-  left: 220px;
-  bottom: 10px;
+  top: 40vh;
+  left: 30vw;
+  z-index: 100;
+  background-size: cover;
 }
 
-.obstacle {
-  background-image: url('../resource/flappybird-pipe.png');
-  width: 60px;
-  height: 300px;
+.pipe_sprite {
   position: absolute;
+  top: 40vh;
+  left: 100vw;
+  height: 70vh;
+  width: 6vw;
+  background-color: green;
+  background-size: cover;
+  z-index: 90;
 }
 
-.topObstacle {
-  background-image: url('../resource/flappybird-pipe.png');
-  transform: rotate(180deg);
-  width: 60px;
-  height: 300px;
+.message {
   position: absolute;
+  z-index: 10;
+  height: 10vh;
+  font-size: 10vh;
+  font-weight: 100;
+  color: black;
+  top: 12vh;
+  left: 20vw;
+  text-align: center;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
 
-@keyframes slideright {
-  from {
-      background-position: 10000%;
-  }
-
-  to {
-      background-position: 0%;
-  }
-}
-
-@-webkit-keyframes slideright {
-  from {
-      background-position: 10000%;
-  }
-
-  to {
-      background-position: 0%;
-  }
-}
-
-.ground-container {
-  height: 150px;
-  width: 580px;
-  left: 80px;
+.score {
   position: absolute;
+  z-index: 10;
+  height: 10vh;
+  font-size: 10vh;
+  font-weight: 100;
+  color: goldenrod;
+  top: 0;
+  left: 0;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
 
-.ground-moving {
-  position: absolute;
-  top: 580px;
-  height: 150px;
-  background-image: url('../resource/bottom-background.png');
-  background-repeat: repeat-x;
-  animation: slideright 100s infinite linear;
-  -webkit-animation: slideright 100s infinite linear;
-  width: 100%;
-  z-index: +1;
+.score_val {
+  color: gold;
 }
