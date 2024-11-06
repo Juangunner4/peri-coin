@@ -3,8 +3,10 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh; /* Full height of the viewport */
-    width: 100vw; /* Full width of the viewport */
+    height: 100vh;
+    /* Full height of the viewport */
+    width: 100vw;
+    /* Full width of the viewport */
     position: relative;
 }
 
@@ -17,9 +19,11 @@
     font-size: 24px;
     font-weight: bold;
     color: white;
-    z-index: 10; /* Ensure game-over message is above other elements */
+    z-index: 10;
+    /* Ensure game-over message is above other elements */
     text-align: center;
-    background-color: #ff6347; /* Tomato */
+    background-color: #ff6347;
+    /* Tomato */
     padding: 20px;
     border-radius: 8px;
 }
@@ -32,36 +36,49 @@
     user-select: none;
 }
 
-.pipe {
+.pipe,
+.pipesv2,
+.pipesv3 {
     position: absolute;
     z-index: 5;
-    width: 100px;
+    width: 150px;
     height: 600px;
 }
 
 .App {
     position: relative;
     width: 100%;
-    max-width: 375px; /* Maximum width for mobile responsiveness */
-    height: 667px; /* Standard mobile height (adjust as needed) */
+    max-width: 375px;
+    /* Maximum width for mobile responsiveness */
+    height: 667px;
+    /* Standard mobile height (adjust as needed) */
     overflow: hidden;
-    background-color: #ADD8E6; /* Change to your desired game background */
-    margin: 0 auto; /* Center the App within the container */
-    border: 2px solid #ccc; /* Optional border for visual distinction */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Optional shadow for a more distinct game frame */
+    background: url('../resource/background.gif');
+    background-color: #ADD8E6;
+    /* Change to your desired game background */
+    margin: 0 auto;
+    /* Center the App within the container */
+    border: 2px solid #ccc;
+    /* Optional border for visual distinction */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    /* Optional shadow for a more distinct game frame */
 }
 
 .ground {
     position: absolute;
     bottom: 0;
     width: 100%;
-    height: 50px; /* Adjust this value if you change the image height */
-    z-index: 1; /* Ground is behind pipes and game-over message */
-    overflow: hidden; /* Ensures no content goes outside of this box */
+    height: 50px;
+    /* Adjust this value if you change the image height */
+    z-index: 1;
+    /* Ground is behind pipes and game-over message */
+    overflow: hidden;
+    /* Ensures no content goes outside of this box */
 }
 
 .ground-image {
     width: 100%;
     height: 100%;
-    object-fit: cover; /* Ensures the image covers the entire ground area */
+    object-fit: cover;
+    /* Ensures the image covers the entire ground area */
 }
