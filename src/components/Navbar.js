@@ -37,17 +37,10 @@ const Navbar = () => {
       
       <div className={`navbar-links ${isOpen ? 'open' : ''}`}>
         <ul>
-<<<<<<< HEAD
-          <li><Link to="/" onClick={() => setIsOpen(false)}>Home</Link></li>
-          <li><Link to="/about" onClick={() => setIsOpen(false)}>About</Link></li>
-          <li><Link to="/" onClick={() => setIsOpen(false)}>Merch</Link></li>
-          <li><Link to="/game" onClick={() => setIsOpen(false)}>Game</Link></li>
-=======
           <li><Link to="/" onClick={() => setIsOpen(false)}>{t('home')}</Link></li>
           <li><Link to="/about" onClick={() => setIsOpen(false)}>{t('about')}</Link></li>
           <li><Link to="/" onClick={() => setIsOpen(false)}>{t('merch')}</Link></li>
           <li><Link to="/" onClick={() => setIsOpen(false)}>{t('game')}</Link></li>
->>>>>>> main
         </ul>
       </div>
     </nav>
