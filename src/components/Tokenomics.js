@@ -2,12 +2,15 @@ import React from 'react';
 import { Pie } from 'react-chartjs-2';
 import '../styles/Tokenomics.css';
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
+import { useTranslation } from 'react-i18next';
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
 function Tokenomics() {
+  const { t } = useTranslation();
+
   const data = {
-    labels: ['Liquidity Pool (LP)', 'Treasury', 'Centralized Exchange (CEX) Wallet'],
+    labels: ['Liquidity Pool (LP)', 'Treasury', 'CEX'],
     datasets: [
       {
         label: 'Tokenomics Distribution',
@@ -45,7 +48,8 @@ function Tokenomics() {
 
   return (
     <section className="tokenomics">
-      <h2>Tokenomics</h2>
+      <h2>{t("tokenomics")}
+      </h2>
       <div className="chart-container">
         <Pie data={data} options={options} width={250} height={250} />
       </div>
