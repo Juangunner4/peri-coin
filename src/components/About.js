@@ -10,8 +10,12 @@ import '../styles/MemeGallery.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faXTwitter } from '@fortawesome/free-brands-svg-icons';
 import Tokenomics from './Tokenomics';
+import { useTranslation } from 'react-i18next';
+
 
 function About() {
+    const { t } = useTranslation();
+
     return (
         <div className="about-container">
             {/* Tokenomics Section */}
@@ -20,11 +24,11 @@ function About() {
 
             {/* Team Section */}
             <section className="team">
-                <h2>Our Team</h2>
+                <h2>{t("team")}</h2>
                 <div className="team-member">
                     <img src={teamMember} alt="Team Member" />
                     <div className="team-info">
-                        <p>0x1JuanGunner4 - Founder & CEO</p>
+                        <p>{t("member1")}</p>
                         <div className="social-icons">
                             <a href="https://https://x.com/0x1JuanGunner4" target="_blank" rel="noopener noreferrer">
                                 <FontAwesomeIcon icon={faXTwitter} className="social-icon" />
@@ -36,13 +40,13 @@ function About() {
 
             {/* CEX Listings Section */}
             <section className="cex-listings">
-                <h2>CEX Listings</h2>
-                <p>Coming Soon...</p>
+                <h2>{t("cex")}</h2>
+                <p>{t("upcoming")}</p>
             </section>
 
             {/* Meme Gallery Section */}
             <section className="meme-gallery">
-                <h2>Meme Gallery</h2>
+                <h2>{t("memes")}</h2>
                 <div className="meme-images">
                     <img src={meme1} alt="Meme 1" />
                     <img src={meme2} alt="Meme 2" />
