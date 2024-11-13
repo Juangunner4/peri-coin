@@ -16,5 +16,10 @@
     "memes": "Galería de Memes",
     "lp": "Fondo de Liquidez (LP)",
     "treasury": "Tesorería",
-    "bex": "Billetera de Exchange Centralizado (CEX)"
+    "bex": "Billetera de Exchange Centralizado (CEX)",
+    "howtobuy":"Como comprar",
+    "guide_step1": "Crea una nueva billetera con la aplicación Phantom, guarda tu frase semilla de manera segura, escríbela y mantenla a salvo.",
+    "guide_step2": "Convierte algo de dinero a Solana ($SOL) a través de la billetera Phantom.",
+    "guide_step3": "Ahora visita pump.fun y conecta tu billetera.",
+    "guide_step4": "Cambia el Solana en tu billetera por Peri; puedes encontrar Peri como una opción pegando la dirección de contrato."
 }
