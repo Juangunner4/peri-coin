@@ -1,4 +1,4 @@
-import React, { useState, useEffect} from 'react';
+import React, { useState, useEffect } from 'react';
 // import logoCoin from '../images/logo.svg';
 import dexLogo from '../images/dexlogo.png';
 import '../styles/Home.css';
@@ -50,9 +50,12 @@ function Home() {
         <p className="intro">
           <span className="highlight">$Peri</span> {t("intro")} <span className="phrase">“Saquen el perico”</span>.
         </p>
-        <span onClick={handleCopyAddress} className="contract-address">
-        {contractAddress}
-        </span>
+        <div className="contract-container">
+          <h2 className="contract-label">Contract</h2>
+          <span onClick={handleCopyAddress} className="contract-address">
+            {contractAddress}
+          </span>
+        </div>
         {showCopied && (
           <div className="notification">Contract Copied</div>
         )}
