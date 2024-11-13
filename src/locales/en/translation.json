@@ -16,5 +16,10 @@
     "memes": "Meme Gallery",
     "lp": "Liquidity Pool(LP)",
     "treasury": "Treasury",
-    "bex": "Centralized Exchanges"
+    "bex": "Centralized Exchanges",
+    "howtobuy": "How to buy",
+    "guide_step1": "Create a brand new wallet with Phantom App, keep your seed phrase safe, write it down and keep it safe!",
+    "guide_step2": "Convert some money into Solana ($SOL) through phantom wallet.", 
+    "guide_step3":"Now visit pump.fun and connect your wallet.",
+    "guide_step4": "Swap the Solana in your wallet for Peri, you can find Peri as an option by pasting in the contract address."
 }
