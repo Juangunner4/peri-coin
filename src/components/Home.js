@@ -1,5 +1,5 @@
 import React, { useState, useEffect} from 'react';
-import logoCoin from '../images/logo.svg';
+// import logoCoin from '../images/logo.svg';
 import dexLogo from '../images/dexlogo.png';
 import '../styles/Home.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
