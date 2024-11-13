@@ -40,7 +40,7 @@ const Navbar = () => {
           <li><Link to="/" onClick={() => setIsOpen(false)}>{t('home')}</Link></li>
           <li><Link to="/about" onClick={() => setIsOpen(false)}>{t('about')}</Link></li>
           <li><Link to="/" onClick={() => setIsOpen(false)}>{t('merch')}</Link></li>
-          <li><Link to="/" onClick={() => setIsOpen(false)}>{t('game')}</Link></li>
+          <li><Link to="/game" onClick={() => setIsOpen(false)}>{t('game')}</Link></li>
         </ul>
       </div>
     </nav>

@@ -19,18 +19,19 @@ const PeriGame = () => {
     const pipeMaxHeight = containerHeight * 0.7;
     const pipeMinHeight = containerHeight * 0.5;
     const birdWidth = 50; // Bird width
-    const birdHeight = 50; // Bird height
-    const gapHeight = 300; // Increased gap between top and bottom pipes
+    const birdHeight = 62.5; // Bird height
     const pipeSpacing = 600; // Increased spacing between consecutive pipes to prevent overlap
 
     const jump = () => {
         if (!gameOver && gameStarted) {
-            setBirdPosition((prev) => ({ ...prev, y: prev.y - 60 }));
+            setBirdPosition((prev) => ({
+                ...prev,
+                y: Math.max(prev.y - 60, 0)
+            }));
         } else if (!gameOver && !gameStarted) {
-            // Start the game on the first jump
+
             setGameStarted(true);
         } else {
-            // Restart the game
             setBirdPosition({ x: 50, y: 200 });
             setPipes([]);
             setPipesv2([]);
@@ -39,6 +40,7 @@ const PeriGame = () => {
             setGameStarted(true);
         }
     };
+
 
     const handleKeyPress = (event) => {
         if (event.code === 'Space') {
@@ -61,18 +63,29 @@ const PeriGame = () => {
         const birdRight = birdPosition.x + birdWidth;
         const groundHeight = 50; // Height of the ground element
 
-        // Check for collisions with pipes
-        [...pipes, ...pipesv2, ...pipesv3].forEach((pipe) => {
-            const pipeTop = pipe.y;
-            const pipeBottom = pipe.y + pipe.height;
-            const pipeLeft = pipe.x;
-            const pipeRight = pipe.x + 100;
 
-            const isColliding =
-                birdRight > pipeLeft &&
-                birdLeft < pipeRight &&
-                birdBottom > pipeTop &&
-                birdTop < pipeBottom;
+        pipes.forEach((pipe) => {
+            const pipeTop = pipe.y; // y value for pipe (0 for top pipe, > 0 for bottom pipe)
+            const pipeBottom = pipeTop + pipe.height; // Bottom edge of the pipe
+            const pipeLeft = pipe.x; // Left edge of the pipe
+            const pipeRight = pipe.x + 100; // Right edge of the pipe
+            const isTopPipe = 0; // Determine if this is a top pipe
+
+            // Check for horizontal overlap
+            const isHorizontalOverlap = birdRight > pipeLeft && birdLeft < pipeRight;
+
+            // Check for vertical overlap
+            let isVerticalOverlap = false;
+
+            if (isTopPipe) {
+                // Check if the bird is colliding with the top pipe
+                isVerticalOverlap = birdTop < pipeBottom;
+            } else {
+                // Check if the bird is colliding with the bottom pipe
+                isVerticalOverlap = birdBottom > pipeTop;
+            }
+
+            const isColliding = isHorizontalOverlap && isVerticalOverlap;
 
             if (isColliding) {
                 // Bird has hit a pipe, end the game
@@ -83,11 +96,14 @@ const PeriGame = () => {
 
         // Check if bird touches the ground
         if (birdBottom >= containerHeight - groundHeight) {
-            // Bird touches the ground, end the game
             setGameOver(true);
             setGameStarted(false);
         }
     };
+
+
+
+
 
     useEffect(() => {
         checkCollision();
@@ -95,30 +111,50 @@ const PeriGame = () => {
 
     useEffect(() => {
         const gravity = setInterval(() => {
-            setBirdPosition((prev) => ({ ...prev, y: prev.y + 5 }));
+            setBirdPosition((prev) => {
+                const newY = prev.y + 5;
+                return {
+                    ...prev,
+                    y: Math.min(newY, containerHeight - birdHeight - 50)
+                };
+            });
             checkCollision();
         }, 30);
 
         const pipeGenerator = setInterval(() => {
             if (!gameOver && gameStarted) {
-                const height = Math.random() * (pipeMaxHeight - pipeMinHeight) + pipeMinHeight; // Random height between min and max
-                const bottomPipeHeight = height;
-                const topPipeHeight = containerHeight - bottomPipeHeight - gapHeight;
-                setPipes((prev) => [
-                    ...prev,
-                    {
-                        x: prev.length > 0 ? prev[prev.length - 1].x + pipeSpacing : 600, // Ensure spacing between pipes
-                        y: containerHeight - bottomPipeHeight, // Position at the bottom
-                        height: bottomPipeHeight
-                    },
-                    {
-                        x: prev.length > 0 ? prev[prev.length - 1].x + pipeSpacing : 600, // Ensure spacing between pipes
-                        y: 0, // Position at the top
-                        height: topPipeHeight
-                    },
-                ]);
+                // Random height for the bottom pipe, ensuring it leaves enough space for the gap
+                const bottomPipeHeight = Math.random() * (pipeMaxHeight - pipeMinHeight) + pipeMinHeight;
+
+                // Fixed gap between pipes (considering the bird's height)
+                const gapBetweenPipes = 55 + birdHeight;
+
+                // Calculate the height of the top pipe
+                const topPipeHeight = containerHeight - bottomPipeHeight - gapBetweenPipes;
+
+                // Ensure the calculated heights make sense and the gap is always available
+                if (topPipeHeight > 0) {
+                    setPipes((prev) => [
+                        ...prev,
+                        {
+                            // Bottom pipe
+                            x: prev.length > 0 ? prev[prev.length - 1].x + pipeSpacing : 600, // Ensure spacing between pipes
+                            y: containerHeight - bottomPipeHeight, // Bottom pipe's position from the bottom of the container
+                            height: bottomPipeHeight
+                        }
+                    ]);
+                    console.log('Generated Pipes:', {
+                        bottomPipeHeight,
+                        topPipeHeight,
+                        gapBetweenPipes,
+                        yTopPipe: 0,
+                        yBottomPipe: containerHeight - bottomPipeHeight
+                    });
+
+                }
             }
-        }, 4000);
+        }, 2000);
+
 
         // const pipesv2Generator = setInterval(() => {
         //     if (!gameOver && gameStarted) {
