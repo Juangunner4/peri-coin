@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Connection, PublicKey, clusterApiUrl } from '@solana/web3.js';
 import Bird from './Bird';
 import Pipes from './Pipes';
 import Pipesv2 from './Pipesv2'; // Import Pipesv2 component
@@ -7,6 +8,43 @@ import Ground from './Ground';
 import '../styles/PeriGame.css';
 
 const PeriGame = () => {
+
+    // State for the wallet connection
+    const [walletAddress, setWalletAddress] = useState(null);
+
+    // Function to connect to the Phantom wallet
+    const connectWallet = async () => {
+        if ('solana' in window) {
+            const provider = window.solana;
+            if (provider.isPhantom) {
+                try {
+                    const response = await provider.connect();
+                    setWalletAddress(response.publicKey.toString());
+                } catch (err) {
+                    console.error('Failed to connect wallet:', err);
+                }
+            } else {
+                alert('Solana object not found! Get a Phantom Wallet 👻');
+            }
+        } else {
+            alert('Solana object not found! Install Phantom Wallet 👻');
+        }
+    };
+
+    // Check if the wallet is already connected on component mount
+    useEffect(() => {
+        if ('solana' in window) {
+            const provider = window.solana;
+            if (provider.isPhantom) {
+                provider.connect({ onlyIfTrusted: true })
+                    .then((response) => {
+                        setWalletAddress(response.publicKey.toString());
+                    })
+                    .catch((err) => console.error('Failed to auto-connect wallet:', err));
+            }
+        }
+    }, []);
+
     const [birdPosition, setBirdPosition] = useState({ x: 50, y: 200 });
     const [pipes, setPipes] = useState([]);
     const [pipesv2, setPipesv2] = useState([]);
@@ -216,28 +254,44 @@ const PeriGame = () => {
     }, [gameOver, gameStarted]);
 
     return (
-        <div className="game-container">
-            <div className={`App ${gameOver ? 'game-over' : ''}`} onClick={jump}>
-                <Bird birdPosition={birdPosition} />
-                {pipes.map((pipe, index) => (
-                    <Pipes key={index} pipePosition={pipe} />
-                ))}
-                {pipesv2.map((pipe, index) => (
-                    <Pipesv2 key={index} pipePosition={pipe} />
-                ))}
-                {pipesv3.map((pipe, index) => (
-                    <Pipesv3 key={index} pipePosition={pipe} />
-                ))}
-                {gameOver && (
-                    <div className="game-over-message">
-                        <center>
-                            Game Over!
-                            <br />
-                            <p style={{ backgroundColor: 'blue', padding: "2px 6px", borderRadius: '5px' }}>Click anywhere or press Space to Restart</p>
-                        </center>
+        <div>
+            {/* Wallet connection UI */}
+            <div className="wallet-connect-container">
+                {walletAddress ? (
+                    <div className="wallet-info">
+                        Connected: {walletAddress}
                     </div>
+                ) : (
+                    <button onClick={connectWallet} className="connect-wallet-button">
+                        Connect Wallet
+                    </button>
                 )}
-                <Ground />
+            </div>
+
+            {/* Game container */}
+            <div className="game-container">
+                <div className={`App ${gameOver ? 'game-over' : ''}`} onClick={jump}>
+                    <Bird birdPosition={birdPosition} />
+                    {pipes.map((pipe, index) => (
+                        <Pipes key={index} pipePosition={pipe} />
+                    ))}
+                    {pipesv2.map((pipe, index) => (
+                        <Pipesv2 key={index} pipePosition={pipe} />
+                    ))}
+                    {pipesv3.map((pipe, index) => (
+                        <Pipesv3 key={index} pipePosition={pipe} />
+                    ))}
+                    {gameOver && (
+                        <div className="game-over-message">
+                            <center>
+                                Game Over!
+                                <br />
+                                <p style={{ backgroundColor: 'blue', padding: "2px 6px", borderRadius: '5px' }}>Click anywhere or press Space to Restart</p>
+                            </center>
+                        </div>
+                    )}
+                    <Ground />
+                </div>
             </div>
         </div>
     );
