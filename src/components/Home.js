@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 // import logoCoin from '../images/logo.svg';
 import dexLogo from '../images/dexlogo.png';
+import howTo from '../images/howto.png'
 import '../styles/Home.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faXTwitter, faTelegramPlane } from '@fortawesome/free-brands-svg-icons';
@@ -27,7 +28,7 @@ function Home() {
   useEffect(() => {
     const handleScroll = () => {
       const scrollPosition = window.scrollY;
-      if (scrollPosition > 80) {
+      if (scrollPosition > 100) {
         setIsScrolled(true);
       } else {
         setIsScrolled(false);
@@ -84,9 +85,7 @@ function Home() {
             </ol>
           </div>
           <div className="guide-images">
-            {/* <img src={step1Img} alt="Step 1" />
-            <img src={step2Img} alt="Step 2" />
-            <img src={step3Img} alt="Step 3" /> */}
+            <img src={howTo} alt="Step 1" />
           </div>
         </div>
       </div>
