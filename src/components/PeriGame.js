@@ -6,8 +6,12 @@ import Pipesv2 from './Pipesv2'; // Import Pipesv2 component
 import Pipesv3 from './Pipesv3'; // Import Pipesv3 component
 import Ground from './Ground';
 import '../styles/PeriGame.css';
+import { useTranslation } from 'react-i18next';
+
 
 const PeriGame = () => {
+    const { t } = useTranslation();
+
     const [walletAddress, setWalletAddress] = useState(null);
 
     const connectWallet = async () => {
@@ -178,23 +182,23 @@ const PeriGame = () => {
             <div className="wallet-connect-container">
                 {walletAddress ? (
                     <button onClick={disconnectWallet} className="connect-wallet-button">
-                        Disconnect Wallet ({walletAddress})
+                        {t("disconnectWallet")} ({walletAddress})
                     </button>
                 ) : (
                     <button onClick={connectWallet} className="connect-wallet-button">
-                        Connect Wallet
+                        {t("connectWallet")}
                     </button>
                 )}
             </div>
             <div className="dev-info-container">
                 <a href="https://x.com/0x1Juangunner4" target="_blank" rel="noopener noreferrer" className="dev-link">
-                    DEV BY @0x1Juangunner4
+                {t("devBy")}
                 </a>
                 <div className="beta-badge">BETA</div>
             </div>
             <div className="game-container">
                 <div className={`App ${gameOver ? 'game-over' : ''}`} onClick={jump}>
-                    <div className="score-display">Score: {score}</div>
+                    <div className="score-display">{t("score")} {score}</div>
 
                     <Bird birdPosition={birdPosition} />
                     {pipes.map((pipe, index) => (
@@ -209,9 +213,9 @@ const PeriGame = () => {
                     {gameOver && (
                         <div className="game-over-message">
                             <center>
-                                Game Over!
+                            {t("gameOver")}
                                 <br />
-                                <p style={{ backgroundColor: '#4CAF50', padding: "2px 6px", borderRadius: '5px' }}>Click anywhere or press Space to Restart</p>
+                                <p style={{ backgroundColor: '#4CAF50', padding: "2px 6px", borderRadius: '5px' }}>{t("clickToRestart")}</p>
                             </center>
                         </div>
                     )}
