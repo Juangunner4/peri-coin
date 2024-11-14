@@ -8,11 +8,8 @@ import Ground from './Ground';
 import '../styles/PeriGame.css';
 
 const PeriGame = () => {
-
-    // State for the wallet connection
     const [walletAddress, setWalletAddress] = useState(null);
 
-    // Function to connect to the Phantom wallet
     const connectWallet = async () => {
         if ('solana' in window) {
             const provider = window.solana;
@@ -31,7 +28,10 @@ const PeriGame = () => {
         }
     };
 
-    // Check if the wallet is already connected on component mount
+    const disconnectWallet = () => {
+        setWalletAddress(null);
+    };
+
     useEffect(() => {
         if ('solana' in window) {
             const provider = window.solana;
@@ -53,12 +53,12 @@ const PeriGame = () => {
     const [score, setScore] = useState(0);
     const [gameStarted, setGameStarted] = useState(false);
 
-    const containerHeight = 800; // Adjust as per your game's container height
+    const containerHeight = 800;
     const pipeMaxHeight = containerHeight * 0.7;
     const pipeMinHeight = containerHeight * 0.5;
-    const birdWidth = 50; // Bird width
-    const birdHeight = 62.5; // Bird height
-    const pipeSpacing = 600; // Increased spacing between consecutive pipes to prevent overlap
+    const birdWidth = 50;
+    const birdHeight = 62.5;
+    const pipeSpacing = 600;
 
     const jump = () => {
         if (!gameOver && gameStarted) {
@@ -67,7 +67,6 @@ const PeriGame = () => {
                 y: Math.max(prev.y - 60, 0)
             }));
         } else if (!gameOver && !gameStarted) {
-
             setGameStarted(true);
         } else {
             setBirdPosition({ x: 50, y: 200 });
@@ -76,13 +75,13 @@ const PeriGame = () => {
             setPipesv3([]);
             setGameOver(false);
             setGameStarted(true);
+            setScore(0); // Reset score on restart
         }
     };
 
-
     const handleKeyPress = (event) => {
         if (event.code === 'Space') {
-            event.preventDefault(); // Prevent default scrolling behavior when pressing space
+            event.preventDefault();
             jump();
         }
     };
@@ -92,56 +91,36 @@ const PeriGame = () => {
         return () => {
             window.removeEventListener('keydown', handleKeyPress);
         };
-    }, [gameOver, gameStarted]); // Ensure the event listener is properly cleaned up
+    }, [gameOver, gameStarted]);
 
     const checkCollision = () => {
         const birdTop = birdPosition.y;
         const birdBottom = birdPosition.y + birdHeight;
         const birdLeft = birdPosition.x;
         const birdRight = birdPosition.x + birdWidth;
-        const groundHeight = 50; // Height of the ground element
-
+        const groundHeight = 50;
 
         pipes.forEach((pipe) => {
-            const pipeTop = pipe.y; // y value for pipe (0 for top pipe, > 0 for bottom pipe)
-            const pipeBottom = pipeTop + pipe.height; // Bottom edge of the pipe
-            const pipeLeft = pipe.x; // Left edge of the pipe
-            const pipeRight = pipe.x + 100; // Right edge of the pipe
-            const isTopPipe = 0; // Determine if this is a top pipe
-
-            // Check for horizontal overlap
+            const pipeTop = pipe.y;
+            const pipeBottom = pipeTop + pipe.height;
+            const pipeLeft = pipe.x;
+            const pipeRight = pipe.x + 100;
             const isHorizontalOverlap = birdRight > pipeLeft && birdLeft < pipeRight;
-
-            // Check for vertical overlap
-            let isVerticalOverlap = false;
-
-            if (isTopPipe) {
-                // Check if the bird is colliding with the top pipe
-                isVerticalOverlap = birdTop < pipeBottom;
-            } else {
-                // Check if the bird is colliding with the bottom pipe
-                isVerticalOverlap = birdBottom > pipeTop;
-            }
+            let isVerticalOverlap = birdBottom > pipeTop;
 
             const isColliding = isHorizontalOverlap && isVerticalOverlap;
 
             if (isColliding) {
-                // Bird has hit a pipe, end the game
                 setGameOver(true);
                 setGameStarted(false);
             }
         });
 
-        // Check if bird touches the ground
         if (birdBottom >= containerHeight - groundHeight) {
             setGameOver(true);
             setGameStarted(false);
         }
     };
-
-
-
-
 
     useEffect(() => {
         checkCollision();
@@ -161,116 +140,62 @@ const PeriGame = () => {
 
         const pipeGenerator = setInterval(() => {
             if (!gameOver && gameStarted) {
-                // Random height for the bottom pipe, ensuring it leaves enough space for the gap
                 const bottomPipeHeight = Math.random() * (pipeMaxHeight - pipeMinHeight) + pipeMinHeight;
-
-                // Fixed gap between pipes (considering the bird's height)
                 const gapBetweenPipes = 55 + birdHeight;
-
-                // Calculate the height of the top pipe
                 const topPipeHeight = containerHeight - bottomPipeHeight - gapBetweenPipes;
 
-                // Ensure the calculated heights make sense and the gap is always available
                 if (topPipeHeight > 0) {
                     setPipes((prev) => [
                         ...prev,
                         {
-                            // Bottom pipe
-                            x: prev.length > 0 ? prev[prev.length - 1].x + pipeSpacing : 600, // Ensure spacing between pipes
-                            y: containerHeight - bottomPipeHeight, // Bottom pipe's position from the bottom of the container
+                            x: prev.length > 0 ? prev[prev.length - 1].x + pipeSpacing : 600,
+                            y: containerHeight - bottomPipeHeight,
                             height: bottomPipeHeight
                         }
                     ]);
-                    console.log('Generated Pipes:', {
-                        bottomPipeHeight,
-                        topPipeHeight,
-                        gapBetweenPipes,
-                        yTopPipe: 0,
-                        yBottomPipe: containerHeight - bottomPipeHeight
-                    });
-
                 }
             }
         }, 2000);
-
-
-        // const pipesv2Generator = setInterval(() => {
-        //     if (!gameOver && gameStarted) {
-        //         const height = Math.random() * (pipeMaxHeight - pipeMinHeight) + pipeMinHeight;
-        //         const bottomPipeHeight = height;
-        //         setPipesv2((prev) => [
-        //             ...prev,
-        //             {
-        //                 x: prev.length > 0 ? prev[prev.length - 1].x + pipeSpacing : 600, // Ensure spacing between pipesv2
-        //                 y: containerHeight - bottomPipeHeight, // Position at the bottom
-        //                 height: bottomPipeHeight
-        //             }
-        //         ]);
-        //     }
-        // }, 4000);
-
-        // const pipesv3Generator = setInterval(() => {
-        //     if (!gameOver && gameStarted) {
-        //         const height = Math.random() * (pipeMaxHeight - pipeMinHeight) + pipeMinHeight;
-        //         const bottomPipeHeight = height;
-        //         const topPipeHeight = containerHeight - bottomPipeHeight - gapHeight;
-        //         setPipesv3((prev) => [
-        //             ...prev,
-        //             {
-        //                 x: prev.length > 0 ? prev[prev.length - 1].x + pipeSpacing : 1800, // Ensure spacing between pipesv3
-        //                 y: containerHeight - bottomPipeHeight, // Position at the bottom
-        //                 height: bottomPipeHeight
-        //             },
-        //             {
-        //                 x: prev.length > 0 ? prev[prev.length - 1].x + pipeSpacing : 1800, // Ensure spacing between pipesv3
-        //                 y: 0, // Position at the top
-        //                 height: topPipeHeight
-        //             },
-        //         ]);
-        //     }
-        // }, 8000);
 
         const pipeMove = setInterval(() => {
             if (!gameOver && gameStarted) {
                 setPipes((prev) =>
                     prev.map((pipe) => ({ ...pipe, x: pipe.x - 5 })).filter((pipe) => pipe.x + 100 > 0)
                 );
-                setPipesv2((prev) =>
-                    prev.map((pipe) => ({ ...pipe, x: pipe.x - 5 })).filter((pipe) => pipe.x + 100 > 0)
-                );
-                setPipesv3((prev) =>
-                    prev.map((pipe) => ({ ...pipe, x: pipe.x - 5 })).filter((pipe) => pipe.x + 100 > 0)
-                );
+                setScore((prev) => prev + 1); 
             }
         }, 30);
 
         return () => {
             clearInterval(gravity);
             clearInterval(pipeGenerator);
-            // clearInterval(pipesv2Generator);
-            // clearInterval(pipesv3Generator);
             clearInterval(pipeMove);
         };
     }, [gameOver, gameStarted]);
 
     return (
         <div>
-            {/* Wallet connection UI */}
             <div className="wallet-connect-container">
                 {walletAddress ? (
-                    <div className="wallet-info">
-                        Connected: {walletAddress}
-                    </div>
+                    <button onClick={disconnectWallet} className="connect-wallet-button">
+                        Disconnect Wallet ({walletAddress})
+                    </button>
                 ) : (
                     <button onClick={connectWallet} className="connect-wallet-button">
                         Connect Wallet
                     </button>
                 )}
             </div>
-
-            {/* Game container */}
+            <div className="dev-info-container">
+                <a href="https://x.com/0x1Juangunner4" target="_blank" rel="noopener noreferrer" className="dev-link">
+                    DEV BY @0x1Juangunner4
+                </a>
+                <div className="beta-badge">BETA</div>
+            </div>
             <div className="game-container">
                 <div className={`App ${gameOver ? 'game-over' : ''}`} onClick={jump}>
+                    <div className="score-display">Score: {score}</div>
+
                     <Bird birdPosition={birdPosition} />
                     {pipes.map((pipe, index) => (
                         <Pipes key={index} pipePosition={pipe} />
@@ -286,7 +211,7 @@ const PeriGame = () => {
                             <center>
                                 Game Over!
                                 <br />
-                                <p style={{ backgroundColor: 'blue', padding: "2px 6px", borderRadius: '5px' }}>Click anywhere or press Space to Restart</p>
+                                <p style={{ backgroundColor: '#4CAF50', padding: "2px 6px", borderRadius: '5px' }}>Click anywhere or press Space to Restart</p>
                             </center>
                         </div>
                     )}

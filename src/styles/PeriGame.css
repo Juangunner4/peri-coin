@@ -22,14 +22,14 @@
     z-index: 10;
     /* Ensure game-over message is above other elements */
     text-align: center;
-    background-color: #ff6347;
+    background-color: #ae6d06;
     /* Tomato */
     padding: 20px;
     border-radius: 8px;
 }
 
 .bird {
-    border: 2px solid red;
+    /* border: 2px solid red; */
     position: absolute;
     width: 50px;
     height: 50px;
@@ -40,7 +40,7 @@
 .pipe,
 .pipesv2,
 .pipesv3 {
-    border: 2px solid red;
+    /* border: 2px solid red; */
     position: absolute;
     z-index: 5;
     width: 150px;
@@ -84,3 +84,64 @@
     object-fit: cover;
     /* Ensures the image covers the entire ground area */
 }
+
+.wallet-connect-container {
+    top: 10px;
+    left: 10px;
+    opacity: 0.5;
+    transition: opacity 0.3s;
+}
+
+.wallet-connect-container:hover {
+    opacity: 1;
+}
+
+.connect-wallet-button {
+    padding: 8px 16px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    background-color: #ae6d06;
+    color: white;
+}
+
+.score-display {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 20px;
+    font-weight: bold;
+    color: #fff;
+}
+
+.dev-info-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 10px;
+}
+
+.dev-link {
+    font-family: 'Monospace', sans-serif;
+    color: #4CAF50; /* Green color for the text */
+    margin-right: 15px;
+    text-decoration: none;
+    font-size: 14px;
+    border: 1px solid white;
+    padding: 5px 10px;
+    border-radius: 5px;
+}
+
+.dev-link:hover {
+    color: white;
+}
+
+.beta-badge {
+    font-family: 'Monospace', sans-serif;
+    color: #ff9900; /* Orange color for the text */
+    font-size: 14px;
+    border: 1px solid white;
+    padding: 5px 10px;
+    border-radius: 5px;
+}
+
