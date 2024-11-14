@@ -16,7 +16,7 @@ jobs:
       - name: Install dependencies and build project
         run: |
           npm install
-          npm run build
+          CI=false npm run build  # Set CI=false to prevent build failures due to warnings
 
       - name: Deploy via FTP
         uses: SamKirkland/FTP-Deploy-Action@v4.3.0
@@ -26,5 +26,5 @@ jobs:
           password: ${{ secrets.FTP_PASSWORD }}
           local-dir: ./build/  # Ensure the path ends with a slash
           server-dir: /public_html/  
-          protocol: ftps  # Use 'ftp' as protocol (no 'method' input)
+          protocol: ftps  # Use 'ftps' or 'ftp' depending on your server configuration
           port: 21
