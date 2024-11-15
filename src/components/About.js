@@ -1,5 +1,5 @@
 import React from 'react';
-import teamMember from '../images/6342.png';
+import teamMember from '../images/web3.png';
 import meme1 from '../images/meme1.jpg';
 import meme2 from '../images/meme2.png';
 import meme3 from '../images/meme3.png';
@@ -7,6 +7,7 @@ import meme4 from '../images/meme4.png';
 import meme5 from '../images/meme5.png';
 import meme6 from '../images/meme6.png';
 import meme7 from '../images/meme7.png';
+import meme8 from '../images/meme8.png';
 import '../styles/Team.css';
 import '../styles/CEXListings.css';
 import '../styles/MemeGallery.css';
@@ -58,6 +59,7 @@ function About() {
                     <img src={meme5} alt="Meme 5" />
                     <img src={meme6} alt="Meme 6" />
                     <img src={meme7} alt="Meme 7" />
+                    <img src={meme8} alt="Meme 8" />
                     {/* Add more meme images as needed */}
                 </div>
             </section>
