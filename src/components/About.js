@@ -30,7 +30,7 @@ function About() {
             <section className="team">
                 <h2>{t("team")}</h2>
                 <div className="team-member">
-                    <img src={teamMember} alt="Team Member" />
+                    <img src={teamMember} alt="CEO" />
                     <div className="team-info">
                         <p>{t("member1")}</p>
                         <div className="social-icons">
