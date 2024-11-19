@@ -8,6 +8,7 @@ import meme5 from '../images/meme5.png';
 import meme6 from '../images/meme6.png';
 import meme7 from '../images/meme7.png';
 import meme8 from '../images/meme8.png';
+import meme9 from '../images/meme9.png';
 import '../styles/Team.css';
 import '../styles/CEXListings.css';
 import '../styles/MemeGallery.css';
@@ -60,6 +61,7 @@ function About() {
                     <img src={meme6} alt="Meme 6" />
                     <img src={meme7} alt="Meme 7" />
                     <img src={meme8} alt="Meme 8" />
+                    <img src={meme9} alt="Meme 9" />
                     {/* Add more meme images as needed */}
                 </div>
             </section>
