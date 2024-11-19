@@ -1,9 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Connection, PublicKey, clusterApiUrl } from '@solana/web3.js';
 import Bird from './Bird';
-import Pipes from './Pipes';
-import Pipesv2 from './Pipesv2'; // Import Pipesv2 component
-import Pipesv3 from './Pipesv3'; // Import Pipesv3 component
+import Pipesv3 from './Pipesv3'; 
 import Ground from './Ground';
 import '../styles/PeriGame.css';
 import { useTranslation } from 'react-i18next';
@@ -79,7 +77,7 @@ const PeriGame = () => {
             setPipesv3([]);
             setGameOver(false);
             setGameStarted(true);
-            setScore(0); // Reset score on restart
+            setScore(0); 
         }
     };
 
@@ -98,7 +96,6 @@ const PeriGame = () => {
     }, [gameOver, gameStarted]);
 
     const checkCollision = () => {
-        const birdTop = birdPosition.y;
         const birdBottom = birdPosition.y + birdHeight;
         const birdLeft = birdPosition.x;
         const birdRight = birdPosition.x + birdWidth;
@@ -106,7 +103,6 @@ const PeriGame = () => {
 
         pipes.forEach((pipe) => {
             const pipeTop = pipe.y;
-            const pipeBottom = pipeTop + pipe.height;
             const pipeLeft = pipe.x;
             const pipeRight = pipe.x + 100;
             const isHorizontalOverlap = birdRight > pipeLeft && birdLeft < pipeRight;
@@ -202,12 +198,6 @@ const PeriGame = () => {
 
                     <Bird birdPosition={birdPosition} />
                     {pipes.map((pipe, index) => (
-                        <Pipes key={index} pipePosition={pipe} />
-                    ))}
-                    {pipesv2.map((pipe, index) => (
-                        <Pipesv2 key={index} pipePosition={pipe} />
-                    ))}
-                    {pipesv3.map((pipe, index) => (
                         <Pipesv3 key={index} pipePosition={pipe} />
                     ))}
                     {gameOver && (
