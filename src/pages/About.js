@@ -14,7 +14,7 @@ import '../styles/CEXListings.css';
 import '../styles/MemeGallery.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faXTwitter } from '@fortawesome/free-brands-svg-icons';
-import Tokenomics from './Tokenomics';
+import Tokenomics from '../components/Tokenomics';
 import { useTranslation } from 'react-i18next';
 
 

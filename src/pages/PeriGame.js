@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { Connection, PublicKey, clusterApiUrl } from '@solana/web3.js';
-import Bird from './Bird';
-import Pipesv3 from './Pipesv3'; 
-import Ground from './Ground';
+import Bird from '../components/Bird';
+import Pipesv3 from '../components/Pipesv3'; 
+import Ground from '../components/Ground';
 import '../styles/PeriGame.css';
 import { useTranslation } from 'react-i18next';
 
