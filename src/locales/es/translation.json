@@ -14,9 +14,9 @@
     "cex": "Listados en CEX",
     "upcoming": "Próximamente...",
     "memes": "Galería de Memes",
-    "lp": "Fondo de Liquidez (LP)",
+    "lp": "Fondo de Liquidez",
     "treasury": "Tesorería",
-    "bex": "Billetera de Exchange Centralizado (CEX)",
+    "bex": "Exchange Centralizado",
     "howtobuy": "Como comprar",
     "guide_step1": "Crea una nueva billetera con la aplicación Phantom, guarda tu frase semilla de manera segura, escríbela y mantenla a salvo.",
     "guide_step2": "Convierte algo de dinero a Solana ($SOL) a través de la billetera Phantom.",
@@ -27,5 +27,6 @@
     "disconnectWallet": "Desconectar Billetera",
     "connectWallet": "Conectar Billetera",
     "devBy": "DESARROLLADO POR @0x1Juangunner4",
-    "score": "Puntuación:"
+    "score": "Puntuación:",
+    "contractv2": "Contrato"
 }

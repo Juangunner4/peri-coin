@@ -10,7 +10,7 @@ function Tokenomics() {
   const { t } = useTranslation();
 
   const data = {
-    labels: ['Liquidity Pool (LP)', 'Treasury', 'CEX'],
+    labels: [t('lp'), t('treasury'), t('bex')],
     datasets: [
       {
         label: 'Tokenomics Distribution',

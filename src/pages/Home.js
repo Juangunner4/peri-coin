@@ -52,13 +52,13 @@ function Home() {
           <span className="highlight">$Peri</span> {t("intro")} <span className="phrase">“Saquen el perico”</span>.
         </p>
         <div className="contract-container">
-          <h2 className="contract-label">Contract</h2>
+          <h2 className="contract-label">{t("contractv2")}</h2>
           <span onClick={handleCopyAddress} className="contract-address">
             {contractAddress}
           </span>
         </div>
         {showCopied && (
-          <div className="notification">Contract Copied</div>
+          <div className="notification">{t("contractcopied")}</div>
         )}
         <button onClick={() => window.location.href = 'https://www.pump.fun/EdopmgERFJbgJLVTwm9fuvt2Y5DmwjbjdZhVRrM3dpFd'} className="cta-button">
           {t("buy")}
