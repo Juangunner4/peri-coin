@@ -1,17 +1,20 @@
 // Pipes.js
 
 import React from "react";
-import Pipe from "../resource/pipesv2.png";
+import Pipe from "../resource/pipe.png";
 
 const Pipesv2 = ({ pipePosition }) => {
+    const { x, y, height } = pipePosition;
+
     return (
         <img
             src={Pipe}
             alt="pipesv2"
             className="pipesv2"
             style={{
-                left: pipePosition.x,
-                top: pipePosition.y,
+                left: `${x}px`,
+                top: `${y}px`, 
+                height: `${height}px`, 
             }}
             draggable={true}
         />

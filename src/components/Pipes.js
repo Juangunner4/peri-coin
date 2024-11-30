@@ -7,8 +7,8 @@ const Pipes = ({ pipePosition }) => {
     return (
         <img
             src={Pipe}
-            alt="pipe"
-            className="pipe"
+            alt="pipes"
+            className="pipes"
             style={{
                 left: pipePosition.x,
                 top: pipePosition.y,

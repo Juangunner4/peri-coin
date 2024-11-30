@@ -1,16 +1,31 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Connection, PublicKey, clusterApiUrl } from '@solana/web3.js';
 import Bird from '../components/Bird';
-import Pipesv3 from '../components/Pipesv3'; 
+import Pipesv3 from '../components/Pipesv3';
+import Pipesv2 from '../components/Pipesv2';
 import Ground from '../components/Ground';
 import '../styles/PeriGame.css';
 import { useTranslation } from 'react-i18next';
 
 
 const PeriGame = () => {
+    const scoreRef = useRef(0);
     const { t } = useTranslation();
 
     const [walletAddress, setWalletAddress] = useState(null);
+    const [birdPosition, setBirdPosition] = useState({ x: 50, y: 200 });
+    const [pipesv3, setPipesv3] = useState([]);
+    const [pipesv2, setPipesv2] = useState([]);
+    const [gameOver, setGameOver] = useState(false);
+    const [score, setScore] = useState(0);
+    const [gameStarted, setGameStarted] = useState(false);
+
+    const containerHeight = 800;
+    const bottomPipeMaxHeight = containerHeight * 0.6;
+    const bottomPipeMinHeight = containerHeight * 0.3;
+    const birdWidth = 50;
+    const birdHeight = 62.5;
+    const pipeSpacing = 600;
 
     const connectWallet = async () => {
         if ('solana' in window) {
@@ -47,21 +62,6 @@ const PeriGame = () => {
         }
     }, []);
 
-    const [birdPosition, setBirdPosition] = useState({ x: 50, y: 200 });
-    const [pipes, setPipes] = useState([]);
-    const [pipesv2, setPipesv2] = useState([]);
-    const [pipesv3, setPipesv3] = useState([]);
-    const [gameOver, setGameOver] = useState(false);
-    const [score, setScore] = useState(0);
-    const [gameStarted, setGameStarted] = useState(false);
-
-    const containerHeight = 800;
-    const pipeMaxHeight = containerHeight * 0.7;
-    const pipeMinHeight = containerHeight * 0.5;
-    const birdWidth = 50;
-    const birdHeight = 62.5;
-    const pipeSpacing = 600;
-
     const jump = () => {
         if (!gameOver && gameStarted) {
             setBirdPosition((prev) => ({
@@ -71,13 +71,12 @@ const PeriGame = () => {
         } else if (!gameOver && !gameStarted) {
             setGameStarted(true);
         } else {
+            resetGame();
             setBirdPosition({ x: 50, y: 200 });
-            setPipes([]);
-            setPipesv2([]);
             setPipesv3([]);
+            setPipesv2([]);
             setGameOver(false);
             setGameStarted(true);
-            setScore(0); 
         }
     };
 
@@ -97,24 +96,45 @@ const PeriGame = () => {
 
     const checkCollision = () => {
         const birdBottom = birdPosition.y + birdHeight;
+        const birdTop = birdPosition.y;
         const birdLeft = birdPosition.x;
         const birdRight = birdPosition.x + birdWidth;
         const groundHeight = 50;
 
-        pipes.forEach((pipe) => {
+
+        pipesv3.forEach((pipe) => {
             const pipeTop = pipe.y;
             const pipeLeft = pipe.x;
             const pipeRight = pipe.x + 100;
             const isHorizontalOverlap = birdRight > pipeLeft && birdLeft < pipeRight;
-            let isVerticalOverlap = birdBottom > pipeTop;
+            const isVerticalOverlap = birdBottom > pipeTop;
 
             const isColliding = isHorizontalOverlap && isVerticalOverlap;
 
             if (isColliding) {
+                handleGameOver();
                 setGameOver(true);
                 setGameStarted(false);
             }
         });
+
+
+        pipesv2.forEach((pipe) => {
+            const pipeBottom = pipe.y + pipe.height;
+            const pipeLeft = pipe.x;
+            const pipeRight = pipe.x + 100;
+            const isHorizontalOverlap = birdRight > pipeLeft && birdLeft < pipeRight;
+            const isVerticalOverlap = birdTop < pipeBottom;
+
+            const isColliding = isHorizontalOverlap && isVerticalOverlap;
+
+            if (isColliding) {
+                handleGameOver();
+                setGameOver(true);
+                setGameStarted(false);
+            }
+        });
+
 
         if (birdBottom >= containerHeight - groundHeight) {
             setGameOver(true);
@@ -122,9 +142,28 @@ const PeriGame = () => {
         }
     };
 
+    const handleGameOver = () => {
+        setGameOver(true);
+        setGameStarted(false);
+        scoreRef.current = 0;
+        setScore(0);
+    };
+
+
+    const resetGame = () => {
+        setBirdPosition({ x: 50, y: 200 });
+        setPipesv3([]);
+        setPipesv2([]);
+        setGameOver(false);
+        setGameStarted(true);
+        scoreRef.current = 0;
+        setScore(0);
+    };
+
+
     useEffect(() => {
         checkCollision();
-    }, [birdPosition, pipes, pipesv2, pipesv3, gameOver]);
+    }, [birdPosition, pipesv3, pipesv2, gameOver]);
 
     useEffect(() => {
         const gravity = setInterval(() => {
@@ -140,31 +179,50 @@ const PeriGame = () => {
 
         const pipeGenerator = setInterval(() => {
             if (!gameOver && gameStarted) {
-                const bottomPipeHeight = Math.random() * (pipeMaxHeight - pipeMinHeight) + pipeMinHeight;
-                const gapBetweenPipes = 55 + birdHeight;
-                const topPipeHeight = containerHeight - bottomPipeHeight - gapBetweenPipes;
+                const bottomPipeHeight = Math.random() * (bottomPipeMaxHeight - bottomPipeMinHeight) + bottomPipeMinHeight;
+                const gapBetweenPipes = 200;
+                console.log(`Gap: ${gapBetweenPipes}, Score: ${scoreRef.current}`);
 
-                if (topPipeHeight > 0) {
-                    setPipes((prev) => [
+                if (bottomPipeHeight > 0) {
+                    setPipesv3((prev) => [
                         ...prev,
                         {
                             x: prev.length > 0 ? prev[prev.length - 1].x + pipeSpacing : 600,
                             y: containerHeight - bottomPipeHeight,
-                            height: bottomPipeHeight
-                        }
+                            height: bottomPipeHeight,
+                        },
+                    ]);
+                    setPipesv2((prev) => [
+                        ...prev,
+                        {
+                            x: prev.length > 0 ? prev[prev.length - 1].x + pipeSpacing : 600,
+                            y: 0,
+                            height: containerHeight - bottomPipeHeight - gapBetweenPipes,
+                        },
                     ]);
                 }
             }
         }, 2000);
 
+
+
         const pipeMove = setInterval(() => {
             if (!gameOver && gameStarted) {
-                setPipes((prev) =>
+                setPipesv3((prev) =>
                     prev.map((pipe) => ({ ...pipe, x: pipe.x - 5 })).filter((pipe) => pipe.x + 100 > 0)
                 );
-                setScore((prev) => prev + 1); 
+                setPipesv2((prev) =>
+                    prev.map((pipe) => ({ ...pipe, x: pipe.x - 5 })).filter((pipe) => pipe.x + 100 > 0)
+                );
+
+                scoreRef.current += 1;
+
+                if (scoreRef.current % 10 === 0) {
+                    setScore(scoreRef.current);
+                }
             }
         }, 30);
+
 
         return () => {
             clearInterval(gravity);
@@ -188,7 +246,7 @@ const PeriGame = () => {
             </div>
             <div className="dev-info-container">
                 <a href="https://x.com/0x1Juangunner4" target="_blank" rel="noopener noreferrer" className="dev-link">
-                {t("devBy")}
+                    {t("devBy")}
                 </a>
                 <div className="beta-badge">BETA</div>
             </div>
@@ -197,13 +255,16 @@ const PeriGame = () => {
                     <div className="score-display">{t("score")} {score}</div>
 
                     <Bird birdPosition={birdPosition} />
-                    {pipes.map((pipe, index) => (
+                    {pipesv3.map((pipe, index) => (
                         <Pipesv3 key={index} pipePosition={pipe} />
+                    ))}
+                    {pipesv2.map((pipe, index) => (
+                        <Pipesv2 key={index} pipePosition={pipe} />
                     ))}
                     {gameOver && (
                         <div className="game-over-message">
                             <center>
-                            {t("gameOver")}
+                                {t("gameOver")}
                                 <br />
                                 <p style={{ backgroundColor: '#4CAF50', padding: "2px 6px", borderRadius: '5px' }}>{t("clickToRestart")}</p>
                             </center>
