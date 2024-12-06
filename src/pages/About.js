@@ -16,8 +16,6 @@ import meme13 from '../images/meme13.jpg';
 import '../styles/Team.css';
 import '../styles/CEXListings.css';
 import '../styles/MemeGallery.css';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faXTwitter } from '@fortawesome/free-brands-svg-icons';
 import Tokenomics from '../components/Tokenomics';
 import { useTranslation } from 'react-i18next';
 
@@ -29,7 +27,7 @@ function About() {
         <div className="about-container">
             {/* Tokenomics Section */}
 
-            <Tokenomics/>
+            <Tokenomics />
 
             {/* Team Section */}
             <section className="team">
@@ -37,12 +35,9 @@ function About() {
                 <div className="team-member">
                     <img src={teamMember} alt="CEO" />
                     <div className="team-info">
-                        <p>{t("member1")}</p>
-                        <div className="social-icons">
-                            <a href="https://https://x.com/0x1JuanGunner4" target="_blank" rel="noopener noreferrer">
-                                <FontAwesomeIcon icon={faXTwitter} className="social-icon" />
-                            </a>
-                        </div>
+                        <a href="https://x.com/0x1Juangunner4" target="_blank" rel="noopener noreferrer" className="member-link">
+                            {t("member1")}
+                        </a>
                     </div>
                 </div>
             </section>
