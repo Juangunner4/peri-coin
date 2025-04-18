@@ -1,5 +1,5 @@
 import React from 'react';
-import teamMember from '../images/web3.png';
+import teamMember from '../images/web3.jpg';
 import meme1 from '../images/meme1.jpg';
 import meme2 from '../images/meme2.png';
 import meme3 from '../images/meme3.png';
