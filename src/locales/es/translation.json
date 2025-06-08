@@ -28,5 +28,7 @@
     "connectWallet": "Conectar Billetera",
     "devBy": "DESARROLLADO POR @0x1Juangunner4",
     "score": "Puntuación:",
-    "contractv2": "Contrato"
+    "contractv2": "Contrato",
+    "contractcopied": "¡Dirección del contrato copiada!",
+    "priceChart": "Gráfico de Precios"
 }

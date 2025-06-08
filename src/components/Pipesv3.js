@@ -11,10 +11,10 @@ const Pipesv3 = ({ pipePosition }) => {
             src={Pipe}
             alt="pipesv3"
             className="pipesv3"
-           style={{
-                left: `${x}px`,
-                top: `${y}px`, // This ensures it starts from the top
-                height: `${height}px`, // Dynamically set the height
+            style={{
+                left: x,
+                top: y,
+                height: height,
             }}
             draggable={false}
         />

@@ -12,9 +12,9 @@ const Pipesv2 = ({ pipePosition }) => {
             alt="pipesv2"
             className="pipesv2"
             style={{
-                left: `${x}px`,
-                top: `${y}px`, 
-                height: `${height}px`, 
+                left: x,
+                top: y,
+                height: height,
             }}
             draggable={true}
         />

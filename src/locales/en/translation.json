@@ -28,5 +28,7 @@
     "connectWallet": "Connect Wallet",
     "devBy": "DEV BY @0x1Juangunner4",
     "score": "Score:",
-    "contractv2": "Contract"
+    "contractv2": "Contract",
+    "contractcopied": "Contract address copied!",
+    "priceChart": "Price Chart"
 }

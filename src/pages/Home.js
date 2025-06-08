@@ -1,15 +1,15 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 // import logoCoin from '../images/logo.svg';
 import dexLogo from '../images/dexlogo.png';
-import howTo from '../images/howto.png'
 import '../styles/Home.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faXTwitter, faTelegramPlane } from '@fortawesome/free-brands-svg-icons';
 import { useTranslation } from 'react-i18next';
+import PriceChart from '../components/PriceChart';
+import HowToBuy from '../components/HowToBuy';
 
 function Home() {
   const [showCopied, setShowCopied] = useState(false);
-  const [isScrolled, setIsScrolled] = useState(false);
   const contractAddress = "EdopmgERFJbgJLVTwm9fuvt2Y5DmwjbjdZhVRrM3dpFd";
   const { t } = useTranslation();
 
@@ -25,21 +25,6 @@ function Home() {
     }
   };
 
-  useEffect(() => {
-    const handleScroll = () => {
-      const scrollPosition = window.scrollY;
-      if (scrollPosition > 100) {
-        setIsScrolled(true);
-      } else {
-        setIsScrolled(false);
-      }
-    };
-
-    window.addEventListener('scroll', handleScroll);
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-    };
-  }, []);
 
   return (
     <div className="homeContainer">
@@ -74,20 +59,8 @@ function Home() {
             <FontAwesomeIcon icon={faTelegramPlane} className="social-icon" />
           </a>
         </div>
-        <div className={`guide ${isScrolled ? 'scrolled' : ''}`}>
-          <div className="guide-text">
-            <h2>{t("howtobuy")}</h2>
-            <ol>
-              <li>{t("guide_step1")}</li>
-              <li>{t("guide_step2")}</li>
-              <li>{t("guide_step3")}</li>
-              <li>{t("guide_step4")}</li>
-            </ol>
-          </div>
-          <div className="guide-images">
-            <img src={howTo} alt="Step 1" />
-          </div>
-        </div>
+        <PriceChart />
+        <HowToBuy />
       </div>
     </div>
   );
