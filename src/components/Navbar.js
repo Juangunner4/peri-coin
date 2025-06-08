@@ -4,18 +4,17 @@ import logo from '../images/logo.svg';
 import '../styles/Navbar.css';
 import { useTranslation } from 'react-i18next';
 import i18n from 'i18next';
+import * as Dialog from '@radix-ui/react-dialog';
+import { HamburgerMenuIcon } from '@radix-ui/react-icons';
 
 const Navbar = () => {
-  const [isOpen, setIsOpen] = useState(false);
+  const [open, setOpen] = useState(false);
   const { t } = useTranslation();
 
   const changeLanguage = (lng) => {
     i18n.changeLanguage(lng);
   };
 
-  const toggleMenu = () => {
-    setIsOpen(!isOpen);
-  };
 
   return (
     <nav className="navbar">
@@ -29,20 +28,33 @@ const Navbar = () => {
         <button onClick={() => changeLanguage('es')} className="language-button">Español</button>
       </div>
 
-      <button className="burger-button" onClick={toggleMenu}>
-        <span className="burger-bar"></span>
-        <span className="burger-bar"></span>
-        <span className="burger-bar"></span>
-      </button>
-      
-      <div className={`navbar-links ${isOpen ? 'open' : ''}`}>
+      <div className="navbar-links desktop-links">
         <ul>
-          <li><Link to="/" onClick={() => setIsOpen(false)}>{t('home')}</Link></li>
-          <li><Link to="/about" onClick={() => setIsOpen(false)}>{t('about')}</Link></li>
-          <li><Link to="/" onClick={() => setIsOpen(false)}>{t('merch')}</Link></li>
-          <li><Link to="/game" onClick={() => setIsOpen(false)}>{t('game')}</Link></li>
+          <li><Link to="/" >{t('home')}</Link></li>
+          <li><Link to="/about" >{t('about')}</Link></li>
+          <li><Link to="/manga" >{t('manga')}</Link></li>
+          <li><Link to="/game" >{t('game')}</Link></li>
         </ul>
       </div>
+
+      <Dialog.Root open={open} onOpenChange={setOpen}>
+        <Dialog.Trigger asChild>
+          <button className="burger-button">
+            <HamburgerMenuIcon />
+          </button>
+        </Dialog.Trigger>
+        <Dialog.Portal>
+          <Dialog.Overlay className="drawer-overlay" />
+          <Dialog.Content className="drawer-content">
+            <ul>
+              <li><Link to="/" onClick={() => setOpen(false)}>{t('home')}</Link></li>
+              <li><Link to="/about" onClick={() => setOpen(false)}>{t('about')}</Link></li>
+              <li><Link to="/manga" onClick={() => setOpen(false)}>{t('manga')}</Link></li>
+              <li><Link to="/game" onClick={() => setOpen(false)}>{t('game')}</Link></li>
+            </ul>
+          </Dialog.Content>
+        </Dialog.Portal>
+      </Dialog.Root>
     </nav>
   );
 };

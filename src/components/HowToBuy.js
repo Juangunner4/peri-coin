@@ -1,6 +1,6 @@
 import React from 'react';
 import * as Accordion from '@radix-ui/react-accordion';
-import { CheckCircle } from '@mui/icons-material';
+import { CheckIcon } from '@radix-ui/react-icons';
 import '../styles/HowToBuy.css';
 import { useTranslation } from 'react-i18next';
 
@@ -21,7 +21,7 @@ const HowToBuy = () => {
           <Accordion.Item value={`step-${index}`} key={index} className="step-item">
             <Accordion.Header>
               <Accordion.Trigger className="step-trigger">
-                <CheckCircle className="icon" />
+                <CheckIcon className="icon" />
                 {step}
               </Accordion.Trigger>
             </Accordion.Header>
