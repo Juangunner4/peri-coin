@@ -39,6 +39,11 @@
     gap: 20px;
 }
 
+.desktop-links {
+    display: flex;
+    gap: 20px;
+}
+
 .navbar-links ul {
     list-style: none;
     padding: 0;
@@ -64,12 +69,6 @@
     z-index: 10;
 }
 
-.burger-button .burger-bar {
-    width: 100%;
-    height: 3px;
-    background-color: black;
-    border-radius: 5px;
-}
 
 @media (max-width: 768px) {
     .navbar {
@@ -82,30 +81,36 @@
         display: flex;
     }
 
-    .navbar-links {
-        position: absolute;
-        top: 60px;
-        right: 0px;
-        background-color: #ae6d06;
-        flex-direction: column;
-        align-items: center;
-        gap: 10px;
-        padding: 10px 0;
+    .desktop-links {
         display: none;
-        z-index: 9;
     }
+}
 
-    .navbar-links.open {
-        display: flex;
-    }
+.drawer-overlay {
+    background-color: rgba(0, 0, 0, 0.4);
+    position: fixed;
+    inset: 0;
+}
 
-    .navbar-links ul {
-        flex-direction: column;
-        gap: 10px;
-    }
+.drawer-content {
+    background-color: #ae6d06;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 200px;
+    padding: 20px;
+}
 
-    .navbar-links ul li {
-        width: 100%;
-        text-align: center;
-    }
+.drawer-content ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.drawer-content a {
+    text-decoration: none;
+    color: black;
 }
