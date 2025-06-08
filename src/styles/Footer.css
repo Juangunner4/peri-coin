@@ -14,12 +14,19 @@
     color: black;
   }
   
-  .footer-links {
+.footer-links {
     display: flex;
     justify-content: space-between;
     align-items: center;
     margin-top: 10px;
+}
+
+@media (max-width: 768px) {
+  .footer-links {
+    flex-direction: column;
+    gap: 10px;
   }
+}
   
   .footer-links .contract,
   .footer-links .contact {

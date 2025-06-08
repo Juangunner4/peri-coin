@@ -3,6 +3,32 @@
 }
 
 .manga-list {
-  list-style: disc;
-  margin-left: 20px;
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.manga-item {
+  margin-bottom: 4px;
+}
+
+.manga-trigger {
+  all: unset;
+  display: block;
+  padding: 8px;
+  background-color: #f0f0f0;
+  cursor: pointer;
+}
+
+.manga-content {
+  padding: 8px 16px;
+  border: 1px solid #e2e2e2;
+  margin-bottom: 4px;
+}
+
+.fomo {
+  margin-top: 20px;
+  font-weight: bold;
+  color: #ae6d06;
+  text-align: center;
 }

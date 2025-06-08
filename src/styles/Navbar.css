@@ -5,7 +5,9 @@
     padding: 10px 20px;
     border-bottom: 1px solid #ccc;
     background-color: #ae6d06;
-    position: relative;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
 }
 
 .navbar-logo img {
@@ -90,6 +92,7 @@
     background-color: rgba(0, 0, 0, 0.4);
     position: fixed;
     inset: 0;
+    z-index: 1001;
 }
 
 .drawer-content {
@@ -100,6 +103,7 @@
     height: 100%;
     width: 200px;
     padding: 20px;
+    z-index: 1002;
 }
 
 .drawer-content ul {
