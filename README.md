@@ -1,6 +1,24 @@
-# Getting Started with Create React App
+# $PERI MemeCoin UI
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This repository contains the front‑end for the $PERI memecoin landing pages.
+It currently showcases the token, allows users to explore information about
+the project, and provides placeholders for upcoming features.
+
+The UI is built with a mix of [Radix UI](https://www.radix-ui.com/) components
+and [Material UI](https://mui.com/) widgets for quick styling and accessibility.
+
+## Planned Features
+
+- **Meme Coin Generator** – users will be able to generate custom names and art
+  for their own coins. The generator component is stubbed in `MemeGenerator.js`
+  and can later be extended with libraries like `canvas` or server side APIs.
+- **Manga NFT Minting** – the Manga page includes a simple mint UI. Future work
+  will integrate a minting contract and display minted chapters to readers.
+- **Mini Game** – the Game page now displays an under construction icon. A game
+  or other interactive experience can be mounted here once development resumes.
+
+Development uses `create-react-app` with custom overrides. Below are the
+standard scripts from CRA.
 
 ## Available Scripts
 

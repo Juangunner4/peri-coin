@@ -2,6 +2,9 @@ import React from 'react';
 import '../styles/Manga.css';
 import { useTranslation } from 'react-i18next';
 import * as Accordion from '@radix-ui/react-accordion';
+import Card from '@mui/material/Card';
+import CardContent from '@mui/material/CardContent';
+import Button from '@mui/material/Button';
 
 const Manga = () => {
   const { t } = useTranslation();
@@ -14,6 +17,12 @@ const Manga = () => {
   return (
     <div className="manga-page">
       <h2>{t('manga')}</h2>
+      <Card className="mint-card">
+        <CardContent>
+          <h3>{t('mintTitle')}</h3>
+          <Button variant="contained" className="mint-btn">{t('mint')}</Button>
+        </CardContent>
+      </Card>
       <Accordion.Root type="single" collapsible className="manga-list">
         {items.map((item, index) => (
           <Accordion.Item value={`item-${index}`} key={index} className="manga-item">

@@ -33,5 +33,12 @@
     "priceChart": "Gráfico de Precios",
     "manga": "Manga",
     "mangaComingSoon": "¡Manga próximamente!",
-    "mangaFomo": "No te quedes sin $PERI antes del lanzamiento del manga. ¡Compra ahora y únete al vuelo!"
+    "mangaFomo": "No te quedes sin $PERI antes del lanzamiento del manga. ¡Compra ahora y únete al vuelo!",
+    "heroTitle": "El memecoin $PERI en Solana",
+    "heroSubtitle": "Únete al vuelo con el pájaro más elegante de la cadena.",
+    "generatorTitle": "Generador de nombres de memecoin",
+    "generate": "Generar",
+    "mintTitle": "Mintear NFT del manga de Peri",
+    "mint": "Mintear",
+    "underConstruction": "En construcción"
 }

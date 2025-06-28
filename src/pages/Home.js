@@ -2,6 +2,9 @@ import React, { useState } from 'react';
 // import logoCoin from '../images/logo.svg';
 import dexLogo from '../images/dexlogo.png';
 import '../styles/Home.css';
+import Container from '@mui/material/Container';
+import Typography from '@mui/material/Typography';
+import Button from '@mui/material/Button';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faXTwitter, faTelegramPlane } from '@fortawesome/free-brands-svg-icons';
 import { useTranslation } from 'react-i18next';
@@ -27,15 +30,25 @@ function Home() {
 
 
   return (
-    <div className="homeContainer">
+    <Container className="homeContainer">
       {/* <div className="logoCoin">
         <img src={logoCoin} alt="Logo Coin" />
       </div> */}
 
+      <section className="hero">
+        <Typography variant="h2" className="hero-title">
+          {t('heroTitle')}
+        </Typography>
+        <Typography variant="subtitle1" className="hero-subtitle">
+          {t('heroSubtitle')}
+        </Typography>
+      </section>
+
       <div className="content">
-        <p className="intro">
-          <span className="highlight">$Peri</span> {t("intro")} <span className="phrase">“Saquen el perico”</span>.
-        </p>
+        <Typography className="intro">
+          <span className="highlight">$Peri</span> {t("intro")}{' '}
+          <span className="phrase">“Saquen el perico”</span>.
+        </Typography>
         <div className="contract-container">
           <h2 className="contract-label">{t("contractv2")}</h2>
           <span onClick={handleCopyAddress} className="contract-address">
@@ -45,9 +58,16 @@ function Home() {
         {showCopied && (
           <div className="notification">{t("contractcopied")}</div>
         )}
-        <button onClick={() => window.location.href = 'https://www.pump.fun/EdopmgERFJbgJLVTwm9fuvt2Y5DmwjbjdZhVRrM3dpFd'} className="cta-button">
-          {t("buy")}
-        </button>
+        <Button
+          variant="contained"
+          onClick={() =>
+            window.location.href =
+              'https://www.pump.fun/EdopmgERFJbgJLVTwm9fuvt2Y5DmwjbjdZhVRrM3dpFd'
+          }
+          className="cta-button"
+        >
+          {t('buy')}
+        </Button>
         <div className="socials">
           <a href="https://dexscreener.com/solana/EdopmgERFJbgJLVTwm9fuvt2Y5DmwjbjdZhVRrM3dpFd" target="_blank" rel="noopener noreferrer">
             <img src={dexLogo} alt="Dexscreener Logo" className="dexlogo" />
@@ -62,7 +82,7 @@ function Home() {
         <PriceChart />
         <HowToBuy />
       </div>
-    </div>
+    </Container>
   );
 }
 

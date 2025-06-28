@@ -9,6 +9,20 @@
     background: url('../images/home.gif') no-repeat center center / cover;
 
 }
+.hero {
+    padding: 60px 20px 20px;
+    color: #fff;
+}
+
+.hero-title {
+    font-size: 48px;
+    margin-bottom: 10px;
+}
+
+.hero-subtitle {
+    font-size: 20px;
+    opacity: 0.9;
+}
 
 .intro {
     font-size: 20px;

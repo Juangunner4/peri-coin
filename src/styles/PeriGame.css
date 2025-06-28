@@ -1,135 +1,19 @@
-.game-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    width: 100vw;
-    position: relative;
+.game-construction {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 60vh;
+  font-size: 24px;
+  color: #ae6d06;
 }
 
-.game-over-message {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    font-size: 24px;
-    font-weight: bold;
-    color: white;
-    z-index: 10;
-    text-align: center;
-    background-color: #ae6d06;
-    padding: 20px;
-    border-radius: 8px;
+.construction-icon {
+  font-size: 60px;
+  animation: spin 2s linear infinite;
 }
 
-.bird {
-    /* border: 2px solid red; */
-    position: absolute;
-    width: 50px;
-    height: 50px;
-    z-index: 5;
-    user-select: none;
-}
-
-.pipesv3 {
-    /* border: 2px solid rgb(38, 0, 255); */
-    position: absolute;
-    z-index: 5;
-    width: 150px;
-    height: 600px;
-}
-
-.pipesv2 {
-    /* border: 2px solid rgb(238, 255, 0); */
-    position: absolute;
-    z-index: 5;
-    width: 150px;
-}
-
-.App {
-    position: relative;
-    width: 100%;
-    max-width: 375px;
-    height: 667px;
-    overflow: hidden;
-    background: url('../resource/background.gif');
-    background-color: #ADD8E6;
-    margin: 0 auto;
-    border: 2px solid #ccc;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-.ground {
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-    height: 50px;
-    z-index: 1;
-    overflow: hidden;
-}
-
-.ground-image {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
-
-.wallet-connect-container {
-    top: 10px;
-    left: 10px;
-    opacity: 0.5;
-    transition: opacity 0.3s;
-}
-
-.wallet-connect-container:hover {
-    opacity: 1;
-}
-
-.connect-wallet-button {
-    padding: 8px 16px;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    background-color: #ae6d06;
-    color: white;
-}
-
-.score-display {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    font-size: 20px;
-    font-weight: bold;
-    color: #fff;
-}
-
-.dev-info-container {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-top: 10px;
-}
-
-.dev-link {
-    font-family: 'Monospace', sans-serif;
-    color: #4CAF50;
-    margin-right: 15px;
-    text-decoration: none;
-    font-size: 14px;
-    border: 1px solid white;
-    padding: 5px 10px;
-    border-radius: 5px;
-}
-
-.dev-link:hover {
-    color: white;
-}
-
-.beta-badge {
-    font-family: 'Monospace', sans-serif;
-    color: #ff9900;
-    font-size: 14px;
-    border: 1px solid white;
-    padding: 5px 10px;
-    border-radius: 5px;
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
 }
