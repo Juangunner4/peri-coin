@@ -8,7 +8,8 @@ import Button from '@mui/material/Button';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faXTwitter, faTelegramPlane } from '@fortawesome/free-brands-svg-icons';
 import { useTranslation } from 'react-i18next';
-import PriceChart from '../components/PriceChart';
+import Paper from '@mui/material/Paper';
+import ContentCopyIcon from '@mui/icons-material/ContentCopy';
 
 function Home() {
   const [showCopied, setShowCopied] = useState(false);
@@ -35,21 +36,23 @@ function Home() {
       </div> */}
 
       <section className="hero">
-        <Typography variant="h2" className="hero-title">
-          {t('heroTitle')}
-        </Typography>
         <Typography variant="subtitle1" className="hero-subtitle">
           {t('heroSubtitle')}
         </Typography>
       </section>
 
       <div className="content">
-        <div
+        <Paper
           onClick={handleCopyAddress}
           className="contract-address"
+          sx={{ display: 'flex', alignItems: 'center', p: 1, mb: 2, cursor: 'pointer', maxWidth: '100%' }}
+          elevation={3}
         >
-          {contractAddress}
-        </div>
+          <Typography variant="body2" sx={{ mr: 1 }} noWrap>
+            {contractAddress}
+          </Typography>
+          <ContentCopyIcon fontSize="small" />
+        </Paper>
         {showCopied && (
           <div className="notification">{t("contractcopied")}</div>
         )}
@@ -74,7 +77,6 @@ function Home() {
             <FontAwesomeIcon icon={faTelegramPlane} className="social-icon" />
           </a>
         </div>
-        <PriceChart />
       </div>
     </Container>
   );
