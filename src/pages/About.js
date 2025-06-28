@@ -17,6 +17,7 @@ import '../styles/Team.css';
 import '../styles/CEXListings.css';
 import '../styles/MemeGallery.css';
 import Tokenomics from '../components/Tokenomics';
+import MemeGenerator from '../components/MemeGenerator';
 import { useTranslation } from 'react-i18next';
 
 
@@ -25,6 +26,8 @@ function About() {
 
     return (
         <div className="about-container">
+            <MemeGenerator />
+
             {/* Tokenomics Section */}
 
             <Tokenomics />

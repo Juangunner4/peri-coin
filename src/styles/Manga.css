@@ -2,6 +2,19 @@
   padding: 20px;
 }
 
+.mint-card {
+  text-align: center;
+  padding: 20px;
+  margin-bottom: 20px;
+  background-color: #ADD8E6;
+  border-radius: 8px;
+}
+
+.mint-btn {
+  background-color: #ae6d06 !important;
+  color: #fff !important;
+}
+
 .manga-list {
   width: 100%;
   max-width: 600px;
