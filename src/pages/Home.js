@@ -39,6 +39,9 @@ function Home() {
         <Typography variant="subtitle1" className="hero-subtitle">
           {t('heroSubtitle')}
         </Typography>
+        <Typography variant="body1" className="intro-message">
+          {t('intro')}
+        </Typography>
       </section>
 
       <div className="content">
