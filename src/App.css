@@ -1,9 +1,15 @@
+:root {
+  --primary-green: #4CAF50;
+  --accent-brown: #8B4513;
+  --sky-blue: #ADD8E6;
+}
+
 body,
 html {
   margin: 0;
   padding: 0;
   font-family: 'Arial', sans-serif;
-  background-color: #ADD8E6;
+  background-color: var(--sky-blue);
 }
 
 
