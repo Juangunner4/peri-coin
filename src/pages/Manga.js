@@ -1,18 +1,13 @@
 import React from 'react';
 import '../styles/Manga.css';
 import { useTranslation } from 'react-i18next';
-import * as Accordion from '@radix-ui/react-accordion';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import Button from '@mui/material/Button';
 
 const Manga = () => {
   const { t } = useTranslation();
-  const items = [
-    'Perico Adventures - Chapter 5 releasing soon!',
-    'Crypto Feathers - New arc drops next week!',
-    'The Blockchain Bird - Volume 2 on the way!',
-  ];
+  // Future chapter announcements will appear here
 
   return (
     <div className="manga-page">
@@ -23,17 +18,7 @@ const Manga = () => {
           <Button variant="contained" className="mint-btn">{t('mint')}</Button>
         </CardContent>
       </Card>
-      <Accordion.Root type="single" collapsible className="manga-list">
-        {items.map((item, index) => (
-          <Accordion.Item value={`item-${index}`} key={index} className="manga-item">
-            <Accordion.Header>
-              <Accordion.Trigger className="manga-trigger">{item}</Accordion.Trigger>
-            </Accordion.Header>
-            <Accordion.Content className="manga-content">{t('mangaComingSoon')}</Accordion.Content>
-          </Accordion.Item>
-        ))}
-      </Accordion.Root>
-      <p className="fomo">{t('mangaFomo')}</p>
+      <div className="manga-coming-soon">{t('mangaComingSoon')}</div>
     </div>
   );
 };
