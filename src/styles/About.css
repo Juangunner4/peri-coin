@@ -1,0 +1,29 @@
+.about-page {
+  padding: 20px;
+}
+
+.about-accordion {
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.about-trigger {
+  all: unset;
+  display: block;
+  padding: 10px;
+  margin-bottom: 4px;
+  background-color: var(--sky-blue);
+  color: var(--accent-brown);
+  font-weight: bold;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+.about-content {
+  background-color: var(--sky-blue);
+  border: 1px solid var(--primary-green);
+  border-radius: 8px;
+  padding: 16px;
+  margin-bottom: 12px;
+}
