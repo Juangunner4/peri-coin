@@ -1,0 +1,15 @@
+.listings-card {
+  background-color: var(--sky-blue);
+  padding: 20px;
+  margin: 20px 0;
+  text-align: center;
+  border-radius: 8px;
+}
+
+.listings-card h2 {
+  color: var(--accent-brown);
+}
+
+.listings-text {
+  margin-top: 10px;
+}
