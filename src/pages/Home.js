@@ -9,7 +9,6 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faXTwitter, faTelegramPlane } from '@fortawesome/free-brands-svg-icons';
 import { useTranslation } from 'react-i18next';
 import PriceChart from '../components/PriceChart';
-import HowToBuy from '../components/HowToBuy';
 
 function Home() {
   const [showCopied, setShowCopied] = useState(false);
@@ -45,15 +44,11 @@ function Home() {
       </section>
 
       <div className="content">
-        <Typography className="intro">
-          <span className="highlight">$Peri</span> {t("intro")}{' '}
-          <span className="phrase">“Saquen el perico”</span>.
-        </Typography>
-        <div className="contract-container">
-          <h2 className="contract-label">{t("contractv2")}</h2>
-          <span onClick={handleCopyAddress} className="contract-address">
-            {contractAddress}
-          </span>
+        <div
+          onClick={handleCopyAddress}
+          className="contract-address"
+        >
+          {contractAddress}
         </div>
         {showCopied && (
           <div className="notification">{t("contractcopied")}</div>
@@ -80,7 +75,6 @@ function Home() {
           </a>
         </div>
         <PriceChart />
-        <HowToBuy />
       </div>
     </Container>
   );

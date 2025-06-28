@@ -4,7 +4,7 @@
     justify-content: space-between;
     padding: 10px 20px;
     border-bottom: 1px solid #ccc;
-    background-color: #ae6d06;
+    background-color: var(--primary-green);
     position: sticky;
     top: 0;
     z-index: 1000;
@@ -106,7 +106,7 @@
 }
 
 .drawer-content {
-    background-color: #ae6d06;
+    background-color: var(--primary-green);
     position: fixed;
     top: 0;
     left: 0;
