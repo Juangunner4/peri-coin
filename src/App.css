@@ -10,6 +10,7 @@ html {
   padding: 0;
   font-family: 'Roboto', Arial, sans-serif;
   background-color: var(--sky-blue);
+  font-weight: bold; /* Make text bolder across the page */
 }
 
 
