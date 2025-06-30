@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import '../styles/BirdBuyButton.css';
+import { useTranslation } from 'react-i18next';
 
 const BirdBuyButton = () => {
   const [position, setPosition] = useState({ top: '50%', left: '50%' });
@@ -22,13 +23,15 @@ const BirdBuyButton = () => {
       'https://www.pump.fun/EdopmgERFJbgJLVTwm9fuvt2Y5DmwjbjdZhVRrM3dpFd';
   };
 
+  const { t } = useTranslation();
+
   return (
     <button
       className="bird-buy-button"
       style={{ top: position.top, left: position.left }}
       onClick={handleClick}
     >
-      BUY
+      {t('buyBird')}
     </button>
   );
 };

@@ -140,3 +140,5 @@
     text-decoration: none;
     color: black;
 }
+
+.audio-toggle svg { color: black; }
