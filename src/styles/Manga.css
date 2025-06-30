@@ -5,24 +5,38 @@
   font-family: 'Comic Sans MS', 'Comic Neue', cursive;
 }
 
-.mint-card {
-  text-align: center;
-  padding: 20px;
-  margin: 20px auto;
-  max-width: 400px;
-  background-color: var(--sky-blue);
-  border-radius: 8px;
-  border: 4px dotted var(--accent-brown);
+
+.manga-loader {
+  margin-top: 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: var(--accent-brown);
+  font-size: 1.5rem;
 }
 
-.mint-title {
-  color: var(--accent-brown);
+.writing-icon {
+  font-size: 50px;
   margin-bottom: 10px;
 }
 
-.mint-btn {
-  background-color: var(--primary-green) !important;
-  color: #fff !important;
+.typing-text {
+  border-right: 2px solid var(--accent-brown);
+  white-space: nowrap;
+  overflow: hidden;
+  animation: typing 2s steps(20, end) infinite,
+             blinkCursor 0.75s step-end infinite;
+}
+
+@keyframes typing {
+  0% { width: 0; }
+  50% { width: 100%; }
+  100% { width: 0; }
+}
+
+@keyframes blinkCursor {
+  from { border-color: transparent; }
+  to { border-color: var(--accent-brown); }
 }
 
 

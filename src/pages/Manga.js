@@ -1,9 +1,8 @@
 import React from 'react';
 import '../styles/Manga.css';
 import { useTranslation } from 'react-i18next';
-import Card from '@mui/material/Card';
-import CardContent from '@mui/material/CardContent';
-import Button from '@mui/material/Button';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faPenNib } from '@fortawesome/free-solid-svg-icons';
 
 const Manga = () => {
   const { t } = useTranslation();
@@ -12,12 +11,10 @@ const Manga = () => {
   return (
     <div className="manga-page">
       <h2>{t('manga')}</h2>
-      <Card className="mint-card">
-        <CardContent>
-          <h3>{t('mintTitle')}</h3>
-          <Button variant="contained" className="mint-btn">{t('mint')}</Button>
-        </CardContent>
-      </Card>
+      <div className="manga-loader">
+        <FontAwesomeIcon icon={faPenNib} className="writing-icon" />
+        <span className="typing-text">Writing new chapters...</span>
+      </div>
       <div className="manga-coming-soon">{t('mangaComingSoon')}</div>
     </div>
   );
