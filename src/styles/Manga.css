@@ -20,29 +20,26 @@
   margin-bottom: 10px;
 }
 
-.typing-text {
-  border-right: 2px solid var(--accent-brown);
-  white-space: nowrap;
-  overflow: hidden;
-  animation: typing 2s steps(20, end) infinite,
-             blinkCursor 0.75s step-end infinite;
+.pen-stroke {
+  width: 200px;
+  height: 50px;
 }
 
-@keyframes typing {
-  0% { width: 0; }
-  50% { width: 100%; }
-  100% { width: 0; }
+.pen-stroke path,
+.pen-stroke text {
+  fill: none;
+  stroke: var(--accent-brown);
+  stroke-width: 2;
+  stroke-dasharray: 200;
+  stroke-dashoffset: 200;
+  animation: draw 3s linear forwards;
 }
 
-@keyframes blinkCursor {
-  from { border-color: transparent; }
-  to { border-color: var(--accent-brown); }
+.pen-stroke text {
+  fill: var(--accent-brown);
+  stroke: none;
 }
 
-
-.manga-coming-soon {
-  margin-top: 30px;
-  font-size: 1.2rem;
-  color: var(--accent-brown);
-  text-shadow: 2px 2px var(--sky-blue);
+@keyframes draw {
+  to { stroke-dashoffset: 0; }
 }

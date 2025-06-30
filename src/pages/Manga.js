@@ -1,21 +1,18 @@
 import React from 'react';
 import '../styles/Manga.css';
-import { useTranslation } from 'react-i18next';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPenNib } from '@fortawesome/free-solid-svg-icons';
 
 const Manga = () => {
-  const { t } = useTranslation();
-  // Future chapter announcements will appear here
-
   return (
     <div className="manga-page">
-      <h2>{t('manga')}</h2>
       <div className="manga-loader">
         <FontAwesomeIcon icon={faPenNib} className="writing-icon" />
-        <span className="typing-text">Writing new chapters...</span>
+        <svg className="pen-stroke" viewBox="0 0 200 50">
+          <path d="M10 30 Q70 5 130 30" />
+          <text x="140" y="35">PERI</text>
+        </svg>
       </div>
-      <div className="manga-coming-soon">{t('mangaComingSoon')}</div>
     </div>
   );
 };

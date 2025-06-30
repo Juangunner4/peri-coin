@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-// import logoCoin from '../images/logo.svg';
+import logoCoin from '../images/logo.svg';
 import '../styles/Home.css';
 import Container from '@mui/material/Container';
 import Typography from '@mui/material/Typography';
@@ -7,6 +7,8 @@ import Button from '@mui/material/Button';
 import { useTranslation } from 'react-i18next';
 import Paper from '@mui/material/Paper';
 import ContentCopyIcon from '@mui/icons-material/ContentCopy';
+import BirdBuyButton from '../components/BirdBuyButton';
+import WhyPerico from '../components/WhyPerico';
 
 function Home() {
   const [showCopied, setShowCopied] = useState(false);
@@ -34,11 +36,11 @@ function Home() {
 
   return (
     <Container className="homeContainer">
-      {/* <div className="logoCoin">
-        <img src={logoCoin} alt="Logo Coin" />
-      </div> */}
-
       <section className="hero">
+        <div className="hero-logo-container">
+          <img src={logoCoin} alt="Peri Logo" className="hero-logo" />
+          <span className="hero-ticker">$PERI</span>
+        </div>
         <Typography
           variant="body1"
           className={`intro-message ${fadeOut ? 'fade-out' : ''}`}
@@ -73,6 +75,8 @@ function Home() {
           {t('buy')}
         </Button>
       </div>
+      <WhyPerico />
+      <BirdBuyButton />
     </Container>
   );
 }

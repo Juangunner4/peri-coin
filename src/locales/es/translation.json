@@ -1,6 +1,5 @@
 {
     "home": "Casa",
-    "about": "Acerca de",
     "merch": "Tienda",
     "game": "Juego",
     "buy": "Compra en pump.fun!",
@@ -40,5 +39,9 @@
     "generate": "Generar",
     "mintTitle": "Mintear NFT del manga de Peri",
     "mint": "Mintear",
+    "whyTitle": "\u00bfPor qu\u00e9 volar con $PERI?",
+    "why1": "Esp\u00edritu elevado - A Perico le encanta explorar los cielos cripto.",
+    "why2": "\u00danete al vuelo - S\u00fabete y grita '¡S\u00e1quenlo!'",
+    "why3": "Diversi\u00f3n plum\u00edfera - Celebra cada pump con estilo.",
     "underConstruction": "En construcción"
 }
