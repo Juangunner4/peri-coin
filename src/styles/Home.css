@@ -6,11 +6,11 @@
     text-align: center;
     padding-bottom: 50px;
     overflow-x: hidden;
-    background-color: #ADD8E6;
+    background: linear-gradient(to bottom, #f0f8ff, #add8e6);
 }
 .hero {
-    padding: 60px 20px 20px;
-    color: #fff;
+    padding: 40px 20px 20px;
+    color: #333;
 }
 
 .hero-title {
@@ -83,15 +83,15 @@
 }
 
 .contract-address {
-    background-color: #ffffff;
-    color: #333;
-    border: 2px solid var(--primary-green);
+    background-color: #FFD700;
+    color: #000;
+    border: 3px solid #ae6b01;
     font-weight: bold;
-    border-radius: 6px;
-    padding: 8px 12px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    border-radius: 8px;
+    padding: 10px 16px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
     margin-bottom: 10px;
-    font-size: 1rem;
+    font-size: 1.2rem;
 }
 
 .intro-message {
@@ -103,6 +103,20 @@
     font-size: 16px;
     line-height: 1.4;
     margin-top: 10px;
+    transition: opacity 3s ease;
+}
+
+.fade-out {
+    animation: fadeOutAnim 3s forwards;
+}
+
+@keyframes fadeOutAnim {
+    from {
+        opacity: 1;
+    }
+    to {
+        opacity: 0;
+    }
 }
 
 

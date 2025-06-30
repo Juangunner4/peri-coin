@@ -1,20 +1,23 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 // import logoCoin from '../images/logo.svg';
-import dexLogo from '../images/dexlogo.png';
 import '../styles/Home.css';
 import Container from '@mui/material/Container';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faXTwitter, faTelegramPlane } from '@fortawesome/free-brands-svg-icons';
 import { useTranslation } from 'react-i18next';
 import Paper from '@mui/material/Paper';
 import ContentCopyIcon from '@mui/icons-material/ContentCopy';
 
 function Home() {
   const [showCopied, setShowCopied] = useState(false);
+  const [fadeOut, setFadeOut] = useState(false);
   const contractAddress = "EdopmgERFJbgJLVTwm9fuvt2Y5DmwjbjdZhVRrM3dpFd";
   const { t } = useTranslation();
+
+  useEffect(() => {
+    const timer = setTimeout(() => setFadeOut(true), 50000);
+    return () => clearTimeout(timer);
+  }, []);
 
   const handleCopyAddress = async () => {
     try {
@@ -36,10 +39,10 @@ function Home() {
       </div> */}
 
       <section className="hero">
-        <Typography variant="subtitle1" className="hero-subtitle">
-          {t('heroSubtitle')}
-        </Typography>
-        <Typography variant="body1" className="intro-message">
+        <Typography
+          variant="body1"
+          className={`intro-message ${fadeOut ? 'fade-out' : ''}`}
+        >
           {t('intro')}
         </Typography>
       </section>
@@ -69,17 +72,6 @@ function Home() {
         >
           {t('buy')}
         </Button>
-        <div className="socials">
-          <a href="https://dexscreener.com/solana/EdopmgERFJbgJLVTwm9fuvt2Y5DmwjbjdZhVRrM3dpFd" target="_blank" rel="noopener noreferrer">
-            <img src={dexLogo} alt="Dexscreener Logo" className="dexlogo" />
-          </a>
-          <a href="https://twitter.com/Perionsol" target="_blank" rel="noopener noreferrer">
-            <FontAwesomeIcon icon={faXTwitter} className="social-icon" />
-          </a>
-          <a href="https://t.me/+rNFvjrSESP0yY2Ix" target="_blank" rel="noopener noreferrer">
-            <FontAwesomeIcon icon={faTelegramPlane} className="social-icon" />
-          </a>
-        </div>
       </div>
     </Container>
   );

@@ -1,6 +1,6 @@
 import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faPeopleRoof } from '@fortawesome/free-solid-svg-icons';
+import { faSpinner } from '@fortawesome/free-solid-svg-icons';
 import '../styles/PeriGame.css';
 import { useTranslation } from 'react-i18next';
 import Typography from '@mui/material/Typography';
@@ -9,7 +9,7 @@ const PeriGame = () => {
   const { t } = useTranslation();
   return (
     <div className="game-construction">
-      <FontAwesomeIcon icon={faPeopleRoof} className="construction-icon" />
+      <FontAwesomeIcon icon={faSpinner} spin className="construction-icon" />
       <Typography variant="h5">{t('underConstruction')}</Typography>
     </div>
   );
