@@ -2,8 +2,8 @@ import { render, screen } from '@testing-library/react';
 import Manga from './Manga';
 import '../i18n';
 
-test('renders manga heading', () => {
+test('renders pen icon', () => {
   render(<Manga />);
-  const heading = screen.getByRole('heading', { name: /manga/i });
-  expect(heading).toBeInTheDocument();
+  const icon = document.querySelector('.writing-icon');
+  expect(icon).toBeInTheDocument();
 });

@@ -20,6 +20,7 @@ const Navbar = () => {
     <nav className="navbar">
       <div className="navbar-logo">
         <img src={logo} alt="Memecoin Logo" />
+        <span className="navbar-ticker">$PERI</span>
       </div>
       
       {/* Language buttons */}
@@ -31,7 +32,6 @@ const Navbar = () => {
       <div className="navbar-links desktop-links">
         <ul>
           <li><Link to="/" >{t('home')}</Link></li>
-          <li><Link to="/about" >{t('about')}</Link></li>
           <li><Link to="/manga" >{t('manga')}</Link></li>
           <li><Link to="/game" >{t('game')}</Link></li>
         </ul>
@@ -48,7 +48,6 @@ const Navbar = () => {
           <Dialog.Content className="drawer-content">
             <ul>
               <li><Link to="/" onClick={() => setOpen(false)}>{t('home')}</Link></li>
-              <li><Link to="/about" onClick={() => setOpen(false)}>{t('about')}</Link></li>
               <li><Link to="/manga" onClick={() => setOpen(false)}>{t('manga')}</Link></li>
               <li><Link to="/game" onClick={() => setOpen(false)}>{t('game')}</Link></li>
             </ul>

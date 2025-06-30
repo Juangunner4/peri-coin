@@ -1,0 +1,24 @@
+.why-perico {
+  margin-top: 40px;
+  text-align: center;
+}
+
+.why-items {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 20px;
+  margin-top: 20px;
+}
+
+.why-item {
+  background-color: rgba(255, 255, 255, 0.9);
+  padding: 20px;
+  border-radius: 8px;
+  width: 200px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+}
+
+.emoji {
+  font-size: 2rem;
+}
