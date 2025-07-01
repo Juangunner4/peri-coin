@@ -1,0 +1,16 @@
+/* Global styles for sky blue background */
+html, body, #root {
+  height: 100%;
+  margin: 0;
+  background-color: #ADD8E6;
+}
+
+.app-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.content {
+  flex: 1;
+}

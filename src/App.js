@@ -4,21 +4,21 @@ import Home from './pages/Home';
 import Manga from './pages/Manga';
 import Footer from './components/Footer';
 import Navbar from './components/Navbar';
-import PeriGame from './pages/PeriGame';
 
 function App() {
   return (
     <Router>
-      <Navbar />
-      <main>
+      <div className="app-container">
+        <Navbar />
+        <main className="content">
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/game" element={<PeriGame />} />
           <Route path="/manga" element={<Manga />} />
         </Routes>
-      </main>
+        </main>
 
-      <Footer />
+        <Footer />
+      </div>
     </Router>
   );
 }

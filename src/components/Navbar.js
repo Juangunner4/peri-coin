@@ -33,14 +33,48 @@ const Navbar = () => {
         </Box>
 
         <Box sx={{ display: { xs: 'none', md: 'flex' }, gap: 1 }}>
-          <Button onClick={() => changeLanguage('en')} size="small">English</Button>
-          <Button onClick={() => changeLanguage('es')} size="small">Español</Button>
+          <Button
+            onClick={() => changeLanguage('en')}
+            size="small"
+            sx={{
+              color: 'white',
+              textShadow: '1px 1px 2px rgba(0,0,0,0.5)',
+              '&:hover': { border: '2px solid #388e3c' }
+            }}
+          >
+            English
+          </Button>
+          <Button
+            onClick={() => changeLanguage('es')}
+            size="small"
+            sx={{
+              color: 'white',
+              textShadow: '1px 1px 2px rgba(0,0,0,0.5)',
+              '&:hover': { border: '2px solid #388e3c' }
+            }}
+          >
+            Español
+          </Button>
         </Box>
 
         <Box sx={{ display: { xs: 'none', md: 'flex' }, gap: 2 }}>
-          <Button component={Link} to="/">{t('home')}</Button>
-          <Button component={Link} to="/manga">{t('manga')}</Button>
-          <Button component={Link} to="/game">{t('game')}</Button>
+          <Button component={Link} to="/" color="inherit" sx={{ color: 'white', '&:hover': { border: '2px solid #388e3c' } }}>{t('home')}</Button>
+          <Button component={Link} to="/manga" color="inherit" sx={{ color: 'white', '&:hover': { border: '2px solid #388e3c' } }}>{t('manga')}</Button>
+          <Button
+            variant="contained"
+            component="a"
+            href="https://www.pump.fun/EdopmgERFJbgJLVTwm9fuvt2Y5DmwjbjdZhVRrM3dpFd"
+            target="_blank"
+            rel="noopener noreferrer"
+            sx={{
+              backgroundColor: '#2e7d32',
+              color: 'white',
+              fontWeight: 'bold',
+              '&:hover': { backgroundColor: '#1b5e20' }
+            }}
+          >
+            {t('buyPeri')}
+          </Button>
         </Box>
 
         <Dialog.Root open={open} onOpenChange={setOpen}>
@@ -50,12 +84,23 @@ const Navbar = () => {
             </IconButton>
           </Dialog.Trigger>
           <Dialog.Portal>
-            <Dialog.Overlay style={{ backgroundColor: 'rgba(0,0,0,0.4)', position: 'fixed', inset: 0, zIndex: 1001 }} />
-            <Dialog.Content style={{ backgroundColor: PRIMARY_GREEN, position: 'fixed', top: 0, left: 0, height: '100%', width: '200px', padding: '20px', zIndex: 1002 }}>
-              <Box component="ul" sx={{ listStyle: 'none', p: 0, m: 0, display: 'flex', flexDirection: 'column', gap: 1 }}>
-                <li><Button component={Link} to="/" onClick={() => setOpen(false)} color="inherit">{t('home')}</Button></li>
-                <li><Button component={Link} to="/manga" onClick={() => setOpen(false)} color="inherit">{t('manga')}</Button></li>
-                <li><Button component={Link} to="/game" onClick={() => setOpen(false)} color="inherit">{t('game')}</Button></li>
+            <Dialog.Overlay style={{ backgroundColor: 'rgba(0,0,0,0.4)', position: 'fixed', inset: 0, zIndex: 1200 }} />
+            <Dialog.Content style={{ backgroundColor: PRIMARY_GREEN, position: 'fixed', top: 0, left: 0, height: '100%', width: '200px', padding: '20px', zIndex: 1201 }}>
+            <Box component="ul" sx={{ listStyle: 'none', p: 0, m: 0, display: 'flex', flexDirection: 'column', gap: 1 }}>
+                <li><Button component={Link} to="/" onClick={() => setOpen(false)} sx={{ color: 'white', '&:hover': { border: '2px solid #388e3c' } }}>{t('home')}</Button></li>
+                <li><Button component={Link} to="/manga" onClick={() => setOpen(false)} sx={{ color: 'white', '&:hover': { border: '2px solid #388e3c' } }}>{t('manga')}</Button></li>
+                <li>
+                  <Button
+                    component="a"
+                    href="https://www.pump.fun/EdopmgERFJbgJLVTwm9fuvt2Y5DmwjbjdZhVRrM3dpFd"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    onClick={() => setOpen(false)}
+                    sx={{ color: 'white', backgroundColor: '#2e7d32', fontWeight: 'bold', '&:hover': { backgroundColor: '#1b5e20' } }}
+                  >
+                    {t('buyPeri')}
+                  </Button>
+                </li>
               </Box>
             </Dialog.Content>
           </Dialog.Portal>
