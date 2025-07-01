@@ -1,7 +1,8 @@
 import * as Accordion from '@radix-ui/react-accordion';
 import { CheckIcon } from '@radix-ui/react-icons';
-import '../styles/HowToBuy.css';
 import { useTranslation } from 'react-i18next';
+import Box from '@mui/material/Box';
+import Typography from '@mui/material/Typography';
 
 const HowToBuy = () => {
   const { t } = useTranslation();
@@ -13,24 +14,26 @@ const HowToBuy = () => {
   ];
 
   return (
-    <section className="how-to-buy">
-      <h2>{t('howtobuy')}</h2>
-      <Accordion.Root type="single" collapsible className="accordion-root">
+    <Box sx={{ mt: 2 }}>
+      <Typography variant="h6" sx={{ mb: 1 }}>
+        {t('howtobuy')}
+      </Typography>
+      <Accordion.Root type="single" collapsible style={{ width: '100%', maxWidth: 600 }}>
         {steps.map((step, index) => (
-          <Accordion.Item value={`step-${index}`} key={index} className="step-item">
+          <Accordion.Item value={`step-${index}`} key={index} style={{ marginBottom: 4 }}>
             <Accordion.Header>
-              <Accordion.Trigger className="step-trigger">
-                <CheckIcon className="icon" />
+              <Accordion.Trigger style={{ all: 'unset', display: 'flex', alignItems: 'center', padding: 8, backgroundColor: '#f0f0f0', cursor: 'pointer' }}>
+                <CheckIcon style={{ marginRight: 8, color: '#06d702' }} />
                 {step}
               </Accordion.Trigger>
             </Accordion.Header>
-            <Accordion.Content className="step-content">
+            <Accordion.Content style={{ padding: '8px 16px', border: '1px solid #e2e2e2' }}>
               {step}
             </Accordion.Content>
           </Accordion.Item>
         ))}
       </Accordion.Root>
-    </section>
+    </Box>
   );
 };
 

@@ -5,6 +5,7 @@ import CardContent from '@mui/material/CardContent';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import TextField from '@mui/material/TextField';
+import { PRIMARY_GREEN } from '../styles/theme';
 
 const MemeGenerator = () => {
   const { t } = useTranslation();
@@ -21,7 +22,7 @@ const MemeGenerator = () => {
         <Typography variant="h5" component="h2" sx={{ fontWeight: 'bold', mb: 2 }}>
           {t('generatorTitle')}
         </Typography>
-        <Button onClick={generateName} variant="contained" sx={{ mt: 1, backgroundColor: 'var(--primary-green)', '&:hover': { backgroundColor: '#3c8c3c' } }}>
+        <Button onClick={generateName} variant="contained" sx={{ mt: 1, backgroundColor: PRIMARY_GREEN, '&:hover': { backgroundColor: '#3c8c3c' } }}>
           {t('generate')}
         </Button>
         {name && (
