@@ -2,7 +2,8 @@
     background-color: #ae6d06;
     padding: 20px;
     text-align: center;
-    font-family: Arial, sans-serif;
+    font-family: 'Roboto', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-weight: bold;
   }
   
   .footer p {

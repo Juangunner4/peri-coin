@@ -1,6 +1,5 @@
 import React from 'react';
 import { Pie } from 'react-chartjs-2';
-import '../styles/Tokenomics.css';
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
 import { useTranslation } from 'react-i18next';
 
