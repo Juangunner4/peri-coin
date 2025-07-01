@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import '../styles/BirdBuyButton.css';
+import Button from '@mui/material/Button';
 import { useTranslation } from 'react-i18next';
 
 const BirdBuyButton = () => {
@@ -26,13 +26,22 @@ const BirdBuyButton = () => {
   const { t } = useTranslation();
 
   return (
-    <button
-      className="bird-buy-button"
-      style={{ top: position.top, left: position.left }}
+    <Button
+      variant="contained"
       onClick={handleClick}
+      sx={{
+        position: 'absolute',
+        top: position.top,
+        left: position.left,
+        backgroundColor: '#006400',
+        borderRadius: '20px',
+        transition: 'top 5s linear, left 5s linear, transform 0.2s',
+        zIndex: 100,
+        '&:active': { transform: 'scale(0.9)' },
+      }}
     >
       {t('buyBird')}
-    </button>
+    </Button>
   );
 };
 
