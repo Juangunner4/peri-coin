@@ -8,6 +8,7 @@ import ContentCopyIcon from '@mui/icons-material/ContentCopy';
 import WhyPerico from '../components/WhyPerico';
 import Box from '@mui/material/Box';
 import { PRIMARY_GREEN } from '../styles/theme';
+import heroVideo from '../images/PeriMotionPicture.mp4';
 
 function Home() {
   const [showCopied, setShowCopied] = useState(false);
@@ -56,34 +57,65 @@ function Home() {
           sx={{ width: 12, height: 12, borderRadius: '50%', bgcolor: 'grey.500', cursor: 'pointer', '&:hover': { bgcolor: PRIMARY_GREEN } }}
         />
       </Box>
-      <Box id="hero" sx={{ p: 4, color: '#333', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-        <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center', mb: 1 }}>
-          <img
-            src={logoCoin}
-            alt="Peri Logo"
-            style={{ width: 120, height: 120, filter: 'drop-shadow(2px 2px 4px rgba(0,0,0,0.5))' }}
+      <Box
+        id="hero"
+        sx={{
+          position: 'relative',
+          overflow: 'hidden',
+          // push content below fixed navbar
+          mt: 8,
+          // responsive padding
+          p: { xs: 2, sm: 4 },
+          color: '#fff',
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center',
+          justifyContent: 'center',
+          // ensure at least 60vh but expand as needed
+          minHeight: '60vh'
+        }}
+      >
+        {/* Hero content overlay */}
+        <Box sx={{ position: 'relative', zIndex: 1, textAlign: 'center' }}>
+          {/* Logo and title */}
+          <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center', mb: 1 }}>
+            <img
+              src={logoCoin}
+              alt="Peri Logo"
+              style={{ width: 120, height: 120, filter: 'drop-shadow(2px 2px 4px rgba(0,0,0,0.5))' }}
+            />
+            <Typography sx={{ ml: 1, fontSize: '2rem', color: PRIMARY_GREEN, fontWeight: 'bold' }}>
+              $PERI
+            </Typography>
+          </Box>
+          {/* Inline hero video */}
+          <video
+            src={heroVideo}
+            autoPlay
+            loop
+            muted
+            playsInline
+            style={{ width: '80%', maxWidth: 600, margin: '1rem 0', borderRadius: 8, boxShadow: '0 2px 8px rgba(0,0,0,0.3)' }}
           />
-          <Typography sx={{ ml: 1, fontSize: '2rem', color: PRIMARY_GREEN, fontWeight: 'bold' }}>
-            $PERI
+          {/* Intro text */}
+          <Typography
+            variant="body1"
+            sx={{
+              backgroundColor: 'rgba(255,255,255,0.8)',
+              color: '#000',
+              p: 2,
+              borderRadius: 1,
+              maxWidth: 600,
+              fontSize: 16,
+              lineHeight: 1.4,
+              mt: 1,
+              transition: 'opacity 3s ease',
+              opacity: fadeOut ? 0 : 1
+            }}
+          >
+            {t('intro')}
           </Typography>
         </Box>
-        <Typography
-          variant="body1"
-          sx={{
-            backgroundColor: 'rgba(255,255,255,0.9)',
-            color: '#000',
-            p: 2,
-            borderRadius: 1,
-            maxWidth: 600,
-            fontSize: 16,
-            lineHeight: 1.4,
-            mt: 1,
-            transition: 'opacity 3s ease',
-            opacity: fadeOut ? 0 : 1,
-          }}
-        >
-          {t('intro')}
-        </Typography>
       </Box>
 
       <Box sx={{ flexGrow: 1, p: 2, display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', overflowX: 'hidden' }}>
