@@ -12,10 +12,15 @@ const AudioToggle = () => {
   };
 
   return (
-    <div className="audio-toggle" onClick={toggle}>
+    <button
+      className="audio-toggle"
+      type="button"
+      onClick={toggle}
+      aria-pressed={playing}
+    >
       {playing ? <VolumeOffIcon /> : <VolumeUpIcon />}
       <ReactHowler src="/song.mp3" playing={playing} loop volume={0.5} />
-    </div>
+    </button>
   );
 };
 

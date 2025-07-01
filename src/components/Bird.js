@@ -1,6 +1,5 @@
-// Bird.js
-import React from "react";
 import Peri from "../resource/flappy-peri.png"
+import PropTypes from "prop-types";
 
 const Bird = ({ birdPosition }) => {
 
@@ -16,6 +15,13 @@ const Bird = ({ birdPosition }) => {
             draggable={true}
         />
     );
+};
+
+Bird.propTypes = {
+    birdPosition: PropTypes.shape({
+        x: PropTypes.number.isRequired,
+        y: PropTypes.number.isRequired,
+    }).isRequired,
 };
 
 export default Bird;

@@ -16,12 +16,12 @@ const MemeGenerator = () => {
   };
 
   return (
-    <Card className="meme-generator">
+    <Card sx={{ p: 2, m: 2, maxWidth: 400, textAlign: 'center' }}>
       <CardContent>
-        <Typography variant="h5" component="h2">
+        <Typography variant="h5" component="h2" sx={{ fontWeight: 'bold', mb: 2 }}>
           {t('generatorTitle')}
         </Typography>
-        <Button onClick={generateName} variant="contained" className="generate-btn" sx={{ mt: 1 }}>
+        <Button onClick={generateName} variant="contained" sx={{ mt: 1, backgroundColor: 'var(--primary-green)', '&:hover': { backgroundColor: '#3c8c3c' } }}>
           {t('generate')}
         </Button>
         {name && (
@@ -30,7 +30,7 @@ const MemeGenerator = () => {
             margin="normal"
             value={name}
             InputProps={{ readOnly: true }}
-            className="generated-name"
+            sx={{ mt: 2 }}
           />
         )}
       </CardContent>

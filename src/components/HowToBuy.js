@@ -1,4 +1,3 @@
-import React from 'react';
 import * as Accordion from '@radix-ui/react-accordion';
 import { CheckIcon } from '@radix-ui/react-icons';
 import '../styles/HowToBuy.css';

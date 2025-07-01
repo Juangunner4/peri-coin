@@ -6,7 +6,6 @@ import { useTranslation } from 'react-i18next';
 import i18n from 'i18next';
 import * as Dialog from '@radix-ui/react-dialog';
 import { HamburgerMenuIcon } from '@radix-ui/react-icons';
-import AudioToggle from './AudioToggle';
 
 const Navbar = () => {
   const [open, setOpen] = useState(false);
@@ -29,7 +28,6 @@ const Navbar = () => {
         <button onClick={() => changeLanguage('en')} className="language-button">English</button>
         <button onClick={() => changeLanguage('es')} className="language-button">Español</button>
       </div>
-      <AudioToggle />
 
       <div className="navbar-links desktop-links">
         <ul>
