@@ -1,7 +1,5 @@
 {
   "home": "Casa",
-  "game": "Juego",
-  "buy": "Compra en pump.fun!",
   "intro": "Perico (PERI) Presentando $Peri. Este alegre memecoin lleva a los latinos a Web3 más rápido que abuela persiguiendo su chancla perdida. Nuestro amigo emplumado de la blockchain no solo trata sobre cripto, también sobre moda, y cada transacción luce su estilo en la pasarela digital. Peri aspira a ser #1 en la cultura meme coin latina y en la moda. Algún día, Peri tendrá fans por todo el mundo coreando \u201cSaquen el perico\u201d.",
   "copyr": "2024 Perico. Todos los derechos reservados.",
   "disclaimer": "Aviso legal: $PERI es un memecoin y no tiene utilidad. No arriesgues dinero que no estás dispuesto a perder. El precio puede subir o bajar. No somos responsables del precio del token.",
@@ -9,7 +7,8 @@
   "contracto": "Dirección del Contrato",
   "contractcopied": "¡Dirección del contrato copiada!",
   "manga": "Manga",
-  "whyTitle": "¡Sáquenlo!",
+  "buyPeri": "Compra $PERI",
+  "whyTitle": "¡S\u00e1quenlo!",
   "why1": "Espíritu elevado - A Perico le encanta explorar los cielos cripto.",
   "why2": "Únete al vuelo - Súbete y grita '¡Sáquenlo!'",
   "why3": "Diversión plumífera - Celebra cada pump con estilo.",
@@ -17,6 +16,5 @@
   "stats.marketCap": "Capitalización de mercado",
   "stats.totalSupply": "Suministro total",
   "stats.circulatingSupply": "Suministro circulante",
-  "stats.holders": "Tenedores",
-  "underConstruction": "En construcción"
+  "stats.holders": "Tenedores"
 }

@@ -1,7 +1,5 @@
 {
     "home": "Home",
-    "game": "Game",
-    "buy": "Buy on pump.fun!",
     "intro": "Perico (PERI) Introducing $Peri This chirpy meme coin brings Latinos to Web3 faster than abuela chasing after her missing chancla. Our blockchain feathered friend is not just about crypto he is also about fashion, and every transaction strutting its stuff down the digital catwalk. Peri aims to be #1 in Latino meme coin culture and fashion. Peri will one day have fans all over the globe chanting \u201cSaquen el perico\u201d.",
     "copyr": "2024 Perico. All rights reserved.",
     "disclaimer": "Disclaimer: $PERI is a memecoin and has no utility. Don't risk money you are afraid of losing. The price may go up or down. We are not responsible for the token's price.",
@@ -18,6 +16,5 @@
     "stats.marketCap": "Market Cap",
     "stats.totalSupply": "Total Supply",
     "stats.circulatingSupply": "Circulating Supply",
-    "stats.holders": "Holders",
-    "underConstruction": "Under Construction"
+    "stats.holders": "Holders"
 }
