@@ -146,7 +146,7 @@ function Home() {
                 NULL PERI
               </Typography>
             </Box>
-            {/* Contract Address */}
+            {/* Holders */}
             <Box sx={{ display: 'flex', flexDirection: 'column', mt: 1 }}>
               <Typography sx={{ fontWeight: 'bold', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis', color: '#000' }}>
                 {t('stats.holders')}
@@ -177,6 +177,9 @@ function Home() {
           </Typography>
         </Box>
       </Box>
+      <Typography variant="h5" sx={{ fontWeight: 'bold' }}>
+        {t('contracto')}
+      </Typography>
       <Box id="contract" sx={{ flexGrow: 1, p: 2, display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', overflowX: 'hidden' }}>
         <Paper
           onClick={handleCopyAddress}

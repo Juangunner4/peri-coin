@@ -23,7 +23,7 @@ const WhyPerico = () => {
       <Box sx={{ display: 'flex', justifyContent: 'center', flexWrap: 'wrap', gap: 2, mt: 2 }}>
         {items.map((item, i) => (
           <Box
-            key={i}
+            key={item.key}
             sx={{
               backgroundColor: '#E8F7FF',
               p: 2,
