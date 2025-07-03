@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import logoCoin from '../images/logo.svg';
+import periMan from '../images/PeriMan.png';
 import Container from '@mui/material/Container';
 import Typography from '@mui/material/Typography';
 import { useTranslation } from 'react-i18next';
@@ -8,17 +8,30 @@ import ContentCopyIcon from '@mui/icons-material/ContentCopy';
 import WhyPerico from '../components/WhyPerico';
 import Box from '@mui/material/Box';
 import { PRIMARY_GREEN } from '../styles/theme';
-import heroVideo from '../images/PeriMotionPicture.mp4';
 
 function Home() {
   const [showCopied, setShowCopied] = useState(false);
-  const [fadeOut, setFadeOut] = useState(false);
   const contractAddress = "EdopmgERFJbgJLVTwm9fuvt2Y5DmwjbjdZhVRrM3dpFd";
   const { t } = useTranslation();
-
+  // Track active section for navigation dots
+  const [activeSection, setActiveSection] = useState('hero');
   useEffect(() => {
-    const timer = setTimeout(() => setFadeOut(true), 50000);
-    return () => clearTimeout(timer);
+    const handleScroll = () => {
+      const scrollMid = window.scrollY + window.innerHeight / 2;
+      // const heroEl is not needed for scroll detection
+      const contractEl = document.getElementById('contract');
+      const whyEl = document.getElementById('why');
+      if (whyEl && scrollMid >= whyEl.offsetTop) {
+        setActiveSection('why');
+      } else if (contractEl && scrollMid >= contractEl.offsetTop) {
+        setActiveSection('contract');
+      } else {
+        setActiveSection('hero');
+      }
+    };
+    window.addEventListener('scroll', handleScroll);
+    handleScroll();
+    return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
   const handleCopyAddress = async () => {
@@ -48,30 +61,33 @@ function Home() {
     >
       {/* Section navigation dots */}
       <Box sx={{ position: 'fixed', left: 16, top: '50%', transform: 'translateY(-50%)', display: 'flex', flexDirection: 'column', gap: 1, zIndex: 1000 }}>
-        <Box
-          onClick={() => document.getElementById('hero').scrollIntoView({ behavior: 'smooth' })}
-          sx={{ width: 12, height: 12, borderRadius: '50%', bgcolor: 'grey.500', cursor: 'pointer', '&:hover': { bgcolor: PRIMARY_GREEN } }}
-        />
-        <Box
-          onClick={() => document.getElementById('why').scrollIntoView({ behavior: 'smooth' })}
-          sx={{ width: 12, height: 12, borderRadius: '50%', bgcolor: 'grey.500', cursor: 'pointer', '&:hover': { bgcolor: PRIMARY_GREEN } }}
-        />
+        {['hero', 'contract', 'why'].map((sec) => (
+          <Box
+            key={sec}
+            onClick={() => document.getElementById(sec).scrollIntoView({ behavior: 'smooth' })}
+            sx={{
+              width: 12,
+              height: 12,
+              borderRadius: '50%',
+              bgcolor: activeSection === sec ? PRIMARY_GREEN : 'grey.500',
+              cursor: 'pointer',
+              '&:hover': { bgcolor: PRIMARY_GREEN }
+            }}
+          />
+        ))}
       </Box>
       <Box
         id="hero"
         sx={{
           position: 'relative',
-          overflow: 'hidden',
-          // push content below fixed navbar
+          overflow: 'visible',
           mt: 8,
-          // responsive padding
           p: { xs: 2, sm: 4 },
           color: '#fff',
           display: 'flex',
           flexDirection: 'column',
           alignItems: 'center',
           justifyContent: 'center',
-          // ensure at least 60vh but expand as needed
           minHeight: '60vh'
         }}
       >
@@ -80,68 +96,112 @@ function Home() {
           {/* Logo and title */}
           <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center', mb: 1 }}>
             <img
-              src={logoCoin}
+              src={periMan}
               alt="Peri Logo"
-              style={{ width: 120, height: 120, filter: 'drop-shadow(2px 2px 4px rgba(0,0,0,0.5))' }}
+              style={{ width: 250, height: 250, filter: 'drop-shadow(2px 2px 4px rgba(0,0,0,0.5))' }}
             />
-            <Typography sx={{ ml: 1, fontSize: '2rem', color: PRIMARY_GREEN, fontWeight: 'bold' }}>
-              $PERI
-            </Typography>
           </Box>
-          {/* Inline hero video */}
-          <video
-            src={heroVideo}
-            autoPlay
-            loop
-            muted
-            playsInline
-            style={{ width: '80%', maxWidth: 600, margin: '1rem 0', borderRadius: 8, boxShadow: '0 2px 8px rgba(0,0,0,0.3)' }}
-          />
+          {/* Stats grid section */}
+          <Box
+            sx={{
+              display: 'grid',
+              gridTemplateColumns: { xs: '1fr', sm: 'repeat(2, 1fr)' },
+              gapX: 2,
+              textAlign: 'center',
+              fontSize: '0.875rem',
+              p: 4,
+              maxWidth: 600,
+              mt: 1,
+              mx: 'auto',
+              backgroundColor: '#E8F7FF',
+              border: '2px solid #000',
+              borderRadius: '24px',
+              boxShadow: '0 4px 10px rgba(0,0,0,0.2)'
+            }}
+          >
+            {/* Market Cap */}
+            <Box sx={{ display: 'flex', flexDirection: 'column' }}>
+              <Typography sx={{ fontWeight: 'bold', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis', color: '#000' }}>
+                {t('stats.marketCap')}
+              </Typography>
+              <Typography sx={{ whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis', color: '#000' }}>
+                NULL
+              </Typography>
+            </Box>
+            {/* Total Supply */}
+            <Box sx={{ display: 'flex', flexDirection: 'column' }}>
+              <Typography sx={{ fontWeight: 'bold', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis', color: '#000' }}>
+                {t('stats.totalSupply')}
+              </Typography>
+              <Typography sx={{ whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis', color: '#000' }}>
+                NULL PERI
+              </Typography>
+            </Box>
+            {/* Circulating Supply */}
+            <Box sx={{ display: 'flex', flexDirection: 'column', mt: 1 }}>
+              <Typography sx={{ fontWeight: 'bold', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis', color: '#000' }}>
+                {t('stats.circulatingSupply')}
+              </Typography>
+              <Typography sx={{ whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis', color: '#000' }}>
+                NULL PERI
+              </Typography>
+            </Box>
+            {/* Contract Address */}
+            <Box sx={{ display: 'flex', flexDirection: 'column', mt: 1 }}>
+              <Typography sx={{ fontWeight: 'bold', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis', color: '#000' }}>
+                {t('stats.holders')}
+              </Typography>
+              <Typography sx={{ whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis', mr: 0.5, color: '#000' }}>
+                NULL
+              </Typography>
+            </Box>
+          </Box>
           {/* Intro text */}
           <Typography
             variant="body1"
             sx={{
-              backgroundColor: 'rgba(255,255,255,0.8)',
+              // Dark sky blue background with black border
+              backgroundColor: '#00BFFF',
               color: '#000',
-              p: 2,
-              borderRadius: 1,
+              border: '2px solid #000',
+              p: 4,
+              borderRadius: '24px',
+              boxShadow: '0 4px 10px rgba(0,0,0,0.2)',
               maxWidth: 600,
-              fontSize: 16,
-              lineHeight: 1.4,
-              mt: 1,
-              transition: 'opacity 3s ease',
-              opacity: fadeOut ? 0 : 1
+              fontSize: '1.5rem',
+              lineHeight: 1.6,
+              mt: 1
             }}
           >
             {t('intro')}
           </Typography>
         </Box>
       </Box>
-
-      <Box sx={{ flexGrow: 1, p: 2, display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', overflowX: 'hidden' }}>
+      <Box id="contract" sx={{ flexGrow: 1, p: 2, display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', overflowX: 'hidden' }}>
         <Paper
           onClick={handleCopyAddress}
           sx={{
             display: 'flex',
             alignItems: 'center',
-            p: 1,
+            p: 3,                       // increased padding for emphasis
             mb: 2,
             cursor: 'pointer',
             maxWidth: '100%',
+            border: '3px solid #000',  // bolder dark border
             backgroundColor: PRIMARY_GREEN,
             color: 'white',
-            borderRadius: '20px',
+            borderRadius: '24px',
             fontWeight: 'bold',
-            boxShadow: '0 2px 6px rgba(0,0,0,0.3)',
+            boxShadow: '0 4px 10px rgba(0,0,0,0.3)',
             transition: 'transform 0.2s ease',
             '&:hover': { transform: 'scale(1.05)' }
           }}
           elevation={3}
         >
-          <Typography variant="body2" sx={{ mr: 1 }} noWrap>
+          <Typography variant="body1" sx={{ mr: 1, fontSize: '1.25rem' }} noWrap>
             {contractAddress}
           </Typography>
-          <ContentCopyIcon fontSize="small" />
+          <ContentCopyIcon fontSize="medium" />
         </Paper>
         {showCopied && (
           <Box sx={{ position: 'fixed', bottom: 20, right: 20, backgroundColor: PRIMARY_GREEN, color: 'white', p: 1.5, borderRadius: 1, boxShadow: '0 2px 6px rgba(0,0,0,0.3)' }}>

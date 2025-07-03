@@ -12,5 +12,10 @@
   "why1": "Espíritu elevado - A Perico le encanta explorar los cielos cripto.",
   "why2": "Únete al vuelo - Súbete y grita '¡Sáquenlo!'",
   "why3": "Diversión plumífera - Celebra cada pump con estilo.",
+  "statsTitle": "Estadísticas",
+  "stats.marketCap": "Capitalización de mercado",
+  "stats.totalSupply": "Suministro total",
+  "stats.circulatingSupply": "Suministro circulante",
+  "stats.contractAddress": "Dirección del contrato",
   "underConstruction": "En construcción"
 }

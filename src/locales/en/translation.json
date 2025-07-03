@@ -13,5 +13,10 @@
     "why1": "Soaring Spirit - Perico spreads his wings across the crypto skies.",
     "why2": "Join the Flight - Hop on board and shout 'S\u00e1quenlo!'",
     "why3": "Feathered Fun - Celebrate every pump with style.",
+    "statsTitle": "Statistics",
+    "stats.marketCap": "Market Cap",
+    "stats.totalSupply": "Total Supply",
+    "stats.circulatingSupply": "Circulating Supply",
+    "stats.holders": "Holders",
     "underConstruction": "Under Construction"
 }
