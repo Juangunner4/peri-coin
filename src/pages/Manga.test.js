@@ -7,8 +7,16 @@ test('shows progress bar', () => {
   expect(screen.getByRole('progressbar')).toBeInTheDocument();
 });
 
-test('shows message on mint', () => {
+test('shows language options when mint clicked', () => {
   render(<Manga />);
   fireEvent.click(screen.getByRole('button', { name: /mint manga/i }));
+  expect(screen.getByRole('button', { name: /mint english/i })).toBeInTheDocument();
+  expect(screen.getByRole('button', { name: /mint spanish/i })).toBeInTheDocument();
+});
+
+test('shows message after choosing language', () => {
+  render(<Manga />);
+  fireEvent.click(screen.getByRole('button', { name: /mint manga/i }));
+  fireEvent.click(screen.getByRole('button', { name: /mint english/i }));
   expect(screen.getByTestId('mint-message')).toBeInTheDocument();
 });
