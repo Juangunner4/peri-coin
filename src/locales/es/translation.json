@@ -16,5 +16,10 @@
   "stats.marketCap": "Capitalización de mercado",
   "stats.totalSupply": "Suministro total",
   "stats.circulatingSupply": "Suministro circulante",
-  "stats.holders": "Tenedores"
+  "stats.holders": "Tenedores",
+  "mintManga": "Acu\u00f1ar Manga",
+  "mintEnglish": "Acu\u00f1ar en ingl\u00e9s",
+  "mintSpanish": "Acu\u00f1ar en espa\u00f1ol",
+  "mintingProgress": "La acu\u00f1aci\u00f3n no es posible todav\u00eda porque el cap\u00edtulo 1 del manga est\u00e1 en progreso.",
+  "mangaTopMessage": "El manga se est\u00e1 escribiendo y no se puede acu\u00f1ar."
 }

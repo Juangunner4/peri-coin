@@ -16,5 +16,10 @@
     "stats.marketCap": "Market Cap",
     "stats.totalSupply": "Total Supply",
     "stats.circulatingSupply": "Circulating Supply",
-    "stats.holders": "Holders"
+    "stats.holders": "Holders",
+    "mintManga": "Mint Manga",
+    "mintEnglish": "Mint English",
+    "mintSpanish": "Mint Spanish",
+    "mintingProgress": "Minting is not possible yet as the manga chapter 1 is in progress.",
+    "mangaTopMessage": "Manga is currently in writing and not mintable."
 }
