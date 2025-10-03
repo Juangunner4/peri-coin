@@ -1,9 +1,22 @@
-import { render, screen } from '@testing-library/react';
+import { render, screen, fireEvent } from '@testing-library/react';
 import Manga from './Manga';
 import '../i18n';
 
-test('renders pen icon', () => {
+test('shows progress bar', () => {
   render(<Manga />);
-  const icon = screen.getByTestId('writing-icon');
-  expect(icon).toBeInTheDocument();
+  expect(screen.getByRole('progressbar')).toBeInTheDocument();
+});
+
+test('shows language options when mint clicked', () => {
+  render(<Manga />);
+  fireEvent.click(screen.getByRole('button', { name: /mint manga/i }));
+  expect(screen.getByRole('button', { name: /mint english/i })).toBeInTheDocument();
+  expect(screen.getByRole('button', { name: /mint spanish/i })).toBeInTheDocument();
+});
+
+test('shows message after choosing language', () => {
+  render(<Manga />);
+  fireEvent.click(screen.getByRole('button', { name: /mint manga/i }));
+  fireEvent.click(screen.getByRole('button', { name: /mint english/i }));
+  expect(screen.getByTestId('mint-message')).toBeInTheDocument();
 });

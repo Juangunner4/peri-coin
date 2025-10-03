@@ -101,6 +101,55 @@ function Home() {
               style={{ width: 250, height: 250, filter: 'drop-shadow(2px 2px 4px rgba(0,0,0,0.5))' }}
             />
           </Box>
+          {/* Contract section */}
+          <Box
+            id="contract"
+            sx={{
+              width: '100%',
+              maxWidth: 600,
+              mb: { xs: 3, sm: 4 }
+            }}
+          >
+            <Typography variant="h5" sx={{ fontWeight: 'bold', mb: 1 }}>
+              {t('contracto')}
+            </Typography>
+            <Paper
+              onClick={handleCopyAddress}
+              sx={{
+                display: 'flex',
+                alignItems: { xs: 'stretch', sm: 'center' },
+                justifyContent: 'space-between',
+                flexDirection: { xs: 'column', sm: 'row' },
+                gap: { xs: 1.5, sm: 2 },
+                width: '100%',
+                p: { xs: 2, sm: 3 },
+                cursor: 'pointer',
+                border: '3px solid #000',
+                backgroundColor: PRIMARY_GREEN,
+                color: 'white',
+                borderRadius: '24px',
+                fontWeight: 'bold',
+                boxShadow: '0 4px 10px rgba(0,0,0,0.3)',
+                transition: 'transform 0.2s ease',
+                '&:hover': { transform: 'scale(1.05)' }
+              }}
+              elevation={3}
+            >
+              <Typography
+                variant="body1"
+                sx={{
+                  fontSize: { xs: '0.95rem', sm: '1.25rem' },
+                  wordBreak: 'break-all',
+                  textAlign: { xs: 'center', sm: 'left' }
+                }}
+              >
+                {contractAddress}
+              </Typography>
+              <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                <ContentCopyIcon fontSize="medium" />
+              </Box>
+            </Paper>
+          </Box>
           {/* Stats grid section */}
           <Box
             sx={{
@@ -177,41 +226,11 @@ function Home() {
           </Typography>
         </Box>
       </Box>
-      <Typography variant="h5" sx={{ fontWeight: 'bold' }}>
-        {t('contracto')}
-      </Typography>
-      <Box id="contract" sx={{ flexGrow: 1, p: 2, display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', overflowX: 'hidden' }}>
-        <Paper
-          onClick={handleCopyAddress}
-          sx={{
-            display: 'flex',
-            alignItems: 'center',
-            p: 3,                       // increased padding for emphasis
-            mb: 2,
-            cursor: 'pointer',
-            maxWidth: '100%',
-            border: '3px solid #000',  // bolder dark border
-            backgroundColor: PRIMARY_GREEN,
-            color: 'white',
-            borderRadius: '24px',
-            fontWeight: 'bold',
-            boxShadow: '0 4px 10px rgba(0,0,0,0.3)',
-            transition: 'transform 0.2s ease',
-            '&:hover': { transform: 'scale(1.05)' }
-          }}
-          elevation={3}
-        >
-          <Typography variant="body1" sx={{ mr: 1, fontSize: '1.25rem' }} noWrap>
-            {contractAddress}
-          </Typography>
-          <ContentCopyIcon fontSize="medium" />
-        </Paper>
-        {showCopied && (
-          <Box sx={{ position: 'fixed', bottom: 20, right: 20, backgroundColor: PRIMARY_GREEN, color: 'white', p: 1.5, borderRadius: 1, boxShadow: '0 2px 6px rgba(0,0,0,0.3)' }}>
-            {t('contractcopied')}
-          </Box>
-        )}
-      </Box>
+      {showCopied && (
+        <Box sx={{ position: 'fixed', bottom: 20, right: 20, backgroundColor: PRIMARY_GREEN, color: 'white', p: 1.5, borderRadius: 1, boxShadow: '0 2px 6px rgba(0,0,0,0.3)' }}>
+          {t('contractcopied')}
+        </Box>
+      )}
       <Box id="why">
         <WhyPerico />
       </Box>
