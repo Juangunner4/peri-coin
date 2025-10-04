@@ -32,13 +32,23 @@ const Navbar = () => {
           </Typography>
         </Box>
 
-        <Box sx={{ display: { xs: 'none', md: 'flex' }, gap: 1 }}>
+        <Box
+          sx={{
+            display: 'flex',
+            gap: { xs: 0.5, md: 1 },
+            alignItems: 'center',
+            mr: { xs: 1, md: 0 }
+          }}
+        >
           <Button
             onClick={() => changeLanguage('en')}
             size="small"
             sx={{
               color: 'white',
               textShadow: '1px 1px 2px rgba(0,0,0,0.5)',
+              fontSize: { xs: '0.65rem', sm: '0.75rem', md: '0.8rem' },
+              minWidth: 'auto',
+              px: { xs: 1, sm: 1.5 },
               '&:hover': { border: '2px solid #388e3c' }
             }}
           >
@@ -50,6 +60,9 @@ const Navbar = () => {
             sx={{
               color: 'white',
               textShadow: '1px 1px 2px rgba(0,0,0,0.5)',
+              fontSize: { xs: '0.65rem', sm: '0.75rem', md: '0.8rem' },
+              minWidth: 'auto',
+              px: { xs: 1, sm: 1.5 },
               '&:hover': { border: '2px solid #388e3c' }
             }}
           >
@@ -86,7 +99,41 @@ const Navbar = () => {
           <Dialog.Portal>
             <Dialog.Overlay style={{ backgroundColor: 'rgba(0,0,0,0.4)', position: 'fixed', inset: 0, zIndex: 1200 }} />
             <Dialog.Content style={{ backgroundColor: PRIMARY_GREEN, position: 'fixed', top: 0, left: 0, height: '100%', width: '200px', padding: '20px', zIndex: 1201 }}>
-            <Box component="ul" sx={{ listStyle: 'none', p: 0, m: 0, display: 'flex', flexDirection: 'column', gap: 1 }}>
+              <Box sx={{ display: 'flex', gap: 1, mb: 2 }}>
+                <Button
+                  onClick={() => {
+                    changeLanguage('en');
+                    setOpen(false);
+                  }}
+                  size="small"
+                  sx={{
+                    color: 'white',
+                    textShadow: '1px 1px 2px rgba(0,0,0,0.5)',
+                    minWidth: 'auto',
+                    px: 1.5,
+                    '&:hover': { border: '2px solid #388e3c' }
+                  }}
+                >
+                  English
+                </Button>
+                <Button
+                  onClick={() => {
+                    changeLanguage('es');
+                    setOpen(false);
+                  }}
+                  size="small"
+                  sx={{
+                    color: 'white',
+                    textShadow: '1px 1px 2px rgba(0,0,0,0.5)',
+                    minWidth: 'auto',
+                    px: 1.5,
+                    '&:hover': { border: '2px solid #388e3c' }
+                  }}
+                >
+                  Español
+                </Button>
+              </Box>
+              <Box component="ul" sx={{ listStyle: 'none', p: 0, m: 0, display: 'flex', flexDirection: 'column', gap: 1 }}>
                 <li><Button component={Link} to="/" onClick={() => setOpen(false)} sx={{ color: 'white', '&:hover': { border: '2px solid #388e3c' } }}>{t('home')}</Button></li>
                 <li><Button component={Link} to="/manga" onClick={() => setOpen(false)} sx={{ color: 'white', '&:hover': { border: '2px solid #388e3c' } }}>{t('manga')}</Button></li>
                 <li>
