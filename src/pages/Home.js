@@ -138,7 +138,13 @@ function Home() {
               <Typography
                 variant="body1"
                 sx={{
-                  fontSize: { xs: '0.95rem', sm: '1.25rem' },
+                  fontSize: { xs: '0.7rem', sm: '0.95rem', md: '1.25rem' },
+                  '@media (max-width:700px)': {
+                    fontSize: '0.85rem'
+                  },
+                  '@media (max-width:500px)': {
+                    fontSize: '0.7rem'
+                  },
                   wordBreak: 'break-all',
                   textAlign: { xs: 'center', sm: 'left' }
                 }}
@@ -227,7 +233,7 @@ function Home() {
         </Box>
       </Box>
       {showCopied && (
-        <Box sx={{ position: 'fixed', bottom: 20, right: 20, backgroundColor: PRIMARY_GREEN, color: 'white', p: 1.5, borderRadius: 1, boxShadow: '0 2px 6px rgba(0,0,0,0.3)' }}>
+        <Box sx={{ position: 'fixed', bottom: 20, right: 20, backgroundColor: PRIMARY_GREEN, color: 'white', p: 1.5, borderRadius: 1, boxShadow: '0 2px 6px rgba(0,0,0,0.3)', zIndex: 2000 }}>
           {t('contractcopied')}
         </Box>
       )}
