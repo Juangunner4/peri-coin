@@ -23,7 +23,20 @@ const Manga = () => {
   };
 
   return (
-    <Box sx={{ p: 2, textAlign: 'center' }}>
+    <Box
+      sx={{
+        position: 'relative',
+        p: { xs: 3, sm: 5 },
+        textAlign: 'center',
+        maxWidth: 640,
+        mx: 'auto',
+        backgroundColor: 'background.paper',
+        borderRadius: { xs: 2, sm: 3 },
+        boxShadow: { xs: '0px 12px 30px rgba(15, 23, 42, 0.12)', sm: '0px 18px 45px rgba(15, 23, 42, 0.14)' },
+        overflow: 'hidden',
+        minHeight: { xs: 360, sm: 420 }
+      }}
+    >
       <Typography sx={{ fontWeight: 'bold', mb: 1 }} data-testid="top-message">
         {t('mangaTopMessage')}
       </Typography>
@@ -47,6 +60,54 @@ const Manga = () => {
           {message}
         </Typography>
       )}
+      <Box
+        data-testid="manga-overlay"
+        sx={{
+          position: 'absolute',
+          inset: 0,
+          backgroundColor: 'rgba(15, 23, 42, 0.55)',
+          color: 'common.white',
+          display: 'flex',
+          flexDirection: 'column',
+          justifyContent: 'center',
+          alignItems: 'center',
+          textAlign: 'center',
+          px: { xs: 3, sm: 6 },
+          gap: { xs: 1.5, sm: 2 },
+          pointerEvents: 'none',
+          backdropFilter: 'blur(2px)',
+          zIndex: 1
+        }}
+      >
+        <Typography
+          variant="h3"
+          component="p"
+          sx={{
+            fontWeight: 700,
+            letterSpacing: 2,
+            textTransform: 'uppercase',
+            fontSize: { xs: '1.75rem', sm: '2.5rem' },
+            '@media (max-width:700px)': {
+              fontSize: '2rem'
+            }
+          }}
+        >
+          {t('mangaOverlayTitle')}
+        </Typography>
+        <Typography
+          variant="body1"
+          component="p"
+          sx={{
+            maxWidth: 420,
+            fontSize: { xs: '0.95rem', sm: '1.05rem' },
+            '@media (max-width:700px)': {
+              fontSize: '1rem'
+            }
+          }}
+        >
+          {t('mangaOverlaySubtitle')}
+        </Typography>
+      </Box>
     </Box>
   );
 };

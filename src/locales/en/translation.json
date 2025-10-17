@@ -21,5 +21,7 @@
     "mintEnglish": "Mint English",
     "mintSpanish": "Mint Spanish",
     "mintingProgress": "Minting is not possible yet as the manga chapter 1 is in progress.",
-    "mangaTopMessage": "Manga is currently in writing and not mintable."
+    "mangaTopMessage": "Manga is currently in writing and not mintable.",
+    "mangaOverlayTitle": "Coming Soon",
+    "mangaOverlaySubtitle": "We are crafting the manga experience right now. Check back soon to be among the first to mint chapter one."
 }
