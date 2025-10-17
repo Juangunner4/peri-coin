@@ -8,11 +8,21 @@ import ContentCopyIcon from '@mui/icons-material/ContentCopy';
 import WhyPerico from '../components/WhyPerico';
 import Box from '@mui/material/Box';
 import { PRIMARY_GREEN } from '../styles/theme';
+import { fetchMarketStats } from '../services/market';
 
 function Home() {
   const [showCopied, setShowCopied] = useState(false);
   const contractAddress = "EdopmgERFJbgJLVTwm9fuvt2Y5DmwjbjdZhVRrM3dpFd";
   const { t } = useTranslation();
+  const [marketStats, setMarketStats] = useState({
+    marketCap: null,
+    volume24h: null,
+    priceChange24h: null,
+    buys24h: null,
+    sells24h: null,
+  });
+  const [isMarketLoading, setIsMarketLoading] = useState(true);
+  const [marketError, setMarketError] = useState(false);
   // Track active section for navigation dots
   const [activeSection, setActiveSection] = useState('hero');
   useEffect(() => {
@@ -33,6 +43,80 @@ function Home() {
     handleScroll();
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+
+  useEffect(() => {
+    let isMounted = true;
+
+    const loadMarketStats = async () => {
+      try {
+        const stats = await fetchMarketStats(contractAddress);
+
+        if (isMounted) {
+          setMarketStats(stats);
+          setMarketError(false);
+        }
+      } catch (error) {
+        console.error('Error fetching market data', error);
+
+        if (isMounted) {
+          setMarketError(true);
+        }
+      } finally {
+        if (isMounted) {
+          setIsMarketLoading(false);
+        }
+      }
+    };
+
+    loadMarketStats();
+
+    return () => {
+      isMounted = false;
+    };
+  }, [contractAddress]);
+
+  const renderStat = (value, formatter) => {
+    if (isMarketLoading) {
+      return 'Loading...';
+    }
+
+    if (marketError || value === null || value === undefined) {
+      return '--';
+    }
+
+    return formatter(value);
+  };
+
+  const formatCurrency = (amount) => {
+    if (!Number.isFinite(amount)) {
+      return '--';
+    }
+
+    return `$${Intl.NumberFormat('en-US', {
+      notation: 'compact',
+      maximumFractionDigits: 2,
+    }).format(amount)}`;
+  };
+
+  const formatPercent = (value) => {
+    if (!Number.isFinite(value)) {
+      return '--';
+    }
+
+    const formatted = Intl.NumberFormat('en-US', {
+      maximumFractionDigits: 2,
+    }).format(value);
+
+    return `${value > 0 ? '+' : ''}${formatted}%`;
+  };
+
+  const formatInteger = (value) => {
+    if (!Number.isFinite(value)) {
+      return '--';
+    }
+
+    return Intl.NumberFormat('en-US').format(value);
+  };
 
   const handleCopyAddress = async () => {
     try {
@@ -180,34 +264,43 @@ function Home() {
                 {t('stats.marketCap')}
               </Typography>
               <Typography sx={{ whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis', color: '#000' }}>
-                NULL
+                {renderStat(marketStats.marketCap, formatCurrency)}
               </Typography>
             </Box>
-            {/* Total Supply */}
+            {/* Volume 24h */}
             <Box sx={{ display: 'flex', flexDirection: 'column' }}>
               <Typography sx={{ fontWeight: 'bold', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis', color: '#000' }}>
-                {t('stats.totalSupply')}
+                {t('stats.volume24h')}
               </Typography>
               <Typography sx={{ whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis', color: '#000' }}>
-                NULL PERI
+                {renderStat(marketStats.volume24h, formatCurrency)}
               </Typography>
             </Box>
-            {/* Circulating Supply */}
+            {/* Price Change 24h */}
             <Box sx={{ display: 'flex', flexDirection: 'column', mt: 1 }}>
               <Typography sx={{ fontWeight: 'bold', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis', color: '#000' }}>
-                {t('stats.circulatingSupply')}
+                {t('stats.priceChange24h')}
               </Typography>
               <Typography sx={{ whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis', color: '#000' }}>
-                NULL PERI
+                {renderStat(marketStats.priceChange24h, formatPercent)}
               </Typography>
             </Box>
-            {/* Holders */}
+            {/* h24 Buys */}
             <Box sx={{ display: 'flex', flexDirection: 'column', mt: 1 }}>
               <Typography sx={{ fontWeight: 'bold', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis', color: '#000' }}>
-                {t('stats.holders')}
+                {t('stats.h24Buys')}
               </Typography>
               <Typography sx={{ whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis', mr: 0.5, color: '#000' }}>
-                NULL
+                {renderStat(marketStats.buys24h, formatInteger)}
+              </Typography>
+            </Box>
+            {/* h24 Sells */}
+            <Box sx={{ display: 'flex', flexDirection: 'column', mt: 1 }}>
+              <Typography sx={{ fontWeight: 'bold', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis', color: '#000' }}>
+                {t('stats.h24Sells')}
+              </Typography>
+              <Typography sx={{ whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis', mr: 0.5, color: '#000' }}>
+                {renderStat(marketStats.sells24h, formatInteger)}
               </Typography>
             </Box>
           </Box>
