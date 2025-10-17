@@ -7,6 +7,11 @@ test('shows progress bar', () => {
   expect(screen.getByRole('progressbar')).toBeInTheDocument();
 });
 
+test('displays coming soon overlay message', () => {
+  render(<Manga />);
+  expect(screen.getByTestId('manga-overlay')).toHaveTextContent(/coming soon/i);
+});
+
 test('shows language options when mint clicked', () => {
   render(<Manga />);
   fireEvent.click(screen.getByRole('button', { name: /mint manga/i }));

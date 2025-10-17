@@ -21,5 +21,7 @@
   "mintEnglish": "Acu\u00f1ar en ingl\u00e9s",
   "mintSpanish": "Acu\u00f1ar en espa\u00f1ol",
   "mintingProgress": "La acu\u00f1aci\u00f3n no es posible todav\u00eda porque el cap\u00edtulo 1 del manga est\u00e1 en progreso.",
-  "mangaTopMessage": "El manga se est\u00e1 escribiendo y no se puede acu\u00f1ar."
+  "mangaTopMessage": "El manga se est\u00e1 escribiendo y no se puede acu\u00f1ar.",
+  "mangaOverlayTitle": "Pr\u00f3ximamente",
+  "mangaOverlaySubtitle": "Estamos creando la experiencia del manga en este momento. Vuelve pronto para ser de los primeros en acu\u00f1ar el cap\u00edtulo uno."
 }
