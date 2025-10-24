@@ -17,7 +17,10 @@ export const fetchMarketStats = async (tokenAddress) => {
   }
 
   const data = await response.json();
-  const pair = data?.pairs?.[0];
+
+  const pair = Array.isArray(data)
+    ? data[0]
+    : data?.pairs?.[0] ?? data?.data?.pairs?.[0];
 
   if (!pair) {
     throw new Error('No market data available');
