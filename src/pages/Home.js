@@ -8,21 +8,12 @@ import ContentCopyIcon from '@mui/icons-material/ContentCopy';
 import WhyPerico from '../components/WhyPerico';
 import Box from '@mui/material/Box';
 import { PRIMARY_GREEN } from '../styles/theme';
-import { fetchMarketStats } from '../services/market';
+import PumpFunFeed from '../components/PumpFunFeed';
 
 function Home() {
   const [showCopied, setShowCopied] = useState(false);
   const contractAddress = "EdopmgERFJbgJLVTwm9fuvt2Y5DmwjbjdZhVRrM3dpFd";
   const { t } = useTranslation();
-  const [marketStats, setMarketStats] = useState({
-    marketCap: null,
-    volume24h: null,
-    priceChange24h: null,
-    buys24h: null,
-    sells24h: null,
-  });
-  const [isMarketLoading, setIsMarketLoading] = useState(true);
-  const [marketError, setMarketError] = useState(false);
   // Track active section for navigation dots
   const [activeSection, setActiveSection] = useState('hero');
   useEffect(() => {
@@ -43,80 +34,6 @@ function Home() {
     handleScroll();
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
-
-  useEffect(() => {
-    let isMounted = true;
-
-    const loadMarketStats = async () => {
-      try {
-        const stats = await fetchMarketStats(contractAddress);
-
-        if (isMounted) {
-          setMarketStats(stats);
-          setMarketError(false);
-        }
-      } catch (error) {
-        console.error('Error fetching market data', error);
-
-        if (isMounted) {
-          setMarketError(true);
-        }
-      } finally {
-        if (isMounted) {
-          setIsMarketLoading(false);
-        }
-      }
-    };
-
-    loadMarketStats();
-
-    return () => {
-      isMounted = false;
-    };
-  }, [contractAddress]);
-
-  const renderStat = (value, formatter) => {
-    if (isMarketLoading) {
-      return 'Loading...';
-    }
-
-    if (marketError || value === null || value === undefined) {
-      return '--';
-    }
-
-    return formatter(value);
-  };
-
-  const formatCurrency = (amount) => {
-    if (!Number.isFinite(amount)) {
-      return '--';
-    }
-
-    return `$${Intl.NumberFormat('en-US', {
-      notation: 'compact',
-      maximumFractionDigits: 2,
-    }).format(amount)}`;
-  };
-
-  const formatPercent = (value) => {
-    if (!Number.isFinite(value)) {
-      return '--';
-    }
-
-    const formatted = Intl.NumberFormat('en-US', {
-      maximumFractionDigits: 2,
-    }).format(value);
-
-    return `${value > 0 ? '+' : ''}${formatted}%`;
-  };
-
-  const formatInteger = (value) => {
-    if (!Number.isFinite(value)) {
-      return '--';
-    }
-
-    return Intl.NumberFormat('en-US').format(value);
-  };
 
   const handleCopyAddress = async () => {
     try {
@@ -240,81 +157,17 @@ function Home() {
               </Box>
             </Paper>
           </Box>
-          {/* Stats grid section */}
-          <Box
-            sx={{
-              display: 'grid',
-              gridTemplateColumns: { xs: '1fr', sm: 'repeat(2, 1fr)' },
-              gapX: 2,
-              textAlign: 'center',
-              fontSize: '0.875rem',
-              p: 4,
-              maxWidth: 600,
-              mt: 1,
-              mx: 'auto',
-              backgroundColor: '#E8F7FF',
-              border: '2px solid #000',
-              borderRadius: '24px',
-              boxShadow: '0 4px 10px rgba(0,0,0,0.2)'
-            }}
-          >
-            {/* Market Cap */}
-            <Box sx={{ display: 'flex', flexDirection: 'column' }}>
-              <Typography sx={{ fontWeight: 'bold', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis', color: '#000' }}>
-                {t('stats.marketCap')}
-              </Typography>
-              <Typography sx={{ whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis', color: '#000' }}>
-                {renderStat(marketStats.marketCap, formatCurrency)}
-              </Typography>
-            </Box>
-            {/* Volume 24h */}
-            <Box sx={{ display: 'flex', flexDirection: 'column' }}>
-              <Typography sx={{ fontWeight: 'bold', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis', color: '#000' }}>
-                {t('stats.volume24h')}
-              </Typography>
-              <Typography sx={{ whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis', color: '#000' }}>
-                {renderStat(marketStats.volume24h, formatCurrency)}
-              </Typography>
-            </Box>
-            {/* Price Change 24h */}
-            <Box sx={{ display: 'flex', flexDirection: 'column', mt: 1 }}>
-              <Typography sx={{ fontWeight: 'bold', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis', color: '#000' }}>
-                {t('stats.priceChange24h')}
-              </Typography>
-              <Typography sx={{ whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis', color: '#000' }}>
-                {renderStat(marketStats.priceChange24h, formatPercent)}
-              </Typography>
-            </Box>
-            {/* h24 Buys */}
-            <Box sx={{ display: 'flex', flexDirection: 'column', mt: 1 }}>
-              <Typography sx={{ fontWeight: 'bold', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis', color: '#000' }}>
-                {t('stats.h24Buys')}
-              </Typography>
-              <Typography sx={{ whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis', mr: 0.5, color: '#000' }}>
-                {renderStat(marketStats.buys24h, formatInteger)}
-              </Typography>
-            </Box>
-            {/* h24 Sells */}
-            <Box sx={{ display: 'flex', flexDirection: 'column', mt: 1 }}>
-              <Typography sx={{ fontWeight: 'bold', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis', color: '#000' }}>
-                {t('stats.h24Sells')}
-              </Typography>
-              <Typography sx={{ whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis', mr: 0.5, color: '#000' }}>
-                {renderStat(marketStats.sells24h, formatInteger)}
-              </Typography>
-            </Box>
-          </Box>
+          <PumpFunFeed />
           {/* Intro text */}
           <Typography
             variant="body1"
             sx={{
-              // Dark sky blue background with black border
-              backgroundColor: '#00BFFF',
-              color: '#000',
-              border: '2px solid #000',
+              backgroundColor: PRIMARY_GREEN,
+              color: 'white',
+              border: '3px solid #000',
               p: 4,
               borderRadius: '24px',
-              boxShadow: '0 4px 10px rgba(0,0,0,0.2)',
+              boxShadow: '0 4px 10px rgba(0,0,0,0.3)',
               maxWidth: 600,
               fontSize: '1.5rem',
               lineHeight: 1.6,
