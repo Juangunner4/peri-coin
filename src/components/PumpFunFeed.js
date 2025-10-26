@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import Typography from '@mui/material/Typography';
-import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
 import Paper from '@mui/material/Paper';
 import { fetchMarketStats } from '../services/market';
@@ -87,23 +86,26 @@ const PumpFunFeed = () => {
       sx={{
         my: 2,
         width: '100%',
+        maxWidth: 600,
+        mx: 'auto',
         border: '3px solid #000',
         backgroundColor: PRIMARY_GREEN,
         color: 'white',
         borderRadius: '24px',
         boxShadow: '0 4px 10px rgba(0,0,0,0.3)',
-        p: { xs: 2, sm: 3 }
+        p: { xs: 3, sm: 4 }
       }}
       elevation={3}
     >
-      <Box sx={{ textAlign: 'center', mb: 2 }}>
-        <Typography variant="h6" sx={{ fontWeight: 'bold' }}>
-          Pump.fun Token Stats
-        </Typography>
-      </Box>
-      <Grid container spacing={2}>
+      <Grid container spacing={2} justifyContent="center">
         {metrics.map(({ label, value }) => (
-          <Grid item xs={12} sm={6} key={label}>
+          <Grid
+            item
+            xs={12}
+            sm={6}
+            key={label}
+            sx={{ textAlign: { xs: 'center', sm: 'left' } }}
+          >
             <Typography
               variant="overline"
               display="block"

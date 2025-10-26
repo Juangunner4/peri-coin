@@ -108,7 +108,8 @@ function Home() {
             sx={{
               width: '100%',
               maxWidth: 600,
-              mb: { xs: 3, sm: 4 }
+              mb: { xs: 3, sm: 4 },
+              mx: 'auto'
             }}
           >
             <Typography variant="h5" sx={{ fontWeight: 'bold', mb: 1 }}>
@@ -123,7 +124,7 @@ function Home() {
                 flexDirection: { xs: 'column', sm: 'row' },
                 gap: { xs: 1.5, sm: 2 },
                 width: '100%',
-                p: { xs: 2, sm: 3 },
+                p: { xs: 3, sm: 4 },
                 cursor: 'pointer',
                 border: '3px solid #000',
                 backgroundColor: PRIMARY_GREEN,
