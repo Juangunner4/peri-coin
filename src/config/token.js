@@ -1,4 +1,4 @@
-export const CONTRACT_ADDRESS = 'HB72Tnj3H9n1l16QeD6PEwG8iNnX5vZp4tfj8eUk17Fa';
+export const CONTRACT_ADDRESS = 'EdopmgERFJbgJLVTwm9fuvt2Y5DmwjbjdZhVRrM3dpFd';
 
 export const PUMP_FUN_URL = `https://www.pump.fun/${CONTRACT_ADDRESS}`;
 
