@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import Typography from '@mui/material/Typography';
 import Grid from '@mui/material/Grid';
 import Paper from '@mui/material/Paper';
+import Box from '@mui/material/Box';
 import { useTranslation } from 'react-i18next';
 import { fetchMarketStats } from '../services/market';
 import { PRIMARY_GREEN } from '../styles/theme';
@@ -99,6 +100,14 @@ const PumpFunFeed = () => {
       }}
       elevation={3}
     >
+      <Box sx={{ textAlign: 'center', mb: { xs: 1.5, sm: 2 } }}>
+        <Typography
+          variant="h6"
+          sx={{ fontWeight: 'bold', textTransform: 'uppercase', letterSpacing: 1 }}
+        >
+          {t('statsTitle')}
+        </Typography>
+      </Box>
       <Grid
         container
         rowSpacing={2}
@@ -117,7 +126,8 @@ const PumpFunFeed = () => {
               display: 'flex',
               flexDirection: 'column',
               alignItems: 'center',
-              gap: 0.5
+              gap: 0.5,
+              px: { xs: 1, sm: 0 }
             }}
           >
             <Typography
@@ -127,7 +137,9 @@ const PumpFunFeed = () => {
             >
               {label}
             </Typography>
-            <Typography variant="h6">{value}</Typography>
+            <Typography variant="h6" sx={{ wordBreak: 'break-word' }}>
+              {value}
+            </Typography>
           </Grid>
         ))}
       </Grid>

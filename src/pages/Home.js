@@ -62,7 +62,18 @@ function Home() {
       }}
     >
       {/* Section navigation dots */}
-      <Box sx={{ position: 'fixed', left: 16, top: '50%', transform: 'translateY(-50%)', display: 'flex', flexDirection: 'column', gap: 1, zIndex: 1000 }}>
+      <Box
+        sx={{
+          position: 'fixed',
+          left: 16,
+          top: '50%',
+          transform: 'translateY(-50%)',
+          display: { xs: 'none', sm: 'flex' },
+          flexDirection: 'column',
+          gap: 1,
+          zIndex: 1000
+        }}
+      >
         {['hero', 'contract', 'why'].map((sec) => (
           <Box
             key={sec}
@@ -90,7 +101,8 @@ function Home() {
           flexDirection: 'column',
           alignItems: 'center',
           justifyContent: 'center',
-          minHeight: '60vh'
+          minHeight: '60vh',
+          width: '100%'
         }}
       >
         {/* Hero content overlay */}
@@ -173,7 +185,8 @@ function Home() {
               maxWidth: 600,
               fontSize: '1.5rem',
               lineHeight: 1.6,
-              mt: 1
+              mt: 1,
+              mx: 'auto'
             }}
           >
             {t('intro')}
