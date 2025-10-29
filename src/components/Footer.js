@@ -3,6 +3,7 @@ import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
 import { useTranslation } from 'react-i18next';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
+import { SOLSCAN_URL } from '../config/token';
 
 
 const Footer = () => {
@@ -15,7 +16,7 @@ const Footer = () => {
       <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', mt: 1, flexWrap: 'wrap' }}>
         <Box sx={{ flex: 1 }}>
           <a
-            href="https://solscan.io/address/EdopmgERFJbgJLVTwm9fuvt2Y5DmwjbjdZhVRrM3dpFd"
+            href={SOLSCAN_URL}
             target="_blank"
             rel="noopener noreferrer"
             style={{ color: 'black', textDecoration: 'none' }}

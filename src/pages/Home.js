@@ -9,10 +9,11 @@ import WhyPerico from '../components/WhyPerico';
 import Box from '@mui/material/Box';
 import { PRIMARY_GREEN } from '../styles/theme';
 import PumpFunFeed from '../components/PumpFunFeed';
+import { CONTRACT_ADDRESS } from '../config/token';
 
 function Home() {
   const [showCopied, setShowCopied] = useState(false);
-  const contractAddress = "EdopmgERFJbgJLVTwm9fuvt2Y5DmwjbjdZhVRrM3dpFd";
+  const contractAddress = CONTRACT_ADDRESS;
   const { t } = useTranslation();
   // Track active section for navigation dots
   const [activeSection, setActiveSection] = useState('hero');

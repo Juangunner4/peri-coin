@@ -2,10 +2,10 @@ import React, { useEffect, useState } from 'react';
 import Typography from '@mui/material/Typography';
 import Grid from '@mui/material/Grid';
 import Paper from '@mui/material/Paper';
+import { useTranslation } from 'react-i18next';
 import { fetchMarketStats } from '../services/market';
 import { PRIMARY_GREEN } from '../styles/theme';
-
-const PUMP_TOKEN_ADDRESS = 'EdopmgERFJbgJLVTwm9fuvt2Y5DmwjbjdZhVRrM3dpFd';
+import { CONTRACT_ADDRESS } from '../config/token';
 
 const formatCurrency = (value) => {
   if (value === null || value === undefined) return '--';
@@ -44,6 +44,8 @@ const formatInteger = (value) => {
 };
 
 const PumpFunFeed = () => {
+  const { t } = useTranslation();
+
   const [stats, setStats] = useState({
     marketCap: null,
     priceChange24h: null,
@@ -56,7 +58,7 @@ const PumpFunFeed = () => {
   useEffect(() => {
     let isActive = true;
 
-    fetchMarketStats(PUMP_TOKEN_ADDRESS)
+    fetchMarketStats(CONTRACT_ADDRESS)
       .then((data) => {
         if (!isActive) return;
         setStats(data);
@@ -73,12 +75,12 @@ const PumpFunFeed = () => {
   }, []);
 
   const metrics = [
-    { label: 'Market Cap', value: formatCurrency(stats.marketCap) },
-    { label: 'Ticker', value: stats.ticker ?? '--' },
-    { label: '24h Change', value: formatPercent(stats.priceChange24h) },
-    { label: '24h Volume', value: formatCurrency(stats.volume24h) },
-    { label: '24h Buys', value: formatInteger(stats.buys24h) },
-    { label: '24h Sells', value: formatInteger(stats.sells24h) }
+    { label: t('stats.marketCap'), value: formatCurrency(stats.marketCap) },
+    { label: t('stats.ticker'), value: stats.ticker ?? '--' },
+    { label: t('stats.priceChange24h'), value: formatPercent(stats.priceChange24h) },
+    { label: t('stats.volume24h'), value: formatCurrency(stats.volume24h) },
+    { label: t('stats.h24Buys'), value: formatInteger(stats.buys24h) },
+    { label: t('stats.h24Sells'), value: formatInteger(stats.sells24h) }
   ];
 
   return (
@@ -97,14 +99,26 @@ const PumpFunFeed = () => {
       }}
       elevation={3}
     >
-      <Grid container spacing={2} justifyContent="center">
+      <Grid
+        container
+        rowSpacing={2}
+        columnSpacing={{ xs: 0, sm: 2 }}
+        justifyContent="center"
+        sx={{ width: '100%', margin: 0 }}
+      >
         {metrics.map(({ label, value }) => (
           <Grid
             item
             xs={12}
             sm={6}
             key={label}
-            sx={{ textAlign: { xs: 'center', sm: 'left' } }}
+            sx={{
+              textAlign: 'center',
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'center',
+              gap: 0.5
+            }}
           >
             <Typography
               variant="overline"
