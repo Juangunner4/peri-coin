@@ -12,6 +12,7 @@ import Button from '@mui/material/Button';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import { PRIMARY_GREEN } from '../styles/theme';
+import { PUMP_FUN_URL } from '../config/token';
 
 const Navbar = () => {
   const [open, setOpen] = useState(false);
@@ -76,7 +77,7 @@ const Navbar = () => {
           <Button
             variant="contained"
             component="a"
-            href="https://www.pump.fun/EdopmgERFJbgJLVTwm9fuvt2Y5DmwjbjdZhVRrM3dpFd"
+            href={PUMP_FUN_URL}
             target="_blank"
             rel="noopener noreferrer"
             sx={{
@@ -139,7 +140,7 @@ const Navbar = () => {
                 <li>
                   <Button
                     component="a"
-                    href="https://www.pump.fun/EdopmgERFJbgJLVTwm9fuvt2Y5DmwjbjdZhVRrM3dpFd"
+                    href={PUMP_FUN_URL}
                     target="_blank"
                     rel="noopener noreferrer"
                     onClick={() => setOpen(false)}
