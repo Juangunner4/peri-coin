@@ -1,18 +1,18 @@
 import { useTranslation } from 'react-i18next';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
-import PublicIcon from '@mui/icons-material/Public';
-import FlightTakeoffIcon from '@mui/icons-material/FlightTakeoff';
-import CelebrationIcon from '@mui/icons-material/Celebration';
 import { PRIMARY_GREEN } from '../styles/theme';
+import PeriDice from '../images/PeriDice.svg';
+import PeriBillsOnFloor from '../images/PeriBillsOnFloor .svg';
+import Pericoin from '../images/Pericoin.png';
 
 const WhyPerico = () => {
   const { t } = useTranslation();
 
   const items = [
-    { icon: <PublicIcon sx={{ fontSize: 48, color: PRIMARY_GREEN }} />, key: 'why1' },
-    { icon: <FlightTakeoffIcon sx={{ fontSize: 48, color: PRIMARY_GREEN }} />, key: 'why2' },
-    { icon: <CelebrationIcon sx={{ fontSize: 48, color: PRIMARY_GREEN }} />, key: 'why3' }
+    { icon: <Box component="img" src={PeriDice} alt="Peri Dice" sx={{ width: 80, height: 80, objectFit: 'contain' }} />, key: 'why1' },
+    { icon: <Box component="img" src={PeriBillsOnFloor} alt="Peri Bills" sx={{ width: 80, height: 80, objectFit: 'contain' }} />, key: 'why2' },
+    { icon: <Box component="img" src={Pericoin} alt="Pericoin" sx={{ width: 80, height: 80, objectFit: 'contain' }} />, key: 'why3' }
   ];
 
   return (

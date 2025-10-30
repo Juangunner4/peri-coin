@@ -9,6 +9,7 @@ import { CONTRACT_ADDRESS } from '../config/token';
 import ContractAddressCard from '../components/ContractAddressCard';
 import IntroductionCard from '../components/IntroductionCard';
 import TokenInformation from '../components/TokenInformation';
+import Socials from '../components/Socials';
 
 function Home() {
   const [showCopied, setShowCopied] = useState(false);
@@ -112,6 +113,10 @@ function Home() {
           {/* Contract section */}
           <Box id="contract" sx={{ width: '100%', mb: { xs: 3, sm: 4 } }}>
             <ContractAddressCard contractAddress={contractAddress} onCopied={handleContractCopied} />
+          </Box>
+          {/* Socials section */}
+          <Box sx={{ width: '100%', mb: { xs: 3, sm: 4 } }}>
+            <Socials />
           </Box>
           <Box sx={{ width: '100%', mb: { xs: 3, sm: 4 } }}>
             <TokenInformation />

@@ -8,7 +8,7 @@ const cardSx = {
   border: '2px solid #000',
   borderRadius: '24px',
   boxShadow: '0 4px 10px rgba(0,0,0,0.2)',
-  width: '100%',
+  width: '70%',
   maxWidth: 600,
   mx: 'auto',
   p: { xs: 3, sm: 4 },
