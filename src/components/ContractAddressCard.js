@@ -37,7 +37,8 @@ const addressBoxSx = {
 
 const addressTypographySx = {
   fontSize: { xs: '0.75rem', sm: '0.95rem', md: '1.15rem' },
-  wordBreak: 'break-all'
+  wordBreak: 'break-all',
+  color: '#000'
 };
 
 const ContractAddressCard = ({ contractAddress, onCopied }) => {
