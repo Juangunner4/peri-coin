@@ -1,12 +1,26 @@
 import React, { useEffect, useState } from 'react';
-import Typography from '@mui/material/Typography';
-import Grid from '@mui/material/Grid';
-import Paper from '@mui/material/Paper';
 import Box from '@mui/material/Box';
+import Grid from '@mui/material/Grid';
+import Typography from '@mui/material/Typography';
 import { useTranslation } from 'react-i18next';
 import { fetchMarketStats } from '../services/market';
 import { PRIMARY_GREEN } from '../styles/theme';
 import { CONTRACT_ADDRESS } from '../config/token';
+
+const cardSx = {
+  backgroundColor: '#E8F7FF',
+  border: '2px solid #000',
+  borderRadius: '24px',
+  boxShadow: '0 4px 10px rgba(0,0,0,0.2)',
+  width: '100%',
+  maxWidth: 600,
+  mx: 'auto',
+  p: { xs: 3, sm: 4 },
+  display: 'flex',
+  flexDirection: 'column',
+  gap: 2,
+  textAlign: 'center'
+};
 
 const formatCurrency = (value) => {
   if (value === null || value === undefined) return '--';
@@ -44,7 +58,7 @@ const formatInteger = (value) => {
   return new Intl.NumberFormat('en-US').format(num);
 };
 
-const PumpFunFeed = () => {
+const TokenInformation = () => {
   const { t } = useTranslation();
 
   const [stats, setStats] = useState({
@@ -85,29 +99,13 @@ const PumpFunFeed = () => {
   ];
 
   return (
-    <Paper
-      sx={{
-        my: 2,
-        width: '100%',
-        maxWidth: 600,
-        mx: 'auto',
-        border: '3px solid #000',
-        backgroundColor: PRIMARY_GREEN,
-        color: 'white',
-        borderRadius: '24px',
-        boxShadow: '0 4px 10px rgba(0,0,0,0.3)',
-        p: { xs: 3, sm: 4 }
-      }}
-      elevation={3}
-    >
-      <Box sx={{ textAlign: 'center', mb: { xs: 1.5, sm: 2 } }}>
-        <Typography
-          variant="h6"
-          sx={{ fontWeight: 'bold', textTransform: 'uppercase', letterSpacing: 1 }}
-        >
-          {t('statsTitle')}
-        </Typography>
-      </Box>
+    <Box sx={cardSx}>
+      <Typography
+        variant="h6"
+        sx={{ fontWeight: 'bold', color: PRIMARY_GREEN, textTransform: 'uppercase', letterSpacing: 1 }}
+      >
+        {t('statsTitle')}
+      </Typography>
       <Grid
         container
         rowSpacing={2}
@@ -133,18 +131,18 @@ const PumpFunFeed = () => {
             <Typography
               variant="overline"
               display="block"
-              sx={{ color: 'rgba(255,255,255,0.8)' }}
+              sx={{ color: 'rgba(26,26,26,0.7)', fontWeight: 'bold' }}
             >
               {label}
             </Typography>
-            <Typography variant="h6" sx={{ wordBreak: 'break-word' }}>
+            <Typography variant="h6" sx={{ color: '#1a1a1a', wordBreak: 'break-word' }}>
               {value}
             </Typography>
           </Grid>
         ))}
       </Grid>
-    </Paper>
+    </Box>
   );
 };
 
-export default PumpFunFeed;
+export default TokenInformation;

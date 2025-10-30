@@ -1,15 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import periMan from '../images/PeriMan.png';
 import Container from '@mui/material/Container';
-import Typography from '@mui/material/Typography';
 import { useTranslation } from 'react-i18next';
-import Paper from '@mui/material/Paper';
-import ContentCopyIcon from '@mui/icons-material/ContentCopy';
 import WhyPerico from '../components/WhyPerico';
 import Box from '@mui/material/Box';
 import { PRIMARY_GREEN } from '../styles/theme';
-import PumpFunFeed from '../components/PumpFunFeed';
 import { CONTRACT_ADDRESS } from '../config/token';
+import ContractAddressCard from '../components/ContractAddressCard';
+import IntroductionCard from '../components/IntroductionCard';
+import TokenInformation from '../components/TokenInformation';
 
 function Home() {
   const [showCopied, setShowCopied] = useState(false);
@@ -36,16 +35,11 @@ function Home() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const handleCopyAddress = async () => {
-    try {
-      await navigator.clipboard.writeText(contractAddress);
-      setShowCopied(true);
-      setTimeout(() => {
-        setShowCopied(false);
-      }, 3000);
-    } catch (err) {
-      console.error('Failed to copy!', err);
-    }
+  const handleContractCopied = () => {
+    setShowCopied(true);
+    setTimeout(() => {
+      setShowCopied(false);
+    }, 3000);
   };
 
 
@@ -116,81 +110,13 @@ function Home() {
             />
           </Box>
           {/* Contract section */}
-          <Box
-            id="contract"
-            sx={{
-              width: '100%',
-              maxWidth: 600,
-              mb: { xs: 3, sm: 4 },
-              mx: 'auto'
-            }}
-          >
-            <Typography variant="h5" sx={{ fontWeight: 'bold', mb: 1 }}>
-              {t('contracto')}
-            </Typography>
-            <Paper
-              onClick={handleCopyAddress}
-              sx={{
-                display: 'flex',
-                alignItems: { xs: 'stretch', sm: 'center' },
-                justifyContent: 'space-between',
-                flexDirection: { xs: 'column', sm: 'row' },
-                gap: { xs: 1.5, sm: 2 },
-                width: '100%',
-                p: { xs: 3, sm: 4 },
-                cursor: 'pointer',
-                border: '3px solid #000',
-                backgroundColor: PRIMARY_GREEN,
-                color: 'white',
-                borderRadius: '24px',
-                fontWeight: 'bold',
-                boxShadow: '0 4px 10px rgba(0,0,0,0.3)',
-                transition: 'transform 0.2s ease',
-                '&:hover': { transform: 'scale(1.05)' }
-              }}
-              elevation={3}
-            >
-              <Typography
-                variant="body1"
-                sx={{
-                  fontSize: { xs: '0.7rem', sm: '0.95rem', md: '1.25rem' },
-                  '@media (max-width:700px)': {
-                    fontSize: '0.85rem'
-                  },
-                  '@media (max-width:500px)': {
-                    fontSize: '0.7rem'
-                  },
-                  wordBreak: 'break-all',
-                  textAlign: { xs: 'center', sm: 'left' }
-                }}
-              >
-                {contractAddress}
-              </Typography>
-              <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                <ContentCopyIcon fontSize="medium" />
-              </Box>
-            </Paper>
+          <Box id="contract" sx={{ width: '100%', mb: { xs: 3, sm: 4 } }}>
+            <ContractAddressCard contractAddress={contractAddress} onCopied={handleContractCopied} />
           </Box>
-          <PumpFunFeed />
-          {/* Intro text */}
-          <Typography
-            variant="body1"
-            sx={{
-              backgroundColor: PRIMARY_GREEN,
-              color: 'white',
-              border: '3px solid #000',
-              p: 4,
-              borderRadius: '24px',
-              boxShadow: '0 4px 10px rgba(0,0,0,0.3)',
-              maxWidth: 600,
-              fontSize: '1.5rem',
-              lineHeight: 1.6,
-              mt: 1,
-              mx: 'auto'
-            }}
-          >
-            {t('intro')}
-          </Typography>
+          <Box sx={{ width: '100%', mb: { xs: 3, sm: 4 } }}>
+            <TokenInformation />
+          </Box>
+          <IntroductionCard />
         </Box>
       </Box>
       {showCopied && (
