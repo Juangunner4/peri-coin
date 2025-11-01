@@ -1,7 +1,7 @@
 import Box from '@mui/material/Box';
 import IconButton from '@mui/material/IconButton';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faXTwitter } from '@fortawesome/free-brands-svg-icons';
+import { faTelegram, faXTwitter } from '@fortawesome/free-brands-svg-icons';
 import Tooltip from '@mui/material/Tooltip';
 import { PRIMARY_GREEN } from '../styles/theme';
 
@@ -12,6 +12,12 @@ const Socials = () => {
       url: 'https://x.com/perionsol',
       icon: <FontAwesomeIcon icon={faXTwitter} size="2x" />,
       color: '#000000'
+    },
+    {
+      name: 'Telegram',
+      url: 'https://t.me/+rNFvjrSESP0yY2Ix',
+      icon: <FontAwesomeIcon icon={faTelegram} size="2x" />,
+      color: '#0088cc'
     },
     {
       name: 'Mobyscreener',
@@ -53,7 +59,7 @@ const Socials = () => {
               '&:hover': {
                 transform: 'translateY(-8px) scale(1.1)',
                 '& svg, & img': {
-                  color: social.name === 'X (Twitter)' ? social.color : PRIMARY_GREEN,
+                  color: social.color,
                   filter: 'brightness(1.2)'
                 }
               },
